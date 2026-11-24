@@ -1,0 +1,730 @@
+"""
+Sale Report Manager — web app chạy local, chỉ dùng thư viện chuẩn (+ pandas/openpyxl cho ETL).
+Chạy:  python3 server.py   rồi mở http://localhost:8765
+"""
+import io, json, re, shutil, time, traceback, contextlib
+import invnorm
+from datetime import datetime
+from http.server import ThreadingHTTPServer, BaseHTTPRequestHandler
+from pathlib import Path
+from urllib.parse import urlparse, parse_qs, unquote, quote as urlquote
+
+import adsopt
+import notify
+import alerts
+import analysis
+import compare
+import insights
+import ctyview
+import notes
+import inputs
+import auth
+import pwcheck
+import perms
+import builder
+import rtemplates
+import tasks
+import cleanup
+from slots import all_slots, SLOT_KEYS
+from etl.pipeline import build_data, EtlNotReady
+
+BASE = Path(__file__).parent
+DATA = BASE / "data"
+PERIODS = DATA / "periods"
+CONFIG = DATA / "config.json"
+PORT = 8765
+HOST = "127.0.0.1"
+
+DEFAULT_CONFIG = {
+    "pic": "Ngô Thị Anh Thư",
+    "group_norm": {"Acacia - Alma, Wilma Dinning Table": "Acacia - Alma Dinning Table"},
+    "ads_regex": r"^\s*thu\s*ng[oô]\b",
+    "account_country": {"Arozu": "US", "Megsu": "US", "DHI": "CAN", "Senno": "AUS"},
+    "account_currency_col": {"Arozu": "spend_USD", "Megsu": "spend_USD", "DHI": "spend_CAD"},
+    "fx_to_usd": {"USD": 1.0, "CAD": None, "AUD": None},
+    "patches": ["fbar"],
+}
+
+
+# ---------- lưu trữ ----------
+def load_config():
+    if CONFIG.exists():
+        return {**DEFAULT_CONFIG, **json.loads(CONFIG.read_text(encoding="utf-8"))}
+    return dict(DEFAULT_CONFIG)
+
+
+def save_config(c):
+    DATA.mkdir(exist_ok=True)
+    CONFIG.write_text(json.dumps(c, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def pdir(pid):
+    if not re.fullmatch(r"[A-Za-z0-9_-][A-Za-z0-9._-]{0,39}", pid or ""):
+        raise ValueError("ID kỳ chỉ gồm chữ, số, . _ - (tối đa 40 ký tự)")
+    return PERIODS / pid
+
+
+def read_meta(pid):
+    return json.loads((pdir(pid) / "meta.json").read_text(encoding="utf-8"))
+
+
+def write_meta(pid, m):
+    (pdir(pid) / "meta.json").write_text(json.dumps(m, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def list_periods():
+    out = []
+    if PERIODS.exists():
+        for d in PERIODS.iterdir():
+            if (d / "meta.json").exists():
+                out.append(json.loads((d / "meta.json").read_text(encoding="utf-8")))
+    return sorted(out, key=lambda m: m.get("created", ""), reverse=True)
+
+
+def period_template(pid):
+    """Id mẫu report của kỳ; kỳ cũ chưa ghi = mẫu gốc."""
+    try:
+        return read_meta(pid).get("template") or "base"
+    except Exception:
+        return "base"
+
+
+def create_period(pid, label, ptype, template=None):
+    d = pdir(pid)
+    if d.exists():
+        raise ValueError("Kỳ đã tồn tại")
+    template = template or rtemplates.default_id()
+    if not rtemplates.usable(template):
+        raise ValueError("Mẫu report không tồn tại hoặc đã lưu trữ")
+    (d / "uploads").mkdir(parents=True)
+    m = {"id": pid, "label": label or pid, "type": ptype or "week", "status": "draft",
+         "created": datetime.now().isoformat(timespec="seconds"), "built": None, "files": {}, "checks": {},
+         "template": template}
+    write_meta(pid, m)
+    return m
+
+
+def latest_built_data(exclude=None):
+    for m in list_periods():
+        if m["id"] != exclude and m["status"] == "built" and (pdir(m["id"]) / "data.json").exists():
+            return json.loads((pdir(m["id"]) / "data.json").read_text(encoding="utf-8"))
+    return None
+
+
+def _modern(f, *a, **k):
+    """Chạy f với cách tính mới (tồn kho BQ 4 tuần, ưu tiên theo mức ảnh hưởng) — dùng cho các chức năng của app; MẪU GỐC không đi qua đây."""
+    with invnorm.use(True):
+        return f(*a, **k)
+
+
+def render_report(d, pid=None, template=None):
+    """Render report: template + D + patch (mặc định có gói 'pro' trừ khi config.pro_ui = false).
+    MẪU GỐC (tid == "base") dựng đúng như trước; mẫu mới dùng cách tính mới (invnorm.use): tồn kho BQ 4 tuần, ưu tiên theo mức ảnh hưởng..."""
+    tid = template or (period_template(pid) if pid else "base")
+    with invnorm.use(tid != "base"):
+        return _render_report(d, pid, tid)
+
+
+def _render_report(d, pid, tid):
+    cfg = load_config()
+    patches = list(cfg.get("patches") or [])
+    extras = None
+    if cfg.get("pro_ui", True):
+        try:
+            invnorm.apply(d)      # chỉ có tác dụng với mẫu mới (idempotent)
+            ts = tasks.list_tasks(); today = datetime.now().date().isoformat()
+            op = [t for t in ts if t["status"] in ("todo", "doing")]
+            extras = insights.build(d, {"open": len(op), "late": sum(1 for t in op if t.get("due") and t["due"] < today)}, cfg.get("group_norm"))
+            extras["sku_class"] = insights.sku_class(d)
+            try:     # tách theo quốc gia: tính lại Điều cần chú ý / Phân loại SKU / Rủi ro tồn kho... cho từng quốc gia
+                extras["by_cty"] = ctyview.build_all(d, lambda X: insights.build(X, None, cfg.get("group_norm")), insights.sku_class)
+            except Exception as e:
+                extras["by_cty"] = {}; extras["by_cty_err"] = f"{type(e).__name__}: {e}"[:200]
+            extras["notes"] = [n for n in notes.list_notes(pid)] if pid else []
+            if invnorm.modern():
+                try:
+                    extras["tasks"] = [{k: t.get(k) for k in ("key", "title", "status", "owner", "due", "note", "area", "sev")} for t in tasks.list_tasks(pid)] if pid else []
+                except Exception:
+                    extras["tasks"] = []
+            extras["periods"] = pid
+            try:
+                extras["reorder"] = inputs.reorder_map(d)
+            except Exception as e:
+                import traceback; traceback.print_exc()
+                extras["reorder"] = {}; extras["reorder_err"] = f"{type(e).__name__}: {e}"[:200]
+            if "pro" not in patches:
+                patches.append("pro")
+        except Exception:
+            extras = None
+            patches = [p for p in patches if p != "pro"]
+    return builder.render(d, patches, extras, rtemplates.path(tid), rtemplates.patch_dir(tid))
+
+
+def load_data(pid):
+    f = pdir(pid) / "data.json"
+    if not f.exists():
+        raise ValueError("Kỳ này chưa có dữ liệu — hãy build trước")
+    return json.loads(f.read_text(encoding="utf-8"))
+
+
+def latest_built():
+    for m in list_periods():
+        f = pdir(m["id"]) / "data.json"
+        if m["status"] == "built" and f.exists():
+            return m["id"], json.loads(f.read_text(encoding="utf-8"))
+    return None, None
+
+
+def run_analysis(pid, user="auto"):
+    """Phân tích data.json của kỳ rồi tạo/cập nhật task. Chỉ đóng gợi ý 'hết vấn đề' khi kỳ này là kỳ mới nhất."""
+    f = pdir(pid) / "data.json"
+    if not f.exists():
+        raise ValueError("Kỳ này chưa có dữ liệu — hãy build trước")
+    cfg = load_config()
+    D = json.loads(f.read_text(encoding="utf-8"))
+    issues, summary = _modern(analysis.analyze, D, cfg.get("group_norm"))
+    built = [m for m in list_periods() if m["status"] == "built" and (pdir(m["id"]) / "data.json").exists()]
+    latest = not built or built[0]["id"] == pid
+    res = tasks.sync(pid, issues, cfg.get("pic", ""), user, latest)
+    m = read_meta(pid); m["analysis"] = {**summary, **res, "at": datetime.now().isoformat(timespec="seconds")}; write_meta(pid, m)
+    return {"summary": summary, "tasks": res, "issues": issues}
+
+
+# ---------- build ----------
+def build_period(pid):
+    m = read_meta(pid)
+    d = pdir(pid)
+    buf = io.StringIO()
+    logs = []
+
+    def log(s):
+        logs.append(str(s))
+
+    tid = m.get("template") or "base"
+    seed = builder.seed_data(rtemplates.path(tid))
+    log(f"[mẫu report] {rtemplates.name_of(tid)} ({tid})")
+    ok_b, msg_b = rtemplates.verify_base()
+    if not ok_b:
+        log(f"[mẫu report] CẢNH BÁO: {msg_b}")
+    inputs = {k: d / "uploads" / v for k, v in m["files"].items()}
+    gone = [v for v in m["files"].values() if not (d / "uploads" / v).exists()]
+    if gone and m.get("uploads_cleaned"):                   # raw đã được dọn định kỳ → không build lại được nếu không upload lại
+        logs.append(f"[chưa sẵn sàng] File raw của kỳ này đã được dọn dẹp ({len(gone)} file không còn). Upload lại các file cần thiết rồi build lại; report hiện có vẫn xem bình thường.")
+        (d / "build.log").write_text("\n".join(logs), encoding="utf-8")
+        return False, logs
+    ctx = {"period": m, "inputs": inputs, "cfg": load_config(), "prev": latest_built_data(pid), "seed": seed, "log": log}
+    t0 = time.time()
+    try:
+        with contextlib.redirect_stdout(buf):
+            data = build_data(ctx)
+        logs.extend(x for x in buf.getvalue().splitlines() if x)
+        missing, extra = builder.schema_check(data, seed)
+        extra = [k for k in extra if k not in ("quality", "market", "amzmkt", "ads_daily")]   # khối tuỳ chọn do ETL thêm (Summary-data); mẫu cũ không đọc nên không phải lỗi
+        if missing:
+            logs.append(f"[schema] CẢNH BÁO thiếu key so với template: {missing}")
+        if extra:
+            logs.append(f"[schema] Key lạ (template không đọc): {extra}")
+        html = render_report(data, pid)
+        (d / "data.json").write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+        (d / "report.html").write_text(html, encoding="utf-8")
+        m.update(status="built", built=datetime.now().isoformat(timespec="seconds"),
+                 checks={"missing_keys": missing, "extra_keys": extra, "html_kb": len(html) // 1024})
+        logs.append(f"[ok] Build xong trong {time.time() - t0:.1f}s — report {len(html)//1024} KB")
+        ok = True
+        write_meta(pid, m)
+        try:                                                # đọc sẵn report quảng cáo cho trang Tối ưu QC (lần mở đầu khỏi chờ)
+            adsopt.refresh_cache(pid, log)
+        except Exception as e:
+            logs.append(f"[tối ưu QC] bỏ qua: {e}")
+        try:                                                # tự phân tích + tạo task sau mỗi lần build
+            ra = run_analysis(pid)
+            logs.append(f"[phân tích] {ra['summary']['n']} vấn đề → task mới {ra['tasks']['new']}, cập nhật {ra['tasks']['updated']}")
+            m = read_meta(pid)
+        except Exception as e:
+            logs.append(f"[phân tích] bỏ qua: {e}")
+    except EtlNotReady as e:
+        ok = False
+        logs.append(f"[chưa sẵn sàng] {e}")
+        m["status"] = "draft"
+    except Exception:
+        ok = False
+        logs.extend(buf.getvalue().splitlines())
+        logs.append("[lỗi]\n" + traceback.format_exc())
+        m["status"] = "error"
+    (d / "build.log").write_text("\n".join(logs), encoding="utf-8")
+    write_meta(pid, m)
+    return ok, logs
+
+
+def seed_if_empty():
+    """Lần chạy đầu: tạo kỳ mẫu từ chính D trong template để xem app hoạt động ngay."""
+    if list_periods() or not builder.TEMPLATE.exists():
+        return
+    create_period("mau-template", "Mẫu (lấy từ template gốc)", "month")
+    d = pdir("mau-template")
+    seed = builder.seed_data()
+    (d / "data.json").write_text(json.dumps(seed, ensure_ascii=False), encoding="utf-8")
+    (d / "report.html").write_text(render_report(seed), encoding="utf-8")
+    m = read_meta("mau-template")
+    m.update(status="built", built=datetime.now().isoformat(timespec="seconds"))
+    write_meta("mau-template", m)
+
+
+# ---------- HTTP ----------
+class H(BaseHTTPRequestHandler):
+    def _send(self, code, body, ctype="application/json; charset=utf-8"):
+        if isinstance(body, (dict, list)):
+            body = json.dumps(body, ensure_ascii=False).encode()
+        elif isinstance(body, str):
+            body = body.encode()
+        self.send_response(code)
+        self.send_header("Content-Type", ctype)
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+
+    def _ip(self):
+        ip = self.client_address[0]
+        if ip in ("127.0.0.1", "::1"):        # đứng sau tunnel/reverse proxy cùng máy: lấy IP thật từ header
+            ip = (self.headers.get("CF-Connecting-IP") or (self.headers.get("X-Forwarded-For") or "").split(",")[0].strip() or ip)
+        return ip
+
+    def _cookie(self):
+        for c in (self.headers.get("Cookie") or "").split(";"):
+            k, _, v = c.strip().partition("=")
+            if k == auth.COOKIE:
+                return v
+        return ""
+
+    def _user(self):
+        return auth.verify_token(self._cookie())
+
+    def _secure(self):
+        return (self.headers.get("X-Forwarded-Proto") or "").lower() == "https"
+
+    def _setcookie(self, val, max_age):
+        return f"{auth.COOKIE}={val}; Path=/; HttpOnly; SameSite=Lax; Max-Age={max_age}" + ("; Secure" if self._secure() else "")
+
+    def _redirect(self, to):
+        self.send_response(302); self.send_header("Location", to); self.send_header("Content-Length", "0"); self.end_headers()
+
+    def _auth_api(self, method, p):
+        if p == ["status"] and method == "GET":
+            u = self._user()
+            return self._send(200, {"has_users": auth.has_users(), "user": u, "perms": perms.get(u) if u else None})
+        if p == ["login"] and method == "POST":
+            ip = self._ip()
+            if auth.locked(ip):
+                return self._send(429, {"error": "Sai quá nhiều lần. Thử lại sau vài phút."})
+            try:
+                b = json.loads(self._body() or b"{}")
+            except ValueError:
+                b = {}
+            if auth.check(str(b.get("username", "")), str(b.get("password", ""))):
+                auth.note_ok(ip)
+                body = json.dumps({"ok": True, "user": b["username"].strip().lower()}).encode()
+                self.send_response(200); self.send_header("Content-Type", "application/json")
+                self.send_header("Set-Cookie", self._setcookie(auth.make_token(b["username"]), auth.SESSION_HOURS * 3600))
+                self.send_header("Content-Length", str(len(body))); self.end_headers(); self.wfile.write(body); return
+            auth.note_fail(ip); time.sleep(0.6)
+            return self._send(401, {"error": "Sai tên đăng nhập hoặc mật khẩu"})
+        if p == ["logout"] and method == "POST":
+            body = b'{"ok":true}'
+            self.send_response(200); self.send_header("Content-Type", "application/json")
+            self.send_header("Set-Cookie", self._setcookie("", 0)); self.send_header("Content-Length", str(len(body)))
+            self.end_headers(); self.wfile.write(body); return
+        if p == ["strength"] and method == "POST":
+            if not self._user():
+                return self._send(401, {"error": "Chưa đăng nhập"})
+            b = json.loads(self._body() or b"{}")
+            return self._send(200, pwcheck.check(str(b.get("password", "")), str(b.get("username", ""))))
+        if p == ["password"] and method == "POST":
+            me = self._user()
+            if not me:
+                return self._send(401, {"error": "Chưa đăng nhập"})
+            b = json.loads(self._body() or b"{}")
+            if not auth.check(me, str(b.get("old", ""))):
+                time.sleep(0.6); return self._send(400, {"error": "Mật khẩu hiện tại không đúng"})
+            if str(b.get("new", "")) == str(b.get("old", "")):
+                raise ValueError("Mật khẩu mới phải khác mật khẩu hiện tại")
+            auth.set_password(me, str(b.get("new", "")))
+            return self._send(200, {"ok": True})
+        return self._send(404, {"error": "not found"})
+
+    def _body(self):
+        return self.rfile.read(int(self.headers.get("Content-Length") or 0))
+
+    def _route(self, method):
+        u = urlparse(self.path)
+        parts = [unquote(p) for p in u.path.strip("/").split("/") if p]
+        q = parse_qs(u.query)
+        try:
+            if method == "GET" and parts == ["login"]:
+                return self._send(200, (BASE / "static" / "login.html").read_bytes(), "text/html; charset=utf-8")
+            if parts[:2] == ["api", "auth"]:
+                return self._auth_api(method, parts[2:])
+            if not self._user():                       # mọi đường còn lại đều cần đăng nhập
+                if parts[:1] == ["api"]:
+                    return self._send(401, {"error": "Chưa đăng nhập"})
+                return self._redirect("/login" + ("?next=" + self.path if parts else ""))
+            need = perms.required(method, parts)
+            if need and not perms.allowed(self._user(), *need):
+                if parts[:1] == ["api"]:
+                    return self._send(403, {"error": "Bạn không có quyền thực hiện thao tác này (cần quyền “" + dict((m[0], m[1]) for m in perms.MODULES).get(need[0], "Quản trị") + "”, mức " + ("Sửa" if need[1] == "edit" else "Xem") + ")"})
+                return self._send(403, "Bạn không có quyền xem mục này.", "text/plain; charset=utf-8")
+            if method == "GET" and not parts:
+                try:
+                    cleanup.maybe_run(load_config(), adsopt.refresh_cache)    # dọn raw định kỳ hằng tuần (chỉ chạy khi đến hạn)
+                except Exception:
+                    traceback.print_exc()
+                return self._send(200, (BASE / "static" / "index.html").read_bytes(), "text/html; charset=utf-8")
+            if parts[:1] == ["api"]:
+                return self._api(method, parts[1:], q)
+            if method == "GET" and parts[:1] == ["report"] and len(parts) == 2:
+                f = pdir(parts[1]) / "report.html"
+                dj = pdir(parts[1]) / "data.json"
+                if dj.exists():          # render lại từ data.json để luôn dùng patch/giao diện mới nhất
+                    try:
+                        return self._send(200, render_report(json.loads(dj.read_text(encoding="utf-8")), parts[1]).encode("utf-8"), "text/html; charset=utf-8")
+                    except Exception:
+                        pass
+                if not f.exists():
+                    return self._send(404, "Kỳ này chưa build report.", "text/plain; charset=utf-8")
+                return self._send(200, f.read_bytes(), "text/html; charset=utf-8")
+            return self._send(404, {"error": "not found"})
+        except ValueError as e:
+            return self._send(400, {"error": str(e)})
+        except FileNotFoundError:
+            return self._send(404, {"error": "không tìm thấy"})
+        except Exception:
+            return self._send(500, {"error": traceback.format_exc()})
+
+    def _users_api(self, method, p):
+        me = self._user()
+        if p == []:
+            if method == "GET":
+                adm = perms.is_admin(me)
+                return self._send(200, {"me": me, "is_admin": adm, "users": auth.list_users() if adm else [me]})
+            if method == "POST":
+                b = json.loads(self._body() or b"{}")
+                name = str(b.get("username", "")).strip().lower()
+                if name in auth.list_users():
+                    raise ValueError("Tài khoản đã tồn tại")
+                auth.set_password(name, str(b.get("password", "")))
+                perms.add_default(name, "viewer")
+                return self._send(200, {"ok": True})
+        if len(p) == 1:
+            name = p[0].strip().lower()
+            if method == "PUT":                     # đặt lại mật khẩu cho tài khoản khác
+                if name not in auth.list_users():
+                    raise ValueError("Không có tài khoản này")
+                b = json.loads(self._body() or b"{}")
+                auth.set_password(name, str(b.get("password", "")))
+                return self._send(200, {"ok": True})
+            if method == "DELETE":
+                if name == me:
+                    raise ValueError("Không thể xoá chính tài khoản đang đăng nhập")
+                if len(auth.list_users()) <= 1:
+                    raise ValueError("Không thể xoá tài khoản cuối cùng")
+                if perms.is_admin(name) and sum(1 for u in auth.list_users() if perms.is_admin(u)) <= 1:
+                    raise ValueError("Không thể xoá quản trị viên cuối cùng")
+                auth.remove_user(name); perms.remove(name)
+                return self._send(200, {"ok": True})
+        return self._send(404, {"error": "not found"})
+
+    def _inputs_api(self, method, p, q):
+        b = json.loads(self._body() or b"{}") if method in ("PUT", "POST") else {}
+        if not p and method == "GET":
+            pid = (q.get("period") or [None])[0]
+            if pid:
+                D = load_data(pid)
+            else:
+                pid, D = latest_built()
+            if D is None:
+                return self._send(200, {"rows": [], "summary": None, "targets": [], "register": inputs._load()["register"], "status": inputs.STATUS, "period": None})
+            r = _modern(inputs.build, D); r["period"] = pid
+            return self._send(200, r)
+        if len(p) == 2 and p[0] == "sku" and method == "PUT":
+            return self._send(200, inputs.set_sku(p[1], b))
+        if len(p) == 2 and p[0] == "sku" and method == "DELETE":
+            inputs.reset_sku(p[1]); return self._send(200, {"ok": True})
+        if len(p) == 2 and p[0] == "targets" and method == "PUT":
+            inputs.set_target(p[1], b.get("v")); return self._send(200, {"ok": True})
+        if p == ["register"] and method == "POST":
+            return self._send(200, inputs.reg_save(None, b, new=True))
+        if len(p) == 2 and p[0] == "register" and method == "PUT":
+            return self._send(200, inputs.reg_save(p[1], b))
+        if len(p) == 2 and p[0] == "register" and method == "DELETE":
+            inputs.reg_del(p[1]); return self._send(200, {"ok": True})
+        return self._send(404, {"error": "not found"})
+
+    def _tasks_api(self, method, p):
+        me = self._user()
+        if p == []:
+            if method == "GET":
+                return self._send(200, tasks.list_tasks())
+            if method == "POST":
+                b = json.loads(self._body() or b"{}")
+                return self._send(200, tasks.add(b.get("title"), b.get("owner") or load_config().get("pic", ""), b.get("due"), b.get("area"), me, b.get("period")))
+        if len(p) == 1:
+            if method == "PUT":
+                return self._send(200, tasks.update(p[0], json.loads(self._body() or b"{}"), me))
+            if method == "DELETE":
+                tasks.remove(p[0]); return self._send(200, {"ok": True})
+        return self._send(404, {"error": "not found"})
+
+    def _perms_api(self, method, p):
+        me = self._user()
+        if p == [] and method == "GET":
+            return self._send(200, {"me": me, "modules": [{"key": k, "label": l, "desc": d} for k, l, d in perms.MODULES],
+                                    "levels": perms.LEVELS, "users": perms.all_users(),
+                                    "presets": {k: {"label": v[0], "mods": v[1]} for k, v in perms.PRESETS.items()}})
+        if len(p) == 1 and method == "PUT":
+            b = json.loads(self._body() or b"{}")
+            perms.set_user(p[0].strip().lower(), b.get("role"), b.get("mods") or {}, me)
+            return self._send(200, {"ok": True})
+        return self._send(404, {"error": "not found"})
+
+    def _rt_api(self, method, p, q):
+        """Quản lý mẫu report: không xoá, không ghi đè."""
+        me = self._user()
+
+        def usage():
+            u = {}
+            for m in list_periods():
+                t = m.get("template") or "base"; u[t] = u.get(t, 0) + 1
+            return u
+        if p == [] and method == "GET":
+            return self._send(200, rtemplates.list_all(usage()))
+        if p == [] and method == "POST":                          # tải lên mẫu mới: thân request = nội dung file .html
+            it = rtemplates.add(q.get("name", [""])[0], q.get("note", [""])[0], self._body(), me)
+            return self._send(200, it)
+        if len(p) == 2 and p[1] == "preview" and method == "GET":
+            if not rtemplates.exists(p[0]):
+                return self._send(404, {"error": "Không có mẫu này"})
+            seed = builder.seed_data(rtemplates.path(p[0]))
+            return self._send(200, render_report(seed, None, p[0]).encode("utf-8"), "text/html; charset=utf-8")
+        if len(p) == 2 and p[1] == "download" and method == "GET":
+            if not rtemplates.exists(p[0]):
+                return self._send(404, {"error": "Không có mẫu này"})
+            return self._send(200, rtemplates.path(p[0]).read_bytes(), "text/html; charset=utf-8")
+        if len(p) == 2 and p[1] == "clone" and method == "POST":
+            b = json.loads(self._body() or b"{}")
+            return self._send(200, rtemplates.clone(p[0], b.get("name", ""), me))
+        if len(p) == 1 and method == "PUT":
+            b = json.loads(self._body() or b"{}")
+            return self._send(200, rtemplates.update(p[0], me, name=b.get("name"), note=b.get("note"),
+                                                     archived=b.get("archived"), make_default=bool(b.get("default"))))
+        return self._send(404, {"error": "not found"})
+
+    def _adsopt_api(self, method, p, q):
+        """Nhóm 3 – Tối ưu quảng cáo Wayfair (adsopt.py)."""
+        pid = (q.get("period") or [None])[0]
+        if pid:
+            D = load_data(pid)
+        else:
+            pid, D = latest_built()
+        if p == ["overview"] and method == "GET":
+            if D is None:
+                return self._send(200, {"empty": True, "templates": adsopt.templates(), "cfg": adsopt.load_cfg()})
+            r = adsopt.overview(D); r["period"] = pid
+            return self._send(200, r)
+        if p == ["rank"] and method == "GET":
+            return self._send(200, adsopt.rank_view())
+        if p == ["config"] and method == "PUT":
+            adsopt.save_cfg(json.loads(self._body() or b"{}"))
+            return self._send(200, {"ok": True})
+        if len(p) == 2 and p[0] == "template":
+            key = p[1]
+            if key not in adsopt.ACCTS:
+                raise ValueError("Tài khoản không hợp lệ")
+            if method == "POST":
+                return self._send(200, adsopt.save_template(key, self._body(), q.get("name", [key + ".xlsx"])[0]))
+            if method == "DELETE":
+                adsopt.delete_template(key); return self._send(200, {"ok": True})
+        if len(p) == 2 and p[0] == "export" and method == "GET":
+            key = p[1]
+            if key not in adsopt.ACCTS:
+                raise ValueError("Tài khoản không hợp lệ")
+            if D is None:
+                raise ValueError("Chưa có kỳ nào được build")
+            parts = [x for x in (q.get("parts") or [""])[0].split(",") if x]
+            data, rep = adsopt.export_bulk(key, adsopt.compute(D), parts)
+            stamp = datetime.now().strftime("%Y%m%d-%H%M")
+            fn = f"wf_bulk_edits_ThuNgo_{adsopt.ACCTS[key][0]}_{stamp}.xlsx"
+            self.send_response(200)
+            self.send_header("Content-Type", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+            self.send_header("Content-Disposition", f'attachment; filename="{fn}"')
+            self.send_header("X-Adsopt-Report", urlquote(json.dumps({k: rep[k] for k in ("counts", "skipped", "total", "parts")}, ensure_ascii=False)))
+            self.send_header("Access-Control-Expose-Headers", "X-Adsopt-Report, Content-Disposition")
+            self.send_header("Content-Length", str(len(data)))
+            self.end_headers(); self.wfile.write(data); return
+        return self._send(404, {"error": "not found"})
+
+    def _api(self, method, p, q):
+        if p[:1] == ["adsopt"]:
+            return self._adsopt_api(method, p[1:], q)
+        if p[:1] == ["perms"]:
+            return self._perms_api(method, p[1:])
+        if p[:1] == ["rtemplates"]:
+            return self._rt_api(method, p[1:], q)
+        if p[:1] == ["cleanup"]:
+            if p == ["cleanup"] and method == "GET":
+                return self._send(200, cleanup.status(load_config()))
+            if p == ["cleanup", "run"] and method == "POST":
+                b = json.loads(self._body() or b"{}")
+                r = cleanup.run(load_config(), bool(b.get("dry")), None if b.get("dry") else adsopt.refresh_cache)
+                if not b.get("dry"):
+                    print(f"[cleanup] {self._user()} chạy dọn raw: {r['files']} file, {r['bytes']} bytes")
+                return self._send(200, r)
+        if p == ["cockpit"] and method == "GET":
+            pid = (q.get("period") or [None])[0]
+            if pid:
+                D = load_data(pid)
+            else:
+                pid, D = latest_built()
+            if D is None:
+                return self._send(200, {"empty": True})
+            return self._send(200, _modern(alerts.cockpit, D, pid, load_config().get("group_norm")))
+        if p == ["compare"] and method == "GET":
+            a, b = (q.get("a") or [""])[0], (q.get("b") or [""])[0]
+            if not a or not b or a == b:
+                raise ValueError("Chọn hai kỳ khác nhau để so sánh")
+            return self._send(200, compare.compare(load_data(a), load_data(b), load_config().get("group_norm")))
+        if p == ["digest"] and method == "POST":
+            b = json.loads(self._body() or b"{}")
+            text, res = _modern(alerts.run, "events" if b.get("mode") == "events" else "weekly", bool(b.get("send")), load_config, latest_built)
+            return self._send(200, {"text": text, "result": res, "configured": bool((load_config().get("notify") or {}))})
+        if p[:1] == ["notify"]:
+            if p == ["config"] and method == "GET":
+                return self._send(200, notify.public())
+            if p == ["config"] and method == "PUT":
+                return self._send(200, notify.save(json.loads(self._body() or b"{}")))
+            if p in (["send"], ["preview"]) and method == "POST":
+                b = json.loads(self._body() or b"{}")
+                pid = b.get("period")
+                D = load_data(pid)
+                iss, _sm = _modern(analysis.analyze, D, load_config().get("group_norm"))
+                res = notify.send(D, pid, iss, preview=(p == ["preview"]))
+                if p == ["send"]:
+                    print(f"[notify] {self._user()} gửi {pid}: email={res['email']} gchat={res['gchat']}")
+                return self._send(200, res)
+        if p[:1] == ["notes"]:
+            if p == ["notes"] and method == "GET":
+                return self._send(200, {"notes": notes.list_notes((q.get("period") or [None])[0]), "types": notes.TYPES})
+            if p == ["notes"] and method == "POST":
+                b = json.loads(self._body() or b"{}")
+                return self._send(200, notes.add(b.get("period"), b.get("date"), b.get("type"), b.get("text"), self._user()))
+            if len(p) == 2 and method == "DELETE":
+                notes.remove(p[1]); return self._send(200, {"ok": True})
+        if p[:1] == ["inputs"]:
+            return self._inputs_api(method, p[1:], q)
+        if p[:1] == ["tasks"]:
+            return self._tasks_api(method, p[1:])
+        if len(p) == 3 and p[0] == "periods" and p[2] == "analysis" and method == "GET":
+            D = json.loads((pdir(p[1]) / "data.json").read_text(encoding="utf-8"))
+            iss, sm = _modern(analysis.analyze, D, load_config().get("group_norm"))
+            return self._send(200, {"summary": sm, "issues": iss})
+        if len(p) == 3 and p[0] == "periods" and p[2] == "analyze" and method == "POST":
+            return self._send(200, run_analysis(p[1], self._user()))
+        if p[:1] == ["users"]:
+            return self._users_api(method, p[1:])
+        if p == ["slots"]:
+            return self._send(200, all_slots())
+        if p == ["config"]:
+            if method == "GET":
+                return self._send(200, load_config())
+            if method == "PUT":
+                save_config(json.loads(self._body())); return self._send(200, {"ok": True})
+        if p == ["periods"]:
+            if method == "GET":
+                return self._send(200, list_periods())
+            if method == "POST":
+                b = json.loads(self._body())
+                return self._send(200, create_period(b.get("id", "").strip(), b.get("label", ""), b.get("type", "week"), b.get("template") or None))
+        if len(p) >= 2 and p[0] == "periods":
+            pid = p[1]
+            if len(p) == 2 and method == "GET":
+                return self._send(200, read_meta(pid))
+            if len(p) == 3 and p[2] == "template" and method == "PUT":     # đổi mẫu report của kỳ (report vẽ lại từ data.json nên có hiệu lực ngay)
+                tid = (json.loads(self._body() or b"{}").get("template") or "").strip()
+                m = read_meta(pid)
+                if tid != (m.get("template") or "base") and not rtemplates.usable(tid):
+                    raise ValueError("Mẫu report không tồn tại hoặc đã lưu trữ")
+                m["template"] = tid; write_meta(pid, m)
+                warn = []
+                dj = pdir(pid) / "data.json"
+                if dj.exists():
+                    try:
+                        miss, extra = builder.schema_check(json.loads(dj.read_text(encoding="utf-8")), builder.seed_data(rtemplates.path(tid)))
+                        if miss:
+                            warn.append(f"Dữ liệu kỳ này thiếu key mà mẫu mới cần: {', '.join(miss[:8])}. Hãy build lại kỳ nếu report hiển thị thiếu.")
+                    except Exception as e:
+                        warn.append(f"Không kiểm tra được tương thích: {e}")
+                return self._send(200, {"ok": True, "template": tid, "name": rtemplates.name_of(tid), "warn": warn})
+            if len(p) == 2 and method == "DELETE":
+                shutil.rmtree(pdir(pid)); return self._send(200, {"ok": True})
+            if len(p) == 4 and p[2] == "upload" and method == "POST":
+                slot = p[3]
+                if slot not in SLOT_KEYS:
+                    raise ValueError("slot không hợp lệ")
+                name = re.sub(r"[^\w.\-]", "_", q.get("name", [slot])[0])
+                fname = f"{slot}__{name}"
+                m = read_meta(pid)
+                old = m["files"].get(slot)
+                if old:
+                    (pdir(pid) / "uploads" / old).unlink(missing_ok=True)
+                (pdir(pid) / "uploads" / fname).write_bytes(self._body())
+                m["files"][slot] = fname
+                write_meta(pid, m)
+                return self._send(200, m)
+            if len(p) == 3 and p[2] == "upload_zip" and method == "POST":
+                import zipintake as _z
+                files, zip_notes = _z.extract(self._body())
+                m = read_meta(pid)
+                for slot, (name, data) in files.items():
+                    old = m["files"].get(slot)
+                    if old:
+                        (pdir(pid) / "uploads" / old).unlink(missing_ok=True)
+                    fname = f"{slot}__" + re.sub(r"[^\w.\-]", "_", name)
+                    (pdir(pid) / "uploads" / fname).write_bytes(data)
+                    m["files"][slot] = fname
+                write_meta(pid, m)
+                m = dict(m); m["zip_report"] = {"assigned": sorted(files), "notes": zip_notes}
+                return self._send(200, m)
+            if len(p) == 4 and p[2] == "upload" and method == "DELETE":
+                m = read_meta(pid)
+                old = m["files"].pop(p[3], None)
+                if old:
+                    (pdir(pid) / "uploads" / old).unlink(missing_ok=True)
+                write_meta(pid, m)
+                return self._send(200, m)
+            if len(p) == 3 and p[2] == "build" and method == "POST":
+                ok, logs = build_period(pid)
+                return self._send(200, {"ok": ok, "log": logs, "meta": read_meta(pid)})
+            if len(p) == 3 and p[2] == "log" and method == "GET":
+                f = pdir(pid) / "build.log"
+                return self._send(200, {"log": f.read_text(encoding="utf-8").splitlines() if f.exists() else []})
+            if len(p) == 3 and p[2] == "data" and method == "GET":
+                return self._send(200, (pdir(pid) / "data.json").read_bytes())
+        return self._send(404, {"error": "not found"})
+
+    def do_GET(self): self._route("GET")
+    def do_POST(self): self._route("POST")
+    def do_PUT(self): self._route("PUT")
+    def do_DELETE(self): self._route("DELETE")
+    def log_message(self, *a): pass
+
+
+if __name__ == "__main__":
+    PERIODS.mkdir(parents=True, exist_ok=True)
+    seed_if_empty()
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--host", default=HOST, help="127.0.0.1 (chỉ máy này) hoặc 0.0.0.0 (cho máy khác truy cập)")
+    ap.add_argument("--port", type=int, default=PORT)
+    a = ap.parse_args()
+    if not auth.has_users():
+        print("CHƯA CÓ TÀI KHOẢN: chạy  python3 manage_users.py add <tên>  để tạo, nếu không sẽ không đăng nhập được.")
+    print(f"Sale Report Manager chạy tại http://{'localhost' if a.host == '127.0.0.1' else a.host}:{a.port}  (Ctrl+C để dừng)")
+    ThreadingHTTPServer((a.host, a.port), H).serve_forever()

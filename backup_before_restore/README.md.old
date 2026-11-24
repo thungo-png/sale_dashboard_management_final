@@ -1,0 +1,146 @@
+# Sale Report Manager
+
+Web app chạy local để quản lý các kỳ báo cáo Sale Report (Amazon & Wayfair, danh mục Thu Ngo).
+
+## Chạy
+```bash
+pip3 install pandas openpyxl      # chỉ cần cho ETL
+python3 server.py                  # mở http://localhost:8765
+```
+Lần đầu chạy, app tạo sẵn kỳ **"Mẫu"** từ dữ liệu `const D` nằm trong template, nên bạn xem được report ngay.
+
+## Đăng nhập
+App yêu cầu đăng nhập. Tạo tài khoản (hỏi mật khẩu, tối thiểu 8 ký tự, không hiện trên màn hình):
+```bash
+python3 manage_users.py add ten_dang_nhap     # tạo mới hoặc đổi mật khẩu
+python3 manage_users.py list
+python3 manage_users.py remove ten_dang_nhap
+```
+Phiên đăng nhập 12 giờ; sai mật khẩu 5 lần từ cùng 1 IP thì bị khoá 5 phút. Tài khoản lưu ở `data/users.json` (mật khẩu đã băm), khoá ký phiên ở `data/secret.key` — đừng chia sẻ hai file này.
+
+Cho máy khác truy cập: `python3 server.py --host 0.0.0.0` (cùng mạng) hoặc dùng tunnel (Cloudflare Tunnel / Tailscale) trỏ vào `localhost:8765`. Khi ra internet nên đặt sau HTTPS (tunnel đã có sẵn).
+
+## Quy trình mỗi kỳ
+1. **Tạo kỳ mới** (cột trái) → **Upload file**: bấm "Chọn file .zip" để upload cả bộ 1 lần (app tự xếp vào ô theo tên file, file không nhận ra được liệt kê), hoặc upload từng ô A/B (hoặc chỉ upload `data.json` dựng sẵn ở mục C).
+2. **Build**: chạy ETL → JSON `const D` → chèn vào `templates/report-template-base.html` → ghi `data/periods/<id>/report.html`.
+3. **Xem report** ngay trong app, hoặc mở tab mới / tải `data.json`.
+
+## Cấu trúc
+```
+server.py              HTTP server + API (chỉ stdlib)
+auth.py                đăng nhập: băm mật khẩu, cookie phiên ký HMAC, chống dò mật khẩu
+manage_users.py        tạo / đổi mật khẩu / xoá tài khoản
+builder.py             đọc/chèn const D, áp patch, kiểm tra schema so với template
+zipintake.py          nhận 1 file .zip, tự xếp file vào đúng ô upload theo tên file
+slots.py               danh sách file cần upload mỗi kỳ
+etl/pipeline.py        điểm cắm ETL (data_json → custom_build → báo lỗi)
+etl/sales.py           ETL bán hàng + chuỗi thời gian (đợt 1)
+etl/inventory.py       ETL tồn kho invdet/invacct + gộp SKU kit (đợt 2)
+etl/ads.py             ETL quảng cáo Wayfair (CR/PR/PSR/STRR) + Amazon Ads, lọc chiến dịch Thu Ngo (đợt 3)
+etl/extra.py           sku_meta, top_sku2, grpcmp, askuw_mp, sizecolor (đợt 4a)
+etl/pl5.py             Profit PL5 từ rate card P&L Thư Ngô (đợt 4b)
+etl/longterm.py        ETL Long-term Storage lt từ Inventory Age FBA + CastleGate (đợt 2)
+etl/custom_build.py    điểm ghép các đợt ETL; liệt kê khối nào đã làm / còn giữ nguyên
+tests/                 test đối chiếu với D của W39
+templates/             report-template-base.html (bản từ project)
+patches/fbar.*         bộ lọc dropdown (08-bo-loc-dropdown.md); bật/tắt trong cấu hình "patches"
+static/index.html      giao diện
+data/                  config.json + periods/<id>/{uploads, data.json, report.html, build.log, meta.json}
+```
+
+## Trạng thái ETL (etl/custom_build.py)
+Cập nhật theo kiểu **tăng dần**: lấy D của kỳ build gần nhất làm nền, ghi đè phần của tuần mới.
+
+| Đợt | Nội dung | Trạng thái |
+|---|---|---|
+| 1 | Bán hàng + chuỗi thời gian: meta, cell, bygrp, bygrp_cell, sku, weekly_grp, weekfc, monthly, quarterly, ytd, ts_* | **Xong, khớp 100% D của W39** |
+| 2 | Tồn kho: invdet, invacct (etl/inventory.py) + Long-term Storage: lt (etl/longterm.py) | **Xong, khớp 100% D của W39** |
+| 3 | Quảng cáo Wayfair + Amazon Ads: adsum, campthu, scope, tacos, dgmk_room, adlist_cover, ads.rank, ads.st (etl/ads.py) | **Xong, khớp 100% D của W39** |
+| 4 | sku_meta, top_sku2, grpcmp, askuw_mp, sizecolor (etl/extra.py) + pl5 (etl/pl5.py) | **Xong, khớp D của W39** (pl5: lệch tối đa 0,01 USD/dòng ở 2 dòng SEM Amazon CAN do làm tròn chi phí quảng cáo) |
+
+Quảng cáo: chiến dịch Thu Ngo = tên khớp `^\s*thu\s*ng[oô]\b`; quốc gia theo tài khoản; nhóm theo từ khoá tên chiến dịch;
+ads.rank = listing thuộc chiến dịch Thu Ngo có trong PSR (đầu/cuối/tốt nhất trong tuần); ads.st = STRR đúng thị trường của tài khoản (US hoặc Canada-English) và các Class đang bán.
+Thiếu bất kỳ file quảng cáo nào thì cả đợt 3 được giữ nguyên từ kỳ trước (có ghi trong log).
+
+PL5: kênh có công thức = Amazon US/CAN, Wayfair US/CAN, Shopify US; các ô khác (Shopify CAN/AUS, Amazon AUS, Walmart) không suy đoán, liệt kê ở `pl5.no_formula_mpcty`.
+SEM Wayfair chia đều cho số SKU của nhóm trong sheet kênh; SEM Amazon chia đều cho các SKU có bán trong nhóm×quốc gia.
+PL5 hỗ trợ 2 bố cục file P&L: bố cục W38–W39 (sheet `COGS Auto`, có WH/OP/Ship2AMZ — đã khớp W39) và bố cục 10/2026 (`P&L_Thu_Ngo_COGS_2026-10`: COGS và rate card nằm trong từng sheet kênh, công thức theo cột Total Cost của sheet; bổ sung ô Walmart US, Amazon AU, Shopify AU). Bố cục lạ thì giữ nguyên PL5 kỳ trước và ghi log.
+Cần file P&L (ô `pl5`) và đủ file quảng cáo; thiếu thì giữ nguyên pl5 kỳ trước.
+sizecolor: các tuần cũ giữ nguyên như đã công bố, chỉ tính lại tuần mới (từ khoá size/màu: Mocha→Chocolate, Americano→Walnut, Oak→Natural).
+sku_meta: kỳ trước + SKU mới xuất hiện trong tuần (tên từ sheet Listing, không có thì dùng mã SKU).
+Chưa làm: `pl5ts` và `pl5_prev` (mô tả ở tài liệu 09 nhưng template hiện tại không có hai khoá này).
+
+Quy tắc đã chốt từ đối chiếu W39: chỉ lấy các ngày trong tuần báo cáo từ file; ngày cũ hơn giữ số đã công bố ở kỳ trước;
+tỷ giá = D.fx.rates của kỳ trước (constant currency); ngày/tuần theo Chủ Nhật–Thứ Bảy, đánh số theo ANCHOR 28/12/2025.
+App chặn build khi kỳ nền đã là tuần ≥ tuần đang build (tránh cộng dồn tháng/quý/YTD hai lần).
+
+## Kiểm thử
+```bash
+python3 -I tests/test_full_w39.py "<thư mục Data_W39>"        # đợt 1 + 2 + 3, so với D của W39
+python3 -I tests/test_sales_vs_w39.py "<data W39.xlsx>"        # riêng đợt 1
+python3 -I tests/test_inventory_vs_w39.py "<Data Inv & Report Sales.xlsx>"
+python3 -I tests/test_lt_vs_w39.py "<thư mục Data_W39>"
+python3 -I tests/test_ads_vs_w39.py "<thư mục Data_W39>"
+python3 -I tests/test_extra_vs_w39.py                          # top_sku2, grpcmp, askuw_mp, sizecolor
+python3 -I tests/test_pl5_vs_w39.py "<thư mục Data_W39>"
+```
+Lấy D của W39 trong template làm đáp án, gỡ tuần W39 ra rồi chạy ETL từ file thô và so từng khối.
+Lưu ý: `lt.note` do ETL tự sinh (bản chung), không chép lại đoạn bình luận riêng của từng tuần.
+
+## Quản lý tài khoản (trong giao diện)
+Nút **👤 Tài khoản** (cạnh ⚙ Cấu hình): xem danh sách, thêm tài khoản, đặt lại mật khẩu người khác, xoá tài khoản, đổi mật khẩu của chính mình (cần nhập mật khẩu hiện tại).
+Không cho xoá tài khoản đang đăng nhập hoặc tài khoản cuối cùng. Có hai quyền: **Quản trị** (đầy đủ) và **Chỉ xem report** (xem mục "Phân quyền"). API: `/api/users` (GET/POST), `/api/users/<tên>` (PUT/DELETE), `/api/auth/password` (POST).
+
+## Phân tích report & Task
+- Sau mỗi lần **Build**, app tự chạy `analysis.py` trên `data.json` của kỳ và tạo task trong `data/tasks.json` (dùng chung mọi kỳ). Có thể chạy lại bằng nút "Phân tích lại & đồng bộ task" ở **bước 4 – Phân tích & Task** của thanh workflow.
+- Nhóm luật: Lợi nhuận (margin thấp theo nhóm/kênh, SKU thiếu phí P&L), Doanh số (tuần giảm so với tuần trước), Quảng cáo (TACoS cao, campaign chưa ra đơn/ACoS cao), Tồn kho (sắp hết, tồn không bán, FBA >270 ngày). Mỗi vấn đề nêu rõ nằm ở đâu và hướng xử lý. Ngưỡng chỉnh ở dict `TH` đầu file `analysis.py`.
+- Bước 4 có hai mục: "Vấn đề phát hiện" và **"Task cần xử lý"**: bảng Cần làm / Đang làm / Hoàn thành, đổi trạng thái, người phụ trách (mặc định lấy `pic` trong Cấu hình), hạn (cao 2 ngày, vừa 5, theo dõi 7), ghi chú, lịch sử thay đổi; thêm task thủ công.
+- Qua kỳ sau: vấn đề còn thì task cũ được cập nhật (không tạo trùng, đếm số kỳ xuất hiện); vấn đề hết thì task được gắn "có thể đóng"; task đã đóng mà vấn đề quay lại thì mở task mới gắn "Tái phát".
+- API: `GET /api/periods/<id>/analysis`, `POST /api/periods/<id>/analyze`, `GET/POST /api/tasks`, `PUT/DELETE /api/tasks/<id>`.
+
+## Chính sách mật khẩu
+Áp dụng khi tạo tài khoản, đặt lại và đổi mật khẩu (cả giao diện lẫn `manage_users.py`), kiểm tra ở server (`pwcheck.py`): ≥10 ký tự (≤128); không chứa tên đăng nhập; không thuộc danh sách mật khẩu phổ biến (kể cả biến thể leet như P@ssw0rd) hoặc chứa từ dễ đoán (password, admin, tên sàn/sản phẩm); không lặp ký tự hay chuỗi tuần tự (123456, qwerty…); đủ 3/4 loại ký tự hoặc cụm từ ≥16 ký tự. Mật khẩu mới phải khác mật khẩu hiện tại. Giao diện có thanh đo độ mạnh theo thời gian thực, ô nhập lại, nút hiện/ẩn và "Tạo mật khẩu mạnh". Tài khoản cũ có mật khẩu yếu vẫn đăng nhập được cho đến khi đổi. Danh sách và ngưỡng chỉnh ở đầu `pwcheck.py`.
+
+## Giao diện responsive
+Dùng được trên điện thoại, máy tính bảng và máy tính. Từ ≤900px: danh sách kỳ thành ngăn kéo (nút ☰ Kỳ), thanh workflow cuộn ngang và tự cuộn tới bước hiện tại, nút ⚙/👤 thu thành biểu tượng; ≤560px: các bước chưa chọn chỉ hiện số/dấu ✓, bảng Task xếp 1 cột. Thiết bị cảm ứng dùng cỡ chữ ô nhập 16px (tránh iOS tự phóng to) và nút cao ≥40px. `builder.render` tự thêm thẻ viewport vào report để điện thoại dùng đúng `@media` của report khi mở trực tiếp.
+
+## Gói nâng cấp "Pro" cho report (giao diện + quản trị)
+Bật mặc định (tắt bằng `"pro_ui": false` trong Cấu hình). Report được render lại từ `data.json` mỗi lần mở nên mọi kỳ cũ đều có giao diện mới, không cần build lại. Template gốc không bị sửa; mã nằm ở `patches/pro.css.html`, `patches/pro.js`, số liệu ở `insights.py`.
+- **Giao diện:** sáng / tối / tự động theo hệ thống (nhớ lựa chọn, dùng chung với app), nền gradient, thẻ và bảng tinh chỉnh, in PDF gọn.
+- **Điều cần chú ý tuần này** (đầu tab Tổng quan): vấn đề nằm ở đâu + hướng xử lý, lọc theo mảng, kèm "câu hỏi gợi ý cho buổi họp".
+- **Tab Quản trị chuyên sâu:** cầu lợi nhuận (doanh thu → lợi nhuận PL5) và biên trước quảng cáo theo kênh; xu hướng 12 tuần với TB 4 tuần và FC; dư địa quảng cáo (TACoS so với TACoS hoà vốn); độ tập trung doanh thu (Pareto, HHI); rủi ro tồn kho; giá bán thực hiện so với nền 4 tuần; sức khỏe dữ liệu.
+- **Drill-down:** bấm tên SKU / nhóm ở bất kỳ bảng nào (hoặc dòng trong tab Quản trị) để mở ngăn chi tiết: xu hướng 12 tuần, kênh, margin, tồn kho, giá, vấn đề liên quan.
+- **Tìm kiếm / lệnh:** Ctrl/Cmd+K (hoặc `/`) tìm nhóm, SKU, tab và lệnh.
+- **Bảng:** bấm tiêu đề cột để sắp xếp; nút ⤓ CSV cho từng bảng.
+- **Xuất & chia sẻ:** In / PDF (bản điều hành: Tổng quan + Quản trị), Sao chép tóm tắt (văn bản gửi Zalo/email), Tải HTML (một file để gửi đối tác).
+Ngưỡng và quy tắc: `insights.py` (`TARGET_MARGIN`, `MIN_R`) và `analysis.py` (`TH`).
+
+App quản lý cũng có chế độ sáng/tối (nút Giao diện ở cột trái, hoặc ◐ trên thanh đầu khi dùng điện thoại) và giao diện làm mới.
+
+## Nhóm 1 – Vận hành hằng ngày
+- **🏠 Hôm nay** (trang mở đầu): KPI kỳ mới nhất, cảnh báo xếp theo mức độ (từ số liệu + task quá hạn/tái phát), việc cần làm hôm nay, nút "Soạn bản tin" (văn bản gửi Zalo/email). API: `GET /api/cockpit`, `GET /api/digest`.
+- **Cảnh báo chủ động:** `alerts.py` gửi bản tin qua email (SMTP) hoặc webhook, chỉ gửi cảnh báo mới (chống trùng ở `data/alert_state.json`). Cấu hình trong Cấu hình (`config`):
+  `"notify": {"email": {"host":"smtp.gmail.com","port":587,"user":"...","pass_env":"SRM_SMTP_PASS","from":"...","to":["..."],"tls":true}, "webhook": {"url":"https://...","field":"text"}}`
+  Mật khẩu SMTP đặt bằng biến môi trường (không ghi vào file). Chạy: `python3 alerts.py weekly --send` (bản tin tuần), `python3 alerts.py events --send` (chỉ cảnh báo mới); bỏ `--send` để xem thử. Đặt lịch bằng cron/launchd trên máy chạy app, ví dụ `0 8 * * 1 cd /đường/dẫn && python3 alerts.py weekly --send`. Chưa có gửi trực tiếp Zalo/Wayfair: dùng webhook trung gian.
+- **Phân loại SKU** (trong report, tab Quản trị): Ngôi sao / Cần sửa biên / Tiềm năng / Cân nhắc rút / Ít hoạt động / Thiếu dữ liệu, kèm biểu đồ phân tán doanh thu–biên và bảng lọc. Ngưỡng ở `insights.py` (`MARGIN_GOOD`).
+- **Ghi chú & sự kiện** theo kỳ (deal, giá, tồn kho, QC, listing…): thêm ở bước 4 (tab Ghi chú); hiện dưới dạng ◆ trên biểu đồ xu hướng của report để giải thích biến động. Lưu `data/notes.json`.
+- **⇄ So sánh hai kỳ** bất kỳ: doanh thu/lợi nhuận, phân rã thay đổi (sản lượng, giá, SKU mới, SKU mất, khác), theo nhóm/SKU, cầu PL. Kỳ khác độ dài chỉ cảnh báo.
+
+## Nhóm 2 – Dữ liệu đầu vào (📥 Đầu vào)
+Nút **📥 Đầu vào** trên thanh trên cùng. Dữ liệu lưu ở `data/inputs.json`; logic ở `inputs.py`.
+- **Điểm đặt hàng** theo từng SKU: nhập giá vốn, lead time, MOQ, tồn an toàn ở trang này → điểm đặt = bán/ngày × (lead time + tồn an toàn), bán/ngày = SL bán trong kỳ ÷ số ngày của kỳ. Trạng thái Đặt ngay / Sắp tới / Đủ hàng. **Tồn kho, số tuần tồn, ngày nên đặt và SL đề xuất xem ở cột “Đặt hàng” trong bảng tồn kho của report** (tab Tồn kho chi tiết) — một nguồn số liệu, không lặp. SKU chạm điểm đặt tự vào cảnh báo ở 🏠 Hôm nay.
+- **Dữ liệu giả lập:** giá vốn lấy số thật từ P&L khi SKU có (nhãn **P&L**); các SKU còn lại và lead time (30–60 ngày), MOQ (20–60), tồn an toàn (14 ngày), mục tiêu (biên 10%, TACoS 12%, 8 tuần tồn, doanh thu tuần = tuần gần nhất × 1.05) là giả lập (nhãn **Giả lập**), cố định theo SKU nên không đổi giữa các lần mở. Nhập số thật vào ô → nhãn **Đã nhập**, không bị ghi đè; nút ↺ trả về giá trị giả lập.
+- **Mục tiêu:** chỉnh các mục tiêu ở tab Mục tiêu.
+- **Sổ dữ liệu cần bổ sung:** danh sách dữ liệu còn thiếu/đang giả lập (trạng thái, người phụ trách, ghi chú), thêm/xoá tuỳ ý.
+- API: `GET /api/inputs`, `PUT/DELETE /api/inputs/sku/<sku>`, `PUT /api/inputs/targets/<key>`, `POST/PUT/DELETE /api/inputs/register[/<id>]`.
+
+## Mô phỏng giá & quảng cáo (What-if) — trong report
+- **Ở đâu:** (1) tab **Quản trị chuyên sâu** → mục **09 – Mô phỏng giá & quảng cáo** (chọn toàn danh mục, một nhóm hoặc nhập mã SKU); (2) bấm tên SKU bất kỳ để mở ngăn chi tiết, khối **Mô phỏng giá & quảng cáo** nằm phía dưới.
+- **Cách dùng:** kéo thanh *Giá bán* (−30%…+30%) và *Chi quảng cáo* (−100%…+100%); xem doanh thu, lợi nhuận PL5, margin, số lượng mới so với hiện tại, margin theo từng sàn × quốc gia, và gợi ý mức tăng giá để đạt margin mục tiêu / hoà vốn.
+- **Cách tính (theo từng dòng P&L SKU × sàn × quốc gia, chạy ngay trên trình duyệt):** phí sàn, hoàn trả, kho, vận hành đổi theo % doanh thu; giá vốn và phí fulfill đổi theo số lượng; quảng cáo đổi theo thanh kéo. SL mới = SL gốc × (1+Δgiá)^độ co giãn giá × (1+Δquảng cáo)^độ nhạy quảng cáo. Mặc định cả hai độ co giãn = 0 (SL không đổi) — hãy nhập số thật nếu có; với giá, thường là số âm (vd −1,5).
+- Chỉ mô phỏng các dòng có công thức phí trong file P&L; dòng thiếu P&L bị bỏ qua.
+
+## Phân quyền: Quản trị / Chỉ xem report
+- **Quản trị:** toàn bộ chức năng. Tài khoản đã có từ trước tự động là Quản trị.
+- **Chỉ xem report:** sau khi đăng nhập chỉ thấy report toàn màn hình (không có cột kỳ, thanh bước, nút Hôm nay/So sánh/Cấu hình…). Góc phải phía trên có nút ◐ (đổi sáng/tối/tự động) và 👤 (chọn kỳ, đổi mật khẩu, đăng xuất). **Server chặn** mọi API khác (HTTP 403), nên không chỉ ẩn trên giao diện.
+- Đặt quyền: trang 👤 Tài khoản (chọn quyền khi thêm, hoặc đổi ở danh sách), hoặc `python3 manage_users.py add <tên> viewer`, `python3 manage_users.py role <tên> admin|viewer`. Phải luôn còn ít nhất một Quản trị; không tự hạ quyền của chính mình.

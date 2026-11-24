@@ -1,0 +1,64 @@
+{
+  "id": "2026-W40",
+  "label": "Report W-40",
+  "type": "week",
+  "status": "built",
+  "created": "2026-10-07T07:44:38",
+  "built": "2026-10-12T13:49:50",
+  "files": {
+    "wf_megsu_KOR": "wf_megsu_KOR__MS_KOR__2_.xlsx",
+    "cg_ARZ": "cg_ARZ__ARZ_CastleGate-Inventory-Age-20261005__2_.csv",
+    "wf_dhi_KOR": "wf_dhi_KOR__DHI_KOR__2_.xlsx",
+    "pl5": "pl5__P_L_Thu_Ngo_COGS_2026-10__1_.xlsx",
+    "amazon_ads": "amazon_ads__Report_Amazon_W40.csv",
+    "master": "master__Data_Inv___Report_Sales_-_Thu___Ngo_é.xlsx",
+    "wf_arozu_KTR": "wf_arozu_KTR__ARZ_KTR__2_.xlsx",
+    "wf_arozu_PSR": "wf_arozu_PSR__ARZ_PSR__1_.xlsx",
+    "wf_arozu_ST": "wf_arozu_ST__ARZ_STRR__2_.xlsx",
+    "wf_megsu_PSR": "wf_megsu_PSR__MS_PSR__2_.xlsx",
+    "wf_megsu_ST": "wf_megsu_ST__MS_STRR__2_.xlsx",
+    "wf_dhi_PR": "wf_dhi_PR__DHI_PR__1_.xlsx",
+    "wf_arozu_CR": "wf_arozu_CR__ARZ_CR__1_.xlsx",
+    "data_current": "data_current__data__1_.xlsx",
+    "wf_megsu_PR": "wf_megsu_PR__MS_PR__2_.xlsx",
+    "wf_dhi_CR": "wf_dhi_CR__DHI_CR__1_.xlsx",
+    "wf_arozu_KOR": "wf_arozu_KOR__ARZ_KOR__2_.xlsx",
+    "cg_MS": "cg_MS__MS_CastleGate-Inventory-Age-20261005__1_.csv",
+    "wf_dhi_ST": "wf_dhi_ST__DHI_STRR__4_.xlsx",
+    "wf_arozu_PR": "wf_arozu_PR__ARZ_PR__1_.xlsx",
+    "wf_megsu_CR": "wf_megsu_CR__MS_CR__2_.xlsx",
+    "wf_dhi_KTR": "wf_dhi_KTR__DHI_KTR__2_.xlsx",
+    "cg_DHI": "cg_DHI___DHI_CastleGate-Inventory-Age-20261005.csv",
+    "wf_megsu_KTR": "wf_megsu_KTR__MS_KTR__2_.xlsx",
+    "wf_dhi_PSR": "wf_dhi_PSR__DHI_PSR__1_.xlsx"
+  },
+  "checks": {
+    "missing_keys": [],
+    "extra_keys": [],
+    "html_kb": 2554
+  },
+  "analysis": {
+    "n": 31,
+    "by_sev": {
+      "3": 11,
+      "2": 16,
+      "1": 4
+    },
+    "by_area": {
+      "Doanh số": 9,
+      "Dữ liệu": 1,
+      "Lợi nhuận": 11,
+      "Quảng cáo": 5,
+      "Tồn kho": 5
+    },
+    "range": "2026-09-27 → 2026-10-03",
+    "margin": -11.76,
+    "r": 56749.7,
+    "new": 0,
+    "updated": 31,
+    "recurred": 0,
+    "stale": 0,
+    "at": "2026-10-12T13:50:06"
+  },
+  "template": "gon-v4-f20a98"
+}

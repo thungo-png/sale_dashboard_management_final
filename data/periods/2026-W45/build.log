@@ -1,0 +1,22 @@
+[mẫu report] Gọn v4.2 (gn-v4-2-c3733d)
+[etl] Chạy etl/custom_build.py ...
+[fx] dùng tỷ giá constant-currency của kỳ trước (D.fx.rates)
+[sales] file 2026-01-01→2026-11-08, 312 ngày, 66292 dòng
+[sales] tuần W45: 2026-11-01 → 2026-11-07
+[sales] W45: q=258 r=59544.52 USD rfc=155157.69 ach=38.38%
+[inv] phạm vi: 71 SKU, gộp kit: ['B4F1', 'GDWQ']
+[inv] invdet: nsku=42 qty_total=4902 dòng≠0=195 âm=9
+[inv] invacct: 13 tổ hợp, 85 dòng chi tiết, qty_total=2091
+[lt] FBA: 21 SKU, tot=730, ≥271 ngày=9 | CastleGate: 21 SKU, tot=1324, ≥271 ngày=13
+[ads] campthu=149 dòng, rank={'Arozu': 5, 'Megsu': 6, 'DHI': 6}, st={'Arozu': 798, 'Megsu': 773, 'DHI': 210}
+[ads_daily] Amazon|AUS: 2026-10-10→2026-11-08; Amazon|CAN: 2026-10-10→2026-11-08; Amazon|US: 2026-10-10→2026-11-08; Wayfair|CAN: 2026-11-01→2026-11-08; Wayfair|US: 2026-11-01→2026-11-08
+[market] 17 listing có hạng, 1781 cụm từ; so với kỳ trước: có
+[quality] 123/778 listing thuộc danh mục (ARZ 41/269, MS 31/207, DHI 51/302)
+[pl5] kỳ này không upload file P&L — dùng file P&L đã lưu 722f69f1 2026-11-02T08:32:21.
+[pl5ts] tuần có PL5 theo chi phí QC thật: W38, W39, W40, W41, W42, W43, W44, W45 | chưa đủ chi phí QC thật: W34, W35, W36, W37
+[pl5ts] 8 tuần, 56 ngày; tổng -56,803 USD profit trên 487,646 USD doanh thu
+[etl] ĐÃ CẬP NHẬT: bán hàng + chuỗi thời gian; tồn kho (invdet, invacct); Long-term Storage (lt); quảng cáo (campthu, scope, adsum, tacos, dgmk_room, adlist_cover, ads); quảng cáo theo ngày (ads_daily); thị trường (market); chất lượng sản phẩm (quality); sku_meta, top_sku2, grpcmp, askuw_mp, sizecolor; Profit PL5 (độ phủ 100.0% doanh thu); Profit PL5 theo thời gian (pl5ts)
+[etl] GIỮ NGUYÊN số của kỳ trước (chưa có ETL): 
+[schema] Key lạ (template không đọc): ['pl5ts']
+[ok] Build xong trong 44.9s — report 3214 KB
+[phân tích] 28 vấn đề → task mới 5, cập nhật 23

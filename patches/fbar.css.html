@@ -1,0 +1,13 @@
+<style>
+/* ---- Bo loc gon (fbar): thay hang nut chip bang dropdown ---- */
+.fbar{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:flex-end;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:0 0 12px;box-shadow:var(--shadow)}
+.fsel{display:flex;flex-direction:column;gap:4px;min-width:130px}
+.fsel>span{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--muted)}
+.fsel select{appearance:none;-webkit-appearance:none;background:var(--chip) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%238b958f' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right 10px center;border:1px solid var(--line);color:var(--ink);border-radius:7px;padding:7px 30px 7px 10px;font:inherit;font-size:12.5px;min-width:130px;max-width:320px;cursor:pointer}
+.fsel select:hover{border-color:var(--accent)}
+.fsel select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft)}
+.fsel select option{background:var(--card);color:var(--ink)}
+.fsel.on select{border-color:var(--accent);color:var(--ink);font-weight:600}
+.pickrow.fb-hidden{display:none!important}
+@media (max-width:680px){.fbar{padding:9px 10px}.fsel,.fsel select{min-width:0;width:100%}.fsel{flex:1 1 140px}}
+</style>

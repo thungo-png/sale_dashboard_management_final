@@ -1,0 +1,536 @@
+"""
+Sale Report Manager — web app chạy local, chỉ dùng thư viện chuẩn (+ pandas/openpyxl cho ETL).
+Chạy:  python3 server.py   rồi mở http://localhost:8765
+"""
+import io, json, re, shutil, time, traceback, contextlib
+from datetime import datetime
+from http.server import ThreadingHTTPServer, BaseHTTPRequestHandler
+from pathlib import Path
+from urllib.parse import urlparse, parse_qs, unquote
+
+import alerts
+import analysis
+import compare
+import insights
+import notes
+import inputs
+import auth
+import pwcheck
+import builder
+import tasks
+from slots import all_slots, SLOT_KEYS
+from etl.pipeline import build_data, EtlNotReady
+
+BASE = Path(__file__).parent
+DATA = BASE / "data"
+PERIODS = DATA / "periods"
+CONFIG = DATA / "config.json"
+PORT = 8765
+HOST = "127.0.0.1"
+
+DEFAULT_CONFIG = {
+    "pic": "Ngô Thị Anh Thư",
+    "group_norm": {"Acacia - Alma, Wilma Dinning Table": "Acacia - Alma Dinning Table"},
+    "ads_regex": r"^\s*thu\s*ng[oô]\b",
+    "account_country": {"Arozu": "US", "Megsu": "US", "DHI": "CAN", "Senno": "AUS"},
+    "account_currency_col": {"Arozu": "spend_USD", "Megsu": "spend_USD", "DHI": "spend_CAD"},
+    "fx_to_usd": {"USD": 1.0, "CAD": None, "AUD": None},
+    "patches": ["fbar"],
+}
+
+
+# ---------- lưu trữ ----------
+def load_config():
+    if CONFIG.exists():
+        return {**DEFAULT_CONFIG, **json.loads(CONFIG.read_text(encoding="utf-8"))}
+    return dict(DEFAULT_CONFIG)
+
+
+def save_config(c):
+    DATA.mkdir(exist_ok=True)
+    CONFIG.write_text(json.dumps(c, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def pdir(pid):
+    if not re.fullmatch(r"[A-Za-z0-9_-][A-Za-z0-9._-]{0,39}", pid or ""):
+        raise ValueError("ID kỳ chỉ gồm chữ, số, . _ - (tối đa 40 ký tự)")
+    return PERIODS / pid
+
+
+def read_meta(pid):
+    return json.loads((pdir(pid) / "meta.json").read_text(encoding="utf-8"))
+
+
+def write_meta(pid, m):
+    (pdir(pid) / "meta.json").write_text(json.dumps(m, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def list_periods():
+    out = []
+    if PERIODS.exists():
+        for d in PERIODS.iterdir():
+            if (d / "meta.json").exists():
+                out.append(json.loads((d / "meta.json").read_text(encoding="utf-8")))
+    return sorted(out, key=lambda m: m.get("created", ""), reverse=True)
+
+
+def create_period(pid, label, ptype):
+    d = pdir(pid)
+    if d.exists():
+        raise ValueError("Kỳ đã tồn tại")
+    (d / "uploads").mkdir(parents=True)
+    m = {"id": pid, "label": label or pid, "type": ptype or "week", "status": "draft",
+         "created": datetime.now().isoformat(timespec="seconds"), "built": None, "files": {}, "checks": {}}
+    write_meta(pid, m)
+    return m
+
+
+def latest_built_data(exclude=None):
+    for m in list_periods():
+        if m["id"] != exclude and m["status"] == "built" and (pdir(m["id"]) / "data.json").exists():
+            return json.loads((pdir(m["id"]) / "data.json").read_text(encoding="utf-8"))
+    return None
+
+
+def render_report(d, pid=None):
+    """Render report: template + D + patch (mặc định có gói 'pro' trừ khi config.pro_ui = false)."""
+    cfg = load_config()
+    patches = list(cfg.get("patches") or [])
+    extras = None
+    if cfg.get("pro_ui", True):
+        try:
+            ts = tasks.list_tasks(); today = datetime.now().date().isoformat()
+            op = [t for t in ts if t["status"] in ("todo", "doing")]
+            extras = insights.build(d, {"open": len(op), "late": sum(1 for t in op if t.get("due") and t["due"] < today)}, cfg.get("group_norm"))
+            extras["sku_class"] = insights.sku_class(d)
+            extras["notes"] = [n for n in notes.list_notes(pid)] if pid else []
+            extras["periods"] = pid
+            try:
+                extras["reorder"] = inputs.reorder_map(d)
+            except Exception as e:
+                import traceback; traceback.print_exc()
+                extras["reorder"] = {}; extras["reorder_err"] = f"{type(e).__name__}: {e}"[:200]
+            if "pro" not in patches:
+                patches.append("pro")
+        except Exception:
+            extras = None
+            patches = [p for p in patches if p != "pro"]
+    return builder.render(d, patches, extras)
+
+
+def load_data(pid):
+    f = pdir(pid) / "data.json"
+    if not f.exists():
+        raise ValueError("Kỳ này chưa có dữ liệu — hãy build trước")
+    return json.loads(f.read_text(encoding="utf-8"))
+
+
+def latest_built():
+    for m in list_periods():
+        f = pdir(m["id"]) / "data.json"
+        if m["status"] == "built" and f.exists():
+            return m["id"], json.loads(f.read_text(encoding="utf-8"))
+    return None, None
+
+
+def run_analysis(pid, user="auto"):
+    """Phân tích data.json của kỳ rồi tạo/cập nhật task. Chỉ đóng gợi ý 'hết vấn đề' khi kỳ này là kỳ mới nhất."""
+    f = pdir(pid) / "data.json"
+    if not f.exists():
+        raise ValueError("Kỳ này chưa có dữ liệu — hãy build trước")
+    cfg = load_config()
+    D = json.loads(f.read_text(encoding="utf-8"))
+    issues, summary = analysis.analyze(D, cfg.get("group_norm"))
+    built = [m for m in list_periods() if m["status"] == "built" and (pdir(m["id"]) / "data.json").exists()]
+    latest = not built or built[0]["id"] == pid
+    res = tasks.sync(pid, issues, cfg.get("pic", ""), user, latest)
+    m = read_meta(pid); m["analysis"] = {**summary, **res, "at": datetime.now().isoformat(timespec="seconds")}; write_meta(pid, m)
+    return {"summary": summary, "tasks": res, "issues": issues}
+
+
+# ---------- build ----------
+def build_period(pid):
+    m = read_meta(pid)
+    d = pdir(pid)
+    buf = io.StringIO()
+    logs = []
+
+    def log(s):
+        logs.append(str(s))
+
+    seed = builder.seed_data()
+    inputs = {k: d / "uploads" / v for k, v in m["files"].items()}
+    ctx = {"period": m, "inputs": inputs, "cfg": load_config(), "prev": latest_built_data(pid), "seed": seed, "log": log}
+    t0 = time.time()
+    try:
+        with contextlib.redirect_stdout(buf):
+            data = build_data(ctx)
+        logs.extend(x for x in buf.getvalue().splitlines() if x)
+        missing, extra = builder.schema_check(data, seed)
+        if missing:
+            logs.append(f"[schema] CẢNH BÁO thiếu key so với template: {missing}")
+        if extra:
+            logs.append(f"[schema] Key lạ (template không đọc): {extra}")
+        html = render_report(data, pid)
+        (d / "data.json").write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
+        (d / "report.html").write_text(html, encoding="utf-8")
+        m.update(status="built", built=datetime.now().isoformat(timespec="seconds"),
+                 checks={"missing_keys": missing, "extra_keys": extra, "html_kb": len(html) // 1024})
+        logs.append(f"[ok] Build xong trong {time.time() - t0:.1f}s — report {len(html)//1024} KB")
+        ok = True
+        write_meta(pid, m)
+        try:                                                # tự phân tích + tạo task sau mỗi lần build
+            ra = run_analysis(pid)
+            logs.append(f"[phân tích] {ra['summary']['n']} vấn đề → task mới {ra['tasks']['new']}, cập nhật {ra['tasks']['updated']}")
+            m = read_meta(pid)
+        except Exception as e:
+            logs.append(f"[phân tích] bỏ qua: {e}")
+    except EtlNotReady as e:
+        ok = False
+        logs.append(f"[chưa sẵn sàng] {e}")
+        m["status"] = "draft"
+    except Exception:
+        ok = False
+        logs.extend(buf.getvalue().splitlines())
+        logs.append("[lỗi]\n" + traceback.format_exc())
+        m["status"] = "error"
+    (d / "build.log").write_text("\n".join(logs), encoding="utf-8")
+    write_meta(pid, m)
+    return ok, logs
+
+
+def seed_if_empty():
+    """Lần chạy đầu: tạo kỳ mẫu từ chính D trong template để xem app hoạt động ngay."""
+    if list_periods() or not builder.TEMPLATE.exists():
+        return
+    create_period("mau-template", "Mẫu (lấy từ template gốc)", "month")
+    d = pdir("mau-template")
+    seed = builder.seed_data()
+    (d / "data.json").write_text(json.dumps(seed, ensure_ascii=False), encoding="utf-8")
+    (d / "report.html").write_text(render_report(seed), encoding="utf-8")
+    m = read_meta("mau-template")
+    m.update(status="built", built=datetime.now().isoformat(timespec="seconds"))
+    write_meta("mau-template", m)
+
+
+# ---------- HTTP ----------
+class H(BaseHTTPRequestHandler):
+    def _send(self, code, body, ctype="application/json; charset=utf-8"):
+        if isinstance(body, (dict, list)):
+            body = json.dumps(body, ensure_ascii=False).encode()
+        elif isinstance(body, str):
+            body = body.encode()
+        self.send_response(code)
+        self.send_header("Content-Type", ctype)
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+
+    def _ip(self):
+        ip = self.client_address[0]
+        if ip in ("127.0.0.1", "::1"):        # đứng sau tunnel/reverse proxy cùng máy: lấy IP thật từ header
+            ip = (self.headers.get("CF-Connecting-IP") or (self.headers.get("X-Forwarded-For") or "").split(",")[0].strip() or ip)
+        return ip
+
+    def _cookie(self):
+        for c in (self.headers.get("Cookie") or "").split(";"):
+            k, _, v = c.strip().partition("=")
+            if k == auth.COOKIE:
+                return v
+        return ""
+
+    def _user(self):
+        return auth.verify_token(self._cookie())
+
+    def _secure(self):
+        return (self.headers.get("X-Forwarded-Proto") or "").lower() == "https"
+
+    def _setcookie(self, val, max_age):
+        return f"{auth.COOKIE}={val}; Path=/; HttpOnly; SameSite=Lax; Max-Age={max_age}" + ("; Secure" if self._secure() else "")
+
+    def _redirect(self, to):
+        self.send_response(302); self.send_header("Location", to); self.send_header("Content-Length", "0"); self.end_headers()
+
+    def _auth_api(self, method, p):
+        if p == ["status"] and method == "GET":
+            me = self._user()
+            return self._send(200, {"has_users": auth.has_users(), "user": me, "role": auth.get_role(me) if me else None})
+        if p == ["login"] and method == "POST":
+            ip = self._ip()
+            if auth.locked(ip):
+                return self._send(429, {"error": "Sai quá nhiều lần. Thử lại sau vài phút."})
+            try:
+                b = json.loads(self._body() or b"{}")
+            except ValueError:
+                b = {}
+            if auth.check(str(b.get("username", "")), str(b.get("password", ""))):
+                auth.note_ok(ip)
+                body = json.dumps({"ok": True, "user": b["username"].strip().lower()}).encode()
+                self.send_response(200); self.send_header("Content-Type", "application/json")
+                self.send_header("Set-Cookie", self._setcookie(auth.make_token(b["username"]), auth.SESSION_HOURS * 3600))
+                self.send_header("Content-Length", str(len(body))); self.end_headers(); self.wfile.write(body); return
+            auth.note_fail(ip); time.sleep(0.6)
+            return self._send(401, {"error": "Sai tên đăng nhập hoặc mật khẩu"})
+        if p == ["logout"] and method == "POST":
+            body = b'{"ok":true}'
+            self.send_response(200); self.send_header("Content-Type", "application/json")
+            self.send_header("Set-Cookie", self._setcookie("", 0)); self.send_header("Content-Length", str(len(body)))
+            self.end_headers(); self.wfile.write(body); return
+        if p == ["strength"] and method == "POST":
+            if not self._user():
+                return self._send(401, {"error": "Chưa đăng nhập"})
+            b = json.loads(self._body() or b"{}")
+            return self._send(200, pwcheck.check(str(b.get("password", "")), str(b.get("username", ""))))
+        if p == ["password"] and method == "POST":
+            me = self._user()
+            if not me:
+                return self._send(401, {"error": "Chưa đăng nhập"})
+            b = json.loads(self._body() or b"{}")
+            if not auth.check(me, str(b.get("old", ""))):
+                time.sleep(0.6); return self._send(400, {"error": "Mật khẩu hiện tại không đúng"})
+            if str(b.get("new", "")) == str(b.get("old", "")):
+                raise ValueError("Mật khẩu mới phải khác mật khẩu hiện tại")
+            auth.set_password(me, str(b.get("new", "")))
+            return self._send(200, {"ok": True})
+        return self._send(404, {"error": "not found"})
+
+    def _body(self):
+        return self.rfile.read(int(self.headers.get("Content-Length") or 0))
+
+    def _route(self, method):
+        u = urlparse(self.path)
+        parts = [unquote(p) for p in u.path.strip("/").split("/") if p]
+        q = parse_qs(u.query)
+        try:
+            if method == "GET" and parts == ["login"]:
+                return self._send(200, (BASE / "static" / "login.html").read_bytes(), "text/html; charset=utf-8")
+            if parts[:2] == ["api", "auth"]:
+                return self._auth_api(method, parts[2:])
+            if not self._user():                       # mọi đường còn lại đều cần đăng nhập
+                if parts[:1] == ["api"]:
+                    return self._send(401, {"error": "Chưa đăng nhập"})
+                return self._redirect("/login" + ("?next=" + self.path if parts else ""))
+            if method == "GET" and not parts:
+                return self._send(200, (BASE / "static" / "index.html").read_bytes(), "text/html; charset=utf-8")
+            if auth.get_role(self._user()) == "viewer":   # tài khoản chỉ xem: report + danh sách kỳ, không có gì khác
+                ok = method == "GET" and (parts[:1] == ["report"] or parts == ["api", "periods"] or (len(parts) == 3 and parts[:2] == ["api", "periods"]))
+                if not ok:
+                    return self._send(403, {"error": "Tài khoản này chỉ có quyền xem report."})
+            if parts[:1] == ["api"]:
+                return self._api(method, parts[1:], q)
+            if method == "GET" and parts[:1] == ["report"] and len(parts) == 2:
+                f = pdir(parts[1]) / "report.html"
+                dj = pdir(parts[1]) / "data.json"
+                if dj.exists():          # render lại từ data.json để luôn dùng patch/giao diện mới nhất
+                    try:
+                        return self._send(200, render_report(json.loads(dj.read_text(encoding="utf-8")), parts[1]).encode("utf-8"), "text/html; charset=utf-8")
+                    except Exception:
+                        pass
+                if not f.exists():
+                    return self._send(404, "Kỳ này chưa build report.", "text/plain; charset=utf-8")
+                return self._send(200, f.read_bytes(), "text/html; charset=utf-8")
+            return self._send(404, {"error": "not found"})
+        except ValueError as e:
+            return self._send(400, {"error": str(e)})
+        except FileNotFoundError:
+            return self._send(404, {"error": "không tìm thấy"})
+        except Exception:
+            return self._send(500, {"error": traceback.format_exc()})
+
+    def _users_api(self, method, p):
+        me = self._user()
+        if p == []:
+            if method == "GET":
+                return self._send(200, {"me": me, "users": auth.list_users_full(), "roles": auth.ROLES})
+            if method == "POST":
+                b = json.loads(self._body() or b"{}")
+                name = str(b.get("username", "")).strip().lower()
+                if name in auth.list_users():
+                    raise ValueError("Tài khoản đã tồn tại")
+                auth.set_password(name, str(b.get("password", "")), b.get("role") or None)
+                return self._send(200, {"ok": True})
+        if len(p) == 1:
+            name = p[0].strip().lower()
+            if method == "PUT":                     # đặt lại mật khẩu cho tài khoản khác
+                if name not in auth.list_users():
+                    raise ValueError("Không có tài khoản này")
+                b = json.loads(self._body() or b"{}")
+                if b.get("password"):
+                    auth.set_password(name, str(b["password"]))
+                if b.get("role"):
+                    if name == me and b["role"] != "admin":
+                        raise ValueError("Không thể tự hạ quyền của chính mình")
+                    auth.set_role(name, b["role"])
+                return self._send(200, {"ok": True})
+            if method == "DELETE":
+                if name == me:
+                    raise ValueError("Không thể xoá chính tài khoản đang đăng nhập")
+                if len(auth.list_users()) <= 1:
+                    raise ValueError("Không thể xoá tài khoản cuối cùng")
+                auth.remove_user(name)
+                return self._send(200, {"ok": True})
+        return self._send(404, {"error": "not found"})
+
+    def _inputs_api(self, method, p, q):
+        b = json.loads(self._body() or b"{}") if method in ("PUT", "POST") else {}
+        if not p and method == "GET":
+            pid = (q.get("period") or [None])[0]
+            if pid:
+                D = load_data(pid)
+            else:
+                pid, D = latest_built()
+            if D is None:
+                return self._send(200, {"rows": [], "summary": None, "targets": [], "register": inputs._load()["register"], "status": inputs.STATUS, "period": None})
+            r = inputs.build(D); r["period"] = pid
+            return self._send(200, r)
+        if len(p) == 2 and p[0] == "sku" and method == "PUT":
+            return self._send(200, inputs.set_sku(p[1], b))
+        if len(p) == 2 and p[0] == "sku" and method == "DELETE":
+            inputs.reset_sku(p[1]); return self._send(200, {"ok": True})
+        if len(p) == 2 and p[0] == "targets" and method == "PUT":
+            inputs.set_target(p[1], b.get("v")); return self._send(200, {"ok": True})
+        if p == ["register"] and method == "POST":
+            return self._send(200, inputs.reg_save(None, b, new=True))
+        if len(p) == 2 and p[0] == "register" and method == "PUT":
+            return self._send(200, inputs.reg_save(p[1], b))
+        if len(p) == 2 and p[0] == "register" and method == "DELETE":
+            inputs.reg_del(p[1]); return self._send(200, {"ok": True})
+        return self._send(404, {"error": "not found"})
+
+    def _tasks_api(self, method, p):
+        me = self._user()
+        if p == []:
+            if method == "GET":
+                return self._send(200, tasks.list_tasks())
+            if method == "POST":
+                b = json.loads(self._body() or b"{}")
+                return self._send(200, tasks.add(b.get("title"), b.get("owner") or load_config().get("pic", ""), b.get("due"), b.get("area"), me, b.get("period")))
+        if len(p) == 1:
+            if method == "PUT":
+                return self._send(200, tasks.update(p[0], json.loads(self._body() or b"{}"), me))
+            if method == "DELETE":
+                tasks.remove(p[0]); return self._send(200, {"ok": True})
+        return self._send(404, {"error": "not found"})
+
+    def _api(self, method, p, q):
+        if p == ["cockpit"] and method == "GET":
+            pid = (q.get("period") or [None])[0]
+            if pid:
+                D = load_data(pid)
+            else:
+                pid, D = latest_built()
+            if D is None:
+                return self._send(200, {"empty": True})
+            return self._send(200, alerts.cockpit(D, pid, load_config().get("group_norm")))
+        if p == ["compare"] and method == "GET":
+            a, b = (q.get("a") or [""])[0], (q.get("b") or [""])[0]
+            if not a or not b or a == b:
+                raise ValueError("Chọn hai kỳ khác nhau để so sánh")
+            return self._send(200, compare.compare(load_data(a), load_data(b), load_config().get("group_norm")))
+        if p == ["digest"] and method == "POST":
+            b = json.loads(self._body() or b"{}")
+            text, res = alerts.run("events" if b.get("mode") == "events" else "weekly", bool(b.get("send")), load_config, latest_built)
+            return self._send(200, {"text": text, "result": res, "configured": bool((load_config().get("notify") or {}))})
+        if p[:1] == ["notes"]:
+            if p == ["notes"] and method == "GET":
+                return self._send(200, {"notes": notes.list_notes((q.get("period") or [None])[0]), "types": notes.TYPES})
+            if p == ["notes"] and method == "POST":
+                b = json.loads(self._body() or b"{}")
+                return self._send(200, notes.add(b.get("period"), b.get("date"), b.get("type"), b.get("text"), self._user()))
+            if len(p) == 2 and method == "DELETE":
+                notes.remove(p[1]); return self._send(200, {"ok": True})
+        if p[:1] == ["inputs"]:
+            return self._inputs_api(method, p[1:], q)
+        if p[:1] == ["tasks"]:
+            return self._tasks_api(method, p[1:])
+        if len(p) == 3 and p[0] == "periods" and p[2] == "analysis" and method == "GET":
+            D = json.loads((pdir(p[1]) / "data.json").read_text(encoding="utf-8"))
+            iss, sm = analysis.analyze(D, load_config().get("group_norm"))
+            return self._send(200, {"summary": sm, "issues": iss})
+        if len(p) == 3 and p[0] == "periods" and p[2] == "analyze" and method == "POST":
+            return self._send(200, run_analysis(p[1], self._user()))
+        if p[:1] == ["users"]:
+            return self._users_api(method, p[1:])
+        if p == ["slots"]:
+            return self._send(200, all_slots())
+        if p == ["config"]:
+            if method == "GET":
+                return self._send(200, load_config())
+            if method == "PUT":
+                save_config(json.loads(self._body())); return self._send(200, {"ok": True})
+        if p == ["periods"]:
+            if method == "GET":
+                return self._send(200, list_periods())
+            if method == "POST":
+                b = json.loads(self._body())
+                return self._send(200, create_period(b.get("id", "").strip(), b.get("label", ""), b.get("type", "week")))
+        if len(p) >= 2 and p[0] == "periods":
+            pid = p[1]
+            if len(p) == 2 and method == "GET":
+                return self._send(200, read_meta(pid))
+            if len(p) == 2 and method == "DELETE":
+                shutil.rmtree(pdir(pid)); return self._send(200, {"ok": True})
+            if len(p) == 4 and p[2] == "upload" and method == "POST":
+                slot = p[3]
+                if slot not in SLOT_KEYS:
+                    raise ValueError("slot không hợp lệ")
+                name = re.sub(r"[^\w.\-]", "_", q.get("name", [slot])[0])
+                fname = f"{slot}__{name}"
+                m = read_meta(pid)
+                old = m["files"].get(slot)
+                if old:
+                    (pdir(pid) / "uploads" / old).unlink(missing_ok=True)
+                (pdir(pid) / "uploads" / fname).write_bytes(self._body())
+                m["files"][slot] = fname
+                write_meta(pid, m)
+                return self._send(200, m)
+            if len(p) == 3 and p[2] == "upload_zip" and method == "POST":
+                import zipintake as _z
+                files, zip_notes = _z.extract(self._body())
+                m = read_meta(pid)
+                for slot, (name, data) in files.items():
+                    old = m["files"].get(slot)
+                    if old:
+                        (pdir(pid) / "uploads" / old).unlink(missing_ok=True)
+                    fname = f"{slot}__" + re.sub(r"[^\w.\-]", "_", name)
+                    (pdir(pid) / "uploads" / fname).write_bytes(data)
+                    m["files"][slot] = fname
+                write_meta(pid, m)
+                m = dict(m); m["zip_report"] = {"assigned": sorted(files), "notes": zip_notes}
+                return self._send(200, m)
+            if len(p) == 4 and p[2] == "upload" and method == "DELETE":
+                m = read_meta(pid)
+                old = m["files"].pop(p[3], None)
+                if old:
+                    (pdir(pid) / "uploads" / old).unlink(missing_ok=True)
+                write_meta(pid, m)
+                return self._send(200, m)
+            if len(p) == 3 and p[2] == "build" and method == "POST":
+                ok, logs = build_period(pid)
+                return self._send(200, {"ok": ok, "log": logs, "meta": read_meta(pid)})
+            if len(p) == 3 and p[2] == "log" and method == "GET":
+                f = pdir(pid) / "build.log"
+                return self._send(200, {"log": f.read_text(encoding="utf-8").splitlines() if f.exists() else []})
+            if len(p) == 3 and p[2] == "data" and method == "GET":
+                return self._send(200, (pdir(pid) / "data.json").read_bytes())
+        return self._send(404, {"error": "not found"})
+
+    def do_GET(self): self._route("GET")
+    def do_POST(self): self._route("POST")
+    def do_PUT(self): self._route("PUT")
+    def do_DELETE(self): self._route("DELETE")
+    def log_message(self, *a): pass
+
+
+if __name__ == "__main__":
+    PERIODS.mkdir(parents=True, exist_ok=True)
+    seed_if_empty()
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--host", default=HOST, help="127.0.0.1 (chỉ máy này) hoặc 0.0.0.0 (cho máy khác truy cập)")
+    ap.add_argument("--port", type=int, default=PORT)
+    a = ap.parse_args()
+    if not auth.has_users():
+        print("CHƯA CÓ TÀI KHOẢN: chạy  python3 manage_users.py add <tên>  để tạo, nếu không sẽ không đăng nhập được.")
+    print(f"Sale Report Manager chạy tại http://{'localhost' if a.host == '127.0.0.1' else a.host}:{a.port}  (Ctrl+C để dừng)")
+    ThreadingHTTPServer((a.host, a.port), H).serve_forever()

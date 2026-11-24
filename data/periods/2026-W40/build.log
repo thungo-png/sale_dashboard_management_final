@@ -1,0 +1,15 @@
+[mẫu report] Gọn v4 (gon-v4-f20a98)
+[etl] Chạy etl/custom_build.py ...
+[fx] dùng tỷ giá constant-currency của kỳ trước (D.fx.rates)
+[sales] file 2026-09-27→2026-10-03, 7 ngày, 1347 dòng
+[sales] tuần W40: 2026-09-27 → 2026-10-03
+[sales] W40: q=260 r=59099.33 USD rfc=141832.92 ach=41.67%
+[inv] phạm vi: 71 SKU, gộp kit: ['B4F1', 'GDWQ']
+[inv] invdet: nsku=42 qty_total=5108 dòng≠0=186 âm=7
+[inv] invacct: 13 tổ hợp, 82 dòng chi tiết, qty_total=1540
+[lt] Thiếu file tuổi tồn kho (có CastleGate ['ARZ', 'DHI', 'MS'], FBA []) — GIỮ NGUYÊN lt của kỳ trước.
+[ads] campthu=222 dòng, rank={'Arozu': 5, 'Megsu': 6, 'DHI': 6}, st={'Arozu': 725, 'Megsu': 728, 'DHI': 171}
+[etl] ĐÃ CẬP NHẬT: bán hàng + chuỗi thời gian; tồn kho (invdet, invacct); quảng cáo (campthu, scope, adsum, tacos, dgmk_room, adlist_cover, ads); sku_meta, top_sku2, grpcmp, askuw_mp, sizecolor; Profit PL5 (độ phủ 96.0% doanh thu)
+[etl] GIỮ NGUYÊN số của kỳ trước (chưa có ETL): 
+[ok] Build xong trong 5.8s — report 2554 KB
+[phân tích] 31 vấn đề → task mới 0, cập nhật 31

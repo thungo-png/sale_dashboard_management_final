@@ -1,0 +1,3982 @@
+[
+ {
+  "id": "7d31815322",
+  "key": "drop|Acacia - Emery - Wooden Bed Frame with Headboard|Amazon|AUS",
+  "auto": true,
+  "title": "Doanh thu tuần của Acacia - Emery - Wooden Bed Frame with Headboard · Amazon AUS chưa giữ được mức tuần trước",
+  "area": "Doanh số",
+  "sev": 3,
+  "where": "Acacia - Emery - Wooden Bed Frame with Headboard · Amazon AUS",
+  "detail": [
+   "Tuần này $0 so với $1,065 tuần trước (-100%)."
+  ],
+  "fix": [
+   "Kiểm tra trạng thái listing (active, giá, buy box/ranking) và so với tuần trước."
+  ],
+  "metric": {
+   "r": 0.0,
+   "r_prev": 1064.79,
+   "d_w": -100.0
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-09",
+  "note": "",
+  "periods": [
+   "2026-W40",
+   "2026-W44"
+  ],
+  "first_period": "2026-W40",
+  "last_period": "2026-W44",
+  "detected": false,
+  "created": "2026-10-07T10:35:00",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-10-07T10:35:00",
+    "u": "quang",
+    "x": "Tự tạo từ phân tích kỳ 2026-W40"
+   },
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Kỳ 2026-W41 không còn phát hiện vấn đề này — có thể đóng task"
+   },
+   {
+    "t": "2026-11-02T08:34:29",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W44"
+   },
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Kỳ 2026-W45 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "94a61e1fe6",
+  "key": "drop|Acacia - Emery - Wooden Bed Frame with Headboard|Amazon|CAN",
+  "auto": true,
+  "title": "Doanh thu tuần của Acacia - Emery - Wooden Bed Frame with Headboard · Amazon CAN chưa giữ được mức tuần trước",
+  "area": "Doanh số",
+  "sev": 2,
+  "where": "Acacia - Emery - Wooden Bed Frame with Headboard · Amazon CAN",
+  "detail": [
+   "Tuần này $315 so với $2,079 tuần trước (-85%)."
+  ],
+  "fix": [
+   "Kiểm tra trạng thái listing (active, giá, buy box/ranking) và so với tuần trước."
+  ],
+  "metric": {
+   "r": 315.4,
+   "r_prev": 2078.85,
+   "d_w": -84.83
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-09",
+  "note": "",
+  "periods": [
+   "2026-W40",
+   "2026-W42",
+   "2026-W45"
+  ],
+  "first_period": "2026-W40",
+  "last_period": "2026-W45",
+  "detected": true,
+  "created": "2026-10-07T10:35:00",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-10-07T10:35:00",
+    "u": "quang",
+    "x": "Tự tạo từ phân tích kỳ 2026-W40"
+   },
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Kỳ 2026-W41 không còn phát hiện vấn đề này — có thể đóng task"
+   },
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W42"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Kỳ 2026-W43 không còn phát hiện vấn đề này — có thể đóng task"
+   },
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W45"
+   }
+  ]
+ },
+ {
+  "id": "d35c7f0f6f",
+  "key": "drop|Acacia - Emery - Wooden Bed Frame with Headboard|Shopify|US",
+  "auto": true,
+  "title": "Doanh thu tuần của Acacia - Emery - Wooden Bed Frame with Headboard · Shopify US chưa giữ được mức tuần trước",
+  "area": "Doanh số",
+  "sev": 2,
+  "where": "Acacia - Emery - Wooden Bed Frame with Headboard · Shopify US",
+  "detail": [
+   "Tuần này $373 so với $740 tuần trước (-50%).",
+   "Chưa có báo cáo quảng cáo của Shopify nên chưa đánh giá được vai trò của quảng cáo."
+  ],
+  "fix": [
+   "Kiểm tra trạng thái listing (active, giá, buy box/ranking) và so với tuần trước."
+  ],
+  "metric": {
+   "r": 373.14,
+   "r_prev": 739.99,
+   "d_w": -49.57
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-09",
+  "note": "",
+  "periods": [
+   "2026-W40",
+   "2026-W44"
+  ],
+  "first_period": "2026-W40",
+  "last_period": "2026-W44",
+  "detected": false,
+  "created": "2026-10-07T10:35:00",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-10-07T10:35:00",
+    "u": "quang",
+    "x": "Tự tạo từ phân tích kỳ 2026-W40"
+   },
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Kỳ 2026-W41 không còn phát hiện vấn đề này — có thể đóng task"
+   },
+   {
+    "t": "2026-11-02T08:34:29",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W44"
+   },
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Kỳ 2026-W45 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "59bdaec8a1",
+  "key": "drop|Acacia - Wilma Dinning Table|Amazon|CAN",
+  "auto": true,
+  "title": "Doanh thu tuần của Acacia - Wilma Dinning Table · Amazon CAN chưa giữ được mức tuần trước",
+  "area": "Doanh số",
+  "sev": 3,
+  "where": "Acacia - Wilma Dinning Table · Amazon CAN",
+  "detail": [
+   "Tuần này $0 so với $430 tuần trước (-100%).",
+   "Kỳ này chưa có quảng cáo Thu Ngo chạy cho nhóm này ở kênh đó."
+  ],
+  "fix": [
+   "Bật lại/tạo campaign cho nhóm này nếu tồn kho cho phép.",
+   "Kiểm tra trạng thái listing (active, giá, buy box/ranking) và so với tuần trước."
+  ],
+  "metric": {
+   "r": 0.0,
+   "r_prev": 430.09,
+   "d_w": -100.0
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-09",
+  "note": "",
+  "periods": [
+   "2026-W40",
+   "2026-W43"
+  ],
+  "first_period": "2026-W40",
+  "last_period": "2026-W43",
+  "detected": false,
+  "created": "2026-10-07T10:35:00",
+  "updated": "2026-11-02T08:34:29",
+  "log": [
+   {
+    "t": "2026-10-07T10:35:00",
+    "u": "quang",
+    "x": "Tự tạo từ phân tích kỳ 2026-W40"
+   },
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Kỳ 2026-W41 không còn phát hiện vấn đề này — có thể đóng task"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W43"
+   },
+   {
+    "t": "2026-11-02T08:34:29",
+    "u": "auto",
+    "x": "Kỳ 2026-W44 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "6687f8d3ee",
+  "key": "drop|Acacia - Wilma Dinning Table|Wayfair|CAN",
+  "auto": true,
+  "title": "Doanh thu tuần của Acacia - Wilma Dinning Table · Wayfair CAN chưa giữ được mức tuần trước",
+  "area": "Doanh số",
+  "sev": 3,
+  "where": "Acacia - Wilma Dinning Table · Wayfair CAN",
+  "detail": [
+   "Tuần này $0 so với $382 tuần trước (-100%).",
+   "Tồn kho CAN của nhóm này đang bằng 0."
+  ],
+  "fix": [
+   "Lên kế hoạch bổ sung hàng cho CAN (hoặc điều chuyển từ kho khác) để mở lại bán.",
+   "Kiểm tra trạng thái listing (active, giá, buy box/ranking) và so với tuần trước."
+  ],
+  "metric": {
+   "r": 0.0,
+   "r_prev": 382.49,
+   "d_w": -100.0
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-09",
+  "note": "",
+  "periods": [
+   "2026-W40"
+  ],
+  "first_period": "2026-W40",
+  "last_period": "2026-W40",
+  "detected": false,
+  "created": "2026-10-07T10:35:00",
+  "updated": "2026-10-13T11:08:05",
+  "log": [
+   {
+    "t": "2026-10-07T10:35:00",
+    "u": "quang",
+    "x": "Tự tạo từ phân tích kỳ 2026-W40"
+   },
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Kỳ 2026-W41 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "e87dfd7370",
+  "key": "drop|Aurora - Wooden Bed Frame With Headboard|Shopify|CAN",
+  "auto": true,
+  "title": "Doanh thu tuần của Aurora - Wooden Bed Frame With Headboard · Shopify CAN chưa giữ được mức tuần trước",
+  "area": "Doanh số",
+  "sev": 2,
+  "where": "Aurora - Wooden Bed Frame With Headboard · Shopify CAN",
+  "detail": [
+   "Tuần này $458 so với $859 tuần trước (-47%).",
+   "Chưa có báo cáo quảng cáo của Shopify nên chưa đánh giá được vai trò của quảng cáo."
+  ],
+  "fix": [
+   "Kiểm tra trạng thái listing (active, giá, buy box/ranking) và so với tuần trước."
+  ],
+  "metric": {
+   "r": 458.05,
+   "r_prev": 858.76,
+   "d_w": -46.66
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-09",
+  "note": "",
+  "periods": [
+   "2026-W40",
+   "2026-W42",
+   "2026-W44"
+  ],
+  "first_period": "2026-W40",
+  "last_period": "2026-W44",
+  "detected": false,
+  "created": "2026-10-07T10:35:00",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-10-07T10:35:00",
+    "u": "quang",
+    "x": "Tự tạo từ phân tích kỳ 2026-W40"
+   },
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Kỳ 2026-W41 không còn phát hiện vấn đề này — có thể đóng task"
+   },
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W42"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Kỳ 2026-W43 không còn phát hiện vấn đề này — có thể đóng task"
+   },
+   {
+    "t": "2026-11-02T08:34:29",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W44"
+   },
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Kỳ 2026-W45 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "b0269e7916",
+  "key": "margin_grp|Acacia - Astoria - Wooden Bed Frame with Headboard",
+  "auto": true,
+  "title": "Margin nhóm “Acacia - Astoria - Wooden Bed Frame with Headboard” cần cải thiện (-39.9%)",
+  "area": "Lợi nhuận",
+  "sev": 3,
+  "where": "Nhóm sản phẩm: Acacia - Astoria - Wooden Bed Frame with Headboard",
+  "detail": [
+   "Doanh thu $516, margin -39.9% (P&L tuần).",
+   "Khoản chiếm tỷ trọng lớn nhất: giá vốn 76% doanh thu, vận chuyển/fulfill 40% doanh thu"
+  ],
+  "fix": [
+   "Rà lại giá bán/giá vốn: cân nhắc tăng giá nhẹ hoặc đàm phán lại giá nhập cho SKU có biên thấp.",
+   "Xem lại chi phí vận chuyển/fulfill: gộp lô, đổi carrier hoặc kho gần hơn cho SKU nặng."
+  ],
+  "metric": {
+   "r": 516.11,
+   "margin": -39.88
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-09",
+  "note": "",
+  "periods": [
+   "2026-W40"
+  ],
+  "first_period": "2026-W40",
+  "last_period": "2026-W40",
+  "detected": false,
+  "created": "2026-10-07T10:35:00",
+  "updated": "2026-10-13T11:08:05",
+  "log": [
+   {
+    "t": "2026-10-07T10:35:00",
+    "u": "quang",
+    "x": "Tự tạo từ phân tích kỳ 2026-W40"
+   },
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Kỳ 2026-W41 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "3df8aa3b0b",
+  "key": "margin_grp|Acacia Lagom Office Desk",
+  "auto": true,
+  "title": "Margin nhóm “Acacia Lagom Office Desk” cần cải thiện (-42.8%)",
+  "area": "Lợi nhuận",
+  "sev": 3,
+  "where": "Nhóm sản phẩm: Acacia Lagom Office Desk",
+  "detail": [
+   "Doanh thu $3,640, margin -42.8% (P&L tuần).",
+   "Khoản chiếm tỷ trọng lớn nhất: giá vốn 122% doanh thu, phí sàn (ref/return/WH/OP) 12% doanh thu"
+  ],
+  "fix": [
+   "Rà lại giá bán (giá sỉ với Wayfair) và giá vốn: đàm phán lại giá nhập hoặc điều chỉnh giá cho SKU có biên thấp.",
+   "Kiểm tra tỷ lệ hoàn trả và phí kho/phí khác của kênh; xử lý nguyên nhân hoàn hàng ở SKU có tỷ lệ cao."
+  ],
+  "metric": {
+   "r": 3640.44,
+   "margin": -42.82
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-09",
+  "note": "",
+  "periods": [
+   "2026-W40",
+   "2026-W41",
+   "2026-W42",
+   "2026-W43",
+   "2026-W44",
+   "2026-W45"
+  ],
+  "first_period": "2026-W40",
+  "last_period": "2026-W45",
+  "detected": true,
+  "created": "2026-10-07T10:35:00",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-10-07T10:35:00",
+    "u": "quang",
+    "x": "Tự tạo từ phân tích kỳ 2026-W40"
+   },
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W41"
+   },
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W42"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W43"
+   },
+   {
+    "t": "2026-11-02T08:34:29",
+    "u": "auto",
+    "x": "Kỳ 2026-W44 không còn phát hiện vấn đề này — có thể đóng task"
+   },
+   {
+    "t": "2026-11-02T10:01:12",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W44"
+   },
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W45"
+   }
+  ]
+ },
+ {
+  "id": "cb15c3cc28",
+  "key": "margin_grp|Arozu - Tree House - Kid Bunk Bed",
+  "auto": true,
+  "title": "Margin nhóm “Arozu - Tree House - Kid Bunk Bed” cần cải thiện (-22.2%)",
+  "area": "Lợi nhuận",
+  "sev": 3,
+  "where": "Nhóm sản phẩm: Arozu - Tree House - Kid Bunk Bed",
+  "detail": [
+   "Doanh thu $5,000, margin -22.2% (P&L tuần).",
+   "Khoản chiếm tỷ trọng lớn nhất: giá vốn 110% doanh thu, phí sàn (ref/return/WH/OP) 10% doanh thu"
+  ],
+  "fix": [
+   "Rà lại giá bán (giá sỉ với Wayfair) và giá vốn: đàm phán lại giá nhập hoặc điều chỉnh giá cho SKU có biên thấp.",
+   "Kiểm tra tỷ lệ hoàn trả và phí kho/phí khác của kênh; xử lý nguyên nhân hoàn hàng ở SKU có tỷ lệ cao."
+  ],
+  "metric": {
+   "r": 4999.8,
+   "margin": -22.22
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-09",
+  "note": "",
+  "periods": [
+   "2026-W40",
+   "2026-W41",
+   "2026-W42",
+   "2026-W43",
+   "2026-W44",
+   "2026-W45"
+  ],
+  "first_period": "2026-W40",
+  "last_period": "2026-W45",
+  "detected": true,
+  "created": "2026-10-07T10:35:00",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-10-07T10:35:00",
+    "u": "quang",
+    "x": "Tự tạo từ phân tích kỳ 2026-W40"
+   },
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W41"
+   },
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W42"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W43"
+   },
+   {
+    "t": "2026-11-02T08:34:29",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W44"
+   },
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W45"
+   }
+  ]
+ },
+ {
+  "id": "9f0f010d78",
+  "key": "margin_mc|Wayfair|CAN",
+  "auto": true,
+  "title": "Kênh Wayfair CAN: margin -19.7% — cần rà cơ cấu chi phí",
+  "area": "Lợi nhuận",
+  "sev": 3,
+  "where": "Kênh: Wayfair CAN",
+  "detail": [
+   "Doanh thu $3,962, 15 đơn vị.",
+   "Khoản chiếm tỷ trọng lớn: giá vốn 106%, phí sàn (ref/return/WH/OP) 10%",
+   "SKU cần xem đầu tiên: GDWQ ($1,714), B4F1 ($314), CHV2 ($202)"
+  ],
+  "fix": [
+   "Rà lại giá bán (giá sỉ với Wayfair) và giá vốn: đàm phán lại giá nhập hoặc điều chỉnh giá cho SKU có biên thấp.",
+   "Kiểm tra tỷ lệ hoàn trả và phí kho/phí khác của kênh; xử lý nguyên nhân hoàn hàng ở SKU có tỷ lệ cao."
+  ],
+  "metric": {
+   "r": 3962.18,
+   "margin": -19.68
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-09",
+  "note": "",
+  "periods": [
+   "2026-W40",
+   "2026-W41",
+   "2026-W42",
+   "2026-W43",
+   "2026-W44",
+   "2026-W45"
+  ],
+  "first_period": "2026-W40",
+  "last_period": "2026-W45",
+  "detected": true,
+  "created": "2026-10-07T10:35:00",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-10-07T10:35:00",
+    "u": "quang",
+    "x": "Tự tạo từ phân tích kỳ 2026-W40"
+   },
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W41"
+   },
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W42"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W43"
+   },
+   {
+    "t": "2026-11-02T08:34:29",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W44"
+   },
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W45"
+   }
+  ]
+ },
+ {
+  "id": "590ae13590",
+  "key": "margin_mc|Wayfair|US",
+  "auto": true,
+  "title": "Kênh Wayfair US: margin -28.6% — cần rà cơ cấu chi phí",
+  "area": "Lợi nhuận",
+  "sev": 3,
+  "where": "Kênh: Wayfair US",
+  "detail": [
+   "Doanh thu $31,046, 184 đơn vị.",
+   "Khoản chiếm tỷ trọng lớn: giá vốn 117%, phí sàn (ref/return/WH/OP) 10%",
+   "SKU cần xem đầu tiên: F708 ($2,165), G45U ($4,325), KY7W ($1,958)"
+  ],
+  "fix": [
+   "Rà lại giá bán (giá sỉ với Wayfair) và giá vốn: đàm phán lại giá nhập hoặc điều chỉnh giá cho SKU có biên thấp.",
+   "Kiểm tra tỷ lệ hoàn trả và phí kho/phí khác của kênh; xử lý nguyên nhân hoàn hàng ở SKU có tỷ lệ cao."
+  ],
+  "metric": {
+   "r": 31046.43,
+   "margin": -28.63
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-09",
+  "note": "",
+  "periods": [
+   "2026-W40",
+   "2026-W41",
+   "2026-W42",
+   "2026-W43",
+   "2026-W44",
+   "2026-W45"
+  ],
+  "first_period": "2026-W40",
+  "last_period": "2026-W45",
+  "detected": true,
+  "created": "2026-10-07T10:35:00",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-10-07T10:35:00",
+    "u": "quang",
+    "x": "Tự tạo từ phân tích kỳ 2026-W40"
+   },
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W41"
+   },
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W42"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W43"
+   },
+   {
+    "t": "2026-11-02T08:34:29",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W44"
+   },
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W45"
+   }
+  ]
+ },
+ {
+  "id": "c695d573f1",
+  "key": "drop|Aurora - Wooden Bed Frame With Headboard|Shopify|AUS",
+  "auto": true,
+  "title": "Doanh thu tuần của Aurora - Wooden Bed Frame With Headboard · Shopify AUS chưa giữ được mức tuần trước",
+  "area": "Doanh số",
+  "sev": 2,
+  "where": "Aurora - Wooden Bed Frame With Headboard · Shopify AUS",
+  "detail": [
+   "Tuần này $435 so với $2,201 tuần trước (-80%).",
+   "Chưa có báo cáo quảng cáo của Shopify nên chưa đánh giá được vai trò của quảng cáo."
+  ],
+  "fix": [
+   "Kiểm tra trạng thái listing (active, giá, buy box/ranking) và so với tuần trước."
+  ],
+  "metric": {
+   "r": 434.57,
+   "r_prev": 2201.35,
+   "d_w": -80.26
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-12",
+  "note": "",
+  "periods": [
+   "2026-W40",
+   "2026-W43",
+   "2026-W44"
+  ],
+  "first_period": "2026-W40",
+  "last_period": "2026-W44",
+  "detected": false,
+  "created": "2026-10-07T10:35:00",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-10-07T10:35:00",
+    "u": "quang",
+    "x": "Tự tạo từ phân tích kỳ 2026-W40"
+   },
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Kỳ 2026-W41 không còn phát hiện vấn đề này — có thể đóng task"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W43"
+   },
+   {
+    "t": "2026-11-02T08:34:29",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W44"
+   },
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Kỳ 2026-W45 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "ef24cc0bfc",
+  "key": "drop|Aurora - Wooden Bed Frame With Headboard|Shopify|US",
+  "auto": true,
+  "title": "Doanh thu tuần của Aurora - Wooden Bed Frame With Headboard · Shopify US chưa giữ được mức tuần trước",
+  "area": "Doanh số",
+  "sev": 2,
+  "where": "Aurora - Wooden Bed Frame With Headboard · Shopify US",
+  "detail": [
+   "Tuần này $471 so với $840 tuần trước (-44%).",
+   "Chưa có báo cáo quảng cáo của Shopify nên chưa đánh giá được vai trò của quảng cáo."
+  ],
+  "fix": [
+   "Kiểm tra trạng thái listing (active, giá, buy box/ranking) và so với tuần trước."
+  ],
+  "metric": {
+   "r": 470.99,
+   "r_prev": 839.78,
+   "d_w": -43.92
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-12",
+  "note": "",
+  "periods": [
+   "2026-W40",
+   "2026-W41",
+   "2026-W43",
+   "2026-W45"
+  ],
+  "first_period": "2026-W40",
+  "last_period": "2026-W45",
+  "detected": true,
+  "created": "2026-10-07T10:35:00",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-10-07T10:35:00",
+    "u": "quang",
+    "x": "Tự tạo từ phân tích kỳ 2026-W40"
+   },
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W41"
+   },
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Kỳ 2026-W42 không còn phát hiện vấn đề này — có thể đóng task"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W43"
+   },
+   {
+    "t": "2026-11-02T08:34:29",
+    "u": "auto",
+    "x": "Kỳ 2026-W44 không còn phát hiện vấn đề này — có thể đóng task"
+   },
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W45"
+   }
+  ]
+ },
+ {
+  "id": "8de6f7043c",
+  "key": "drop|Aurora - Wooden Bed Frame With Headboard|Wayfair|CAN",
+  "auto": true,
+  "title": "Doanh thu tuần của Aurora - Wooden Bed Frame With Headboard · Wayfair CAN chưa giữ được mức tuần trước",
+  "area": "Doanh số",
+  "sev": 2,
+  "where": "Aurora - Wooden Bed Frame With Headboard · Wayfair CAN",
+  "detail": [
+   "Tuần này $1,020 so với $1,986 tuần trước (-49%)."
+  ],
+  "fix": [
+   "Kiểm tra trạng thái listing (active, giá, buy box/ranking) và so với tuần trước."
+  ],
+  "metric": {
+   "r": 1020.46,
+   "r_prev": 1985.77,
+   "d_w": -48.61
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-12",
+  "note": "",
+  "periods": [
+   "2026-W40",
+   "2026-W42",
+   "2026-W44"
+  ],
+  "first_period": "2026-W40",
+  "last_period": "2026-W44",
+  "detected": false,
+  "created": "2026-10-07T10:35:00",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-10-07T10:35:00",
+    "u": "quang",
+    "x": "Tự tạo từ phân tích kỳ 2026-W40"
+   },
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Kỳ 2026-W41 không còn phát hiện vấn đề này — có thể đóng task"
+   },
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W42"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Kỳ 2026-W43 không còn phát hiện vấn đề này — có thể đóng task"
+   },
+   {
+    "t": "2026-11-02T08:34:29",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W44"
+   },
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Kỳ 2026-W45 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "267083d107",
+  "key": "margin_grp|Acacia - Alma Dinning Table",
+  "auto": true,
+  "title": "Margin nhóm “Acacia - Alma Dinning Table” cần cải thiện (-6.0%)",
+  "area": "Lợi nhuận",
+  "sev": 2,
+  "where": "Nhóm sản phẩm: Acacia - Alma Dinning Table",
+  "detail": [
+   "Doanh thu $1,714, margin -6.0% (P&L tuần).",
+   "Khoản chiếm tỷ trọng lớn nhất: giá vốn 87% doanh thu, quảng cáo (SEM) 11% doanh thu"
+  ],
+  "fix": [
+   "Rà lại giá bán (giá sỉ với Wayfair) và giá vốn: đàm phán lại giá nhập hoặc điều chỉnh giá cho SKU có biên thấp.",
+   "Tối ưu quảng cáo: hạ bid ở campaign hiệu quả thấp, tạm dừng keyword không ra đơn (xem các vấn đề ở mục Quảng cáo)."
+  ],
+  "metric": {
+   "r": 1714.08,
+   "margin": -6.04
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-12",
+  "note": "",
+  "periods": [
+   "2026-W40",
+   "2026-W41",
+   "2026-W42"
+  ],
+  "first_period": "2026-W40",
+  "last_period": "2026-W42",
+  "detected": false,
+  "created": "2026-10-07T10:35:00",
+  "updated": "2026-10-28T00:48:16",
+  "log": [
+   {
+    "t": "2026-10-07T10:35:00",
+    "u": "quang",
+    "x": "Tự tạo từ phân tích kỳ 2026-W40"
+   },
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W41"
+   },
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W42"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Kỳ 2026-W43 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "36951a0ac7",
+  "key": "margin_grp|Acacia - Emery - Wooden Bed Frame with Headboard",
+  "auto": true,
+  "title": "Margin nhóm “Acacia - Emery - Wooden Bed Frame with Headboard” cần cải thiện (-12.8%)",
+  "area": "Lợi nhuận",
+  "sev": 3,
+  "where": "Nhóm sản phẩm: Acacia - Emery - Wooden Bed Frame with Headboard",
+  "detail": [
+   "Doanh thu $23,265, margin -12.8% (P&L tuần).",
+   "Khoản chiếm tỷ trọng lớn nhất: giá vốn 92% doanh thu, phí sàn (ref/return/WH/OP) 11% doanh thu"
+  ],
+  "fix": [
+   "Rà lại giá bán (giá sỉ với Wayfair) và giá vốn: đàm phán lại giá nhập hoặc điều chỉnh giá cho SKU có biên thấp.",
+   "Kiểm tra tỷ lệ hoàn trả và phí kho/phí khác của kênh; xử lý nguyên nhân hoàn hàng ở SKU có tỷ lệ cao."
+  ],
+  "metric": {
+   "r": 23265.41,
+   "margin": -12.76
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-12",
+  "note": "",
+  "periods": [
+   "2026-W40",
+   "2026-W41",
+   "2026-W42",
+   "2026-W43",
+   "2026-W44",
+   "2026-W45"
+  ],
+  "first_period": "2026-W40",
+  "last_period": "2026-W45",
+  "detected": true,
+  "created": "2026-10-07T10:35:00",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-10-07T10:35:00",
+    "u": "quang",
+    "x": "Tự tạo từ phân tích kỳ 2026-W40"
+   },
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W41"
+   },
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W42"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W43"
+   },
+   {
+    "t": "2026-11-02T08:34:29",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W44"
+   },
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W45"
+   }
+  ]
+ },
+ {
+  "id": "5ae794665b",
+  "key": "margin_grp|Acacia - Wilma Dinning Table",
+  "auto": true,
+  "title": "Margin nhóm “Acacia - Wilma Dinning Table” cần cải thiện (-2.1%)",
+  "area": "Lợi nhuận",
+  "sev": 2,
+  "where": "Nhóm sản phẩm: Acacia - Wilma Dinning Table",
+  "detail": [
+   "Doanh thu $972, margin -2.1% (P&L tuần).",
+   "Khoản chiếm tỷ trọng lớn nhất: giá vốn 79% doanh thu, phí sàn (ref/return/WH/OP) 12% doanh thu"
+  ],
+  "fix": [
+   "Rà lại giá bán (giá sỉ với Wayfair) và giá vốn: đàm phán lại giá nhập hoặc điều chỉnh giá cho SKU có biên thấp.",
+   "Kiểm tra tỷ lệ hoàn trả và phí kho/phí khác của kênh; xử lý nguyên nhân hoàn hàng ở SKU có tỷ lệ cao."
+  ],
+  "metric": {
+   "r": 971.86,
+   "margin": -2.12
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-12",
+  "note": "",
+  "periods": [
+   "2026-W40",
+   "2026-W42"
+  ],
+  "first_period": "2026-W40",
+  "last_period": "2026-W42",
+  "detected": false,
+  "created": "2026-10-07T10:35:00",
+  "updated": "2026-10-28T00:48:16",
+  "log": [
+   {
+    "t": "2026-10-07T10:35:00",
+    "u": "quang",
+    "x": "Tự tạo từ phân tích kỳ 2026-W40"
+   },
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Kỳ 2026-W41 không còn phát hiện vấn đề này — có thể đóng task"
+   },
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W42"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Kỳ 2026-W43 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "34350aa95b",
+  "key": "margin_grp|Acacia Verve Dining Table",
+  "auto": true,
+  "title": "Margin nhóm “Acacia Verve Dining Table” cần cải thiện (-2.3%)",
+  "area": "Lợi nhuận",
+  "sev": 2,
+  "where": "Nhóm sản phẩm: Acacia Verve Dining Table",
+  "detail": [
+   "Doanh thu $2,704, margin -2.3% (P&L tuần).",
+   "Khoản chiếm tỷ trọng lớn nhất: giá vốn 78% doanh thu, phí sàn (ref/return/WH/OP) 14% doanh thu"
+  ],
+  "fix": [
+   "Rà lại giá bán (giá sỉ với Wayfair) và giá vốn: đàm phán lại giá nhập hoặc điều chỉnh giá cho SKU có biên thấp.",
+   "Kiểm tra tỷ lệ hoàn trả và phí kho/phí khác của kênh; xử lý nguyên nhân hoàn hàng ở SKU có tỷ lệ cao."
+  ],
+  "metric": {
+   "r": 2704.48,
+   "margin": -2.27
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-12",
+  "note": "",
+  "periods": [
+   "2026-W40",
+   "2026-W41",
+   "2026-W42",
+   "2026-W43",
+   "2026-W44",
+   "2026-W45"
+  ],
+  "first_period": "2026-W40",
+  "last_period": "2026-W45",
+  "detected": true,
+  "created": "2026-10-07T10:35:00",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-10-07T10:35:00",
+    "u": "quang",
+    "x": "Tự tạo từ phân tích kỳ 2026-W40"
+   },
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W41"
+   },
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W42"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W43"
+   },
+   {
+    "t": "2026-11-02T08:34:29",
+    "u": "auto",
+    "x": "Kỳ 2026-W44 không còn phát hiện vấn đề này — có thể đóng task"
+   },
+   {
+    "t": "2026-11-02T10:01:12",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W44"
+   },
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W45"
+   }
+  ]
+ },
+ {
+  "id": "bab78323d9",
+  "key": "margin_grp|Aurora - Wooden Bed Frame With Headboard",
+  "auto": true,
+  "title": "Margin nhóm “Aurora - Wooden Bed Frame With Headboard” cần cải thiện (-2.4%)",
+  "area": "Lợi nhuận",
+  "sev": 2,
+  "where": "Nhóm sản phẩm: Aurora - Wooden Bed Frame With Headboard",
+  "detail": [
+   "Doanh thu $20,528, margin -2.4% (P&L tuần).",
+   "Khoản chiếm tỷ trọng lớn nhất: giá vốn 74% doanh thu, phí sàn (ref/return/WH/OP) 12% doanh thu"
+  ],
+  "fix": [
+   "Rà lại giá bán (giá sỉ với Wayfair) và giá vốn: đàm phán lại giá nhập hoặc điều chỉnh giá cho SKU có biên thấp.",
+   "Kiểm tra tỷ lệ hoàn trả và phí kho/phí khác của kênh; xử lý nguyên nhân hoàn hàng ở SKU có tỷ lệ cao."
+  ],
+  "metric": {
+   "r": 20528.31,
+   "margin": -2.4
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-12",
+  "note": "",
+  "periods": [
+   "2026-W40",
+   "2026-W41",
+   "2026-W42",
+   "2026-W43",
+   "2026-W44",
+   "2026-W45"
+  ],
+  "first_period": "2026-W40",
+  "last_period": "2026-W45",
+  "detected": true,
+  "created": "2026-10-07T10:35:00",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-10-07T10:35:00",
+    "u": "quang",
+    "x": "Tự tạo từ phân tích kỳ 2026-W40"
+   },
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W41"
+   },
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W42"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W43"
+   },
+   {
+    "t": "2026-11-02T08:34:29",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W44"
+   },
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W45"
+   }
+  ]
+ },
+ {
+  "id": "ec9c1cd7fe",
+  "key": "margin_mc|Amazon|CAN",
+  "auto": true,
+  "title": "Kênh Amazon CAN: margin -8.9% — cần rà cơ cấu chi phí",
+  "area": "Lợi nhuận",
+  "sev": 2,
+  "where": "Kênh: Amazon CAN",
+  "detail": [
+   "Doanh thu $2,758, 7 đơn vị.",
+   "Khoản chiếm tỷ trọng lớn: giá vốn 53%, vận chuyển/fulfill 24%",
+   "SKU cần xem đầu tiên: X5DV ($315), CHV2 ($375), F2KE ($429)"
+  ],
+  "fix": [
+   "Rà lại giá bán (giá sỉ với Wayfair) và giá vốn: đàm phán lại giá nhập hoặc điều chỉnh giá cho SKU có biên thấp.",
+   "Xem lại chi phí vận chuyển/fulfill: gộp lô, đổi carrier hoặc kho gần hơn cho SKU nặng."
+  ],
+  "metric": {
+   "r": 2758.26,
+   "margin": -8.94
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-12",
+  "note": "",
+  "periods": [
+   "2026-W40",
+   "2026-W41",
+   "2026-W42",
+   "2026-W44",
+   "2026-W45"
+  ],
+  "first_period": "2026-W40",
+  "last_period": "2026-W45",
+  "detected": true,
+  "created": "2026-10-07T10:35:00",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-10-07T10:35:00",
+    "u": "quang",
+    "x": "Tự tạo từ phân tích kỳ 2026-W40"
+   },
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W41"
+   },
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W42"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Kỳ 2026-W43 không còn phát hiện vấn đề này — có thể đóng task"
+   },
+   {
+    "t": "2026-11-02T10:01:12",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W44"
+   },
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W45"
+   }
+  ]
+ },
+ {
+  "id": "2903f71352",
+  "key": "camp|Acacia - Emery - Wooden Bed Frame with Headboard|Amazon|CAN",
+  "auto": true,
+  "title": "2 campaign chưa hiệu quả ở Acacia - Emery - Wooden Bed Frame with Headboard · Amazon CAN",
+  "area": "Quảng cáo",
+  "sev": 1,
+  "where": "Acacia - Emery - Wooden Bed Frame with Headboard · Amazon CAN",
+  "detail": [
+   "Tổng chi $39; 2 campaign chưa có đơn, 0 campaign ACoS ≥ 50%.",
+   "Campaign chi nhiều nhất: Thu Ngo | Emery | SP | SQP | Queen Chocolate - TDS - SP - Default Manual - vzfndg6y ($24); Thu Ngo | Emery | SP | SQP | King Caramel - TDS - SP - Default Manual - 68wcqe8p ($15)"
+  ],
+  "fix": [
+   "Tạm dừng hoặc hạ bid các campaign chưa có đơn sau khi đã có đủ click; thêm negative keyword cho search term không liên quan."
+  ],
+  "metric": {
+   "spend": 39.39,
+   "n": 2
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-12",
+  "note": "",
+  "periods": [
+   "2026-W40",
+   "2026-W41",
+   "2026-W42",
+   "2026-W43",
+   "2026-W44",
+   "2026-W45"
+  ],
+  "first_period": "2026-W40",
+  "last_period": "2026-W45",
+  "detected": true,
+  "created": "2026-10-07T10:35:00",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-10-07T10:35:00",
+    "u": "quang",
+    "x": "Tự tạo từ phân tích kỳ 2026-W40"
+   },
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W41"
+   },
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W42"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W43"
+   },
+   {
+    "t": "2026-11-02T08:34:29",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W44"
+   },
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W45"
+   }
+  ]
+ },
+ {
+  "id": "aea8287902",
+  "key": "camp|Aurora - Wooden Bed Frame With Headboard|Amazon|CAN",
+  "auto": true,
+  "title": "1 campaign chưa hiệu quả ở Aurora - Wooden Bed Frame With Headboard · Amazon CAN",
+  "area": "Quảng cáo",
+  "sev": 2,
+  "where": "Aurora - Wooden Bed Frame With Headboard · Amazon CAN",
+  "detail": [
+   "Tổng chi $77; 1 campaign chưa có đơn, 0 campaign ACoS ≥ 50%.",
+   "Campaign chi nhiều nhất: Thu Ngo | Aurora | King - Caramel | SP | Single - TDS - SP - Default Manual - 557gsng0 ($77)"
+  ],
+  "fix": [
+   "Tạm dừng hoặc hạ bid các campaign chưa có đơn sau khi đã có đủ click; thêm negative keyword cho search term không liên quan."
+  ],
+  "metric": {
+   "spend": 76.52,
+   "n": 1
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-12",
+  "note": "",
+  "periods": [
+   "2026-W40",
+   "2026-W41",
+   "2026-W42",
+   "2026-W43",
+   "2026-W44",
+   "2026-W45"
+  ],
+  "first_period": "2026-W40",
+  "last_period": "2026-W45",
+  "detected": true,
+  "created": "2026-10-07T10:35:00",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-10-07T10:35:00",
+    "u": "quang",
+    "x": "Tự tạo từ phân tích kỳ 2026-W40"
+   },
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W41"
+   },
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W42"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W43"
+   },
+   {
+    "t": "2026-11-02T08:34:29",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W44"
+   },
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W45"
+   }
+  ]
+ },
+ {
+  "id": "c2dbd01d7d",
+  "key": "tacos|Acacia - Emery - Wooden Bed Frame with Headboard|Wayfair|CAN",
+  "auto": true,
+  "title": "TACoS 10.5% ở Acacia - Emery - Wooden Bed Frame with Headboard · Wayfair CAN",
+  "area": "Quảng cáo",
+  "sev": 2,
+  "where": "Acacia - Emery - Wooden Bed Frame with Headboard · Wayfair CAN",
+  "detail": [
+   "Chi quảng cáo $190 trên doanh thu $1,813; 2 campaign."
+  ],
+  "fix": [
+   "Hạ bid hoặc giảm ngân sách campaign có ROAS thấp; dồn ngân sách sang campaign/keyword đang ra đơn."
+  ],
+  "metric": {
+   "spend": 189.83,
+   "tacos": 10.47
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-12",
+  "note": "",
+  "periods": [
+   "2026-W40",
+   "2026-W41"
+  ],
+  "first_period": "2026-W40",
+  "last_period": "2026-W41",
+  "detected": false,
+  "created": "2026-10-07T10:35:00",
+  "updated": "2026-10-19T04:21:30",
+  "log": [
+   {
+    "t": "2026-10-07T10:35:00",
+    "u": "quang",
+    "x": "Tự tạo từ phân tích kỳ 2026-W40"
+   },
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W41"
+   },
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Kỳ 2026-W42 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "b902bd47f3",
+  "key": "tacos|Acacia Lagom Office Desk|Wayfair|CAN",
+  "auto": true,
+  "title": "TACoS 24.3% ở Acacia Lagom Office Desk · Wayfair CAN",
+  "area": "Quảng cáo",
+  "sev": 2,
+  "where": "Acacia Lagom Office Desk · Wayfair CAN",
+  "detail": [
+   "Chi quảng cáo $40 trên doanh thu $163; 5 campaign."
+  ],
+  "fix": [
+   "Hạ bid hoặc giảm ngân sách campaign có ROAS thấp; dồn ngân sách sang campaign/keyword đang ra đơn."
+  ],
+  "metric": {
+   "spend": 39.63,
+   "tacos": 24.29
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-12",
+  "note": "",
+  "periods": [
+   "2026-W40",
+   "2026-W41",
+   "2026-W42"
+  ],
+  "first_period": "2026-W40",
+  "last_period": "2026-W42",
+  "detected": false,
+  "created": "2026-10-07T10:35:00",
+  "updated": "2026-10-28T00:48:16",
+  "log": [
+   {
+    "t": "2026-10-07T10:35:00",
+    "u": "quang",
+    "x": "Tự tạo từ phân tích kỳ 2026-W40"
+   },
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W41"
+   },
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W42"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Kỳ 2026-W43 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "0cfe00766a",
+  "key": "lowstock|Acacia - Alma Dinning Table",
+  "auto": true,
+  "title": "1 SKU của Acacia - Alma Dinning Table sắp hết hàng",
+  "area": "Tồn kho",
+  "sev": 2,
+  "where": "Nhóm: Acacia - Alma Dinning Table",
+  "detail": [
+   "BDPV: còn 31 (đủ ~3.4 tuần)"
+  ],
+  "fix": [
+   "Chốt số lượng và lịch nhập bổ sung cho các SKU này; nếu hàng về chậm, giảm quảng cáo để tránh hết hàng giữa chừng."
+  ],
+  "metric": {
+   "n": 1
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-12",
+  "note": "",
+  "periods": [
+   "2026-W40",
+   "2026-W43"
+  ],
+  "first_period": "2026-W40",
+  "last_period": "2026-W43",
+  "detected": false,
+  "created": "2026-10-07T10:35:00",
+  "updated": "2026-11-02T08:34:29",
+  "log": [
+   {
+    "t": "2026-10-07T10:35:00",
+    "u": "quang",
+    "x": "Tự tạo từ phân tích kỳ 2026-W40"
+   },
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Kỳ 2026-W41 không còn phát hiện vấn đề này — có thể đóng task"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W43"
+   },
+   {
+    "t": "2026-11-02T08:34:29",
+    "u": "auto",
+    "x": "Kỳ 2026-W44 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "5fc2b66c51",
+  "key": "lowstock|Acacia - Astoria - Wooden Bed Frame with Headboard",
+  "auto": true,
+  "title": "1 SKU của Acacia - Astoria - Wooden Bed Frame with Headboard sắp hết hàng",
+  "area": "Tồn kho",
+  "sev": 2,
+  "where": "Nhóm: Acacia - Astoria - Wooden Bed Frame with Headboard",
+  "detail": [
+   "CQPN: còn 3 (đủ ~3.0 tuần)"
+  ],
+  "fix": [
+   "Chốt số lượng và lịch nhập bổ sung cho các SKU này; nếu hàng về chậm, giảm quảng cáo để tránh hết hàng giữa chừng."
+  ],
+  "metric": {
+   "n": 1
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-12",
+  "note": "",
+  "periods": [
+   "2026-W40"
+  ],
+  "first_period": "2026-W40",
+  "last_period": "2026-W40",
+  "detected": false,
+  "created": "2026-10-07T10:35:00",
+  "updated": "2026-10-13T11:08:05",
+  "log": [
+   {
+    "t": "2026-10-07T10:35:00",
+    "u": "quang",
+    "x": "Tự tạo từ phân tích kỳ 2026-W40"
+   },
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Kỳ 2026-W41 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "a3d4b2f162",
+  "key": "lt_amz",
+  "auto": true,
+  "title": "Amazon FBA: 9 sản phẩm tồn trên 270 ngày",
+  "area": "Tồn kho",
+  "sev": 2,
+  "where": "Amazon FBA (inventory age)",
+  "detail": [
+   "SKU: X5DV (4), BF0E (3), NKEP (2)"
+  ],
+  "fix": [
+   "Lên kế hoạch xử lý trước kỳ tính phí lưu kho dài hạn: giảm giá/Deal, hoặc tạo removal order cho phần tồn lâu."
+  ],
+  "metric": {
+   "over270": 9
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-12",
+  "note": "",
+  "periods": [
+   "2026-W40",
+   "2026-W41",
+   "2026-W42",
+   "2026-W43",
+   "2026-W44",
+   "2026-W45"
+  ],
+  "first_period": "2026-W40",
+  "last_period": "2026-W45",
+  "detected": true,
+  "created": "2026-10-07T10:35:00",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-10-07T10:35:00",
+    "u": "quang",
+    "x": "Tự tạo từ phân tích kỳ 2026-W40"
+   },
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W41"
+   },
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W42"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W43"
+   },
+   {
+    "t": "2026-11-02T08:34:29",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W44"
+   },
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W45"
+   }
+  ]
+ },
+ {
+  "id": "931d53eb8b",
+  "key": "pl5_noformula",
+  "auto": true,
+  "title": "Một số kênh chưa có sheet tính phí trong P&L",
+  "area": "Dữ liệu",
+  "sev": 1,
+  "where": "File P&L",
+  "detail": [
+   "Kênh: ['Shopify', 'US', 294.94], ['Shopify', 'CAN', 430.09], ['Shopify', 'CAN', 458.05], ['Shopify', 'CAN', 398.55], ['Shopify', 'CAN', 429.38], ['Shopify', 'US', 416.79], ['Shopify', 'CAN', 429.38]"
+  ],
+  "fix": [
+   "Thêm sheet tính phí cho các kênh này ở kỳ P&L tiếp theo để báo cáo lợi nhuận bao phủ đủ."
+  ],
+  "metric": {},
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-14",
+  "note": "",
+  "periods": [
+   "2026-W40",
+   "2026-W41"
+  ],
+  "first_period": "2026-W40",
+  "last_period": "2026-W41",
+  "detected": false,
+  "created": "2026-10-07T10:35:00",
+  "updated": "2026-10-13T15:04:46",
+  "log": [
+   {
+    "t": "2026-10-07T10:35:00",
+    "u": "quang",
+    "x": "Tự tạo từ phân tích kỳ 2026-W40"
+   },
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W41"
+   },
+   {
+    "t": "2026-10-13T15:04:46",
+    "u": "auto",
+    "x": "Kỳ 2026-W41 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "2486709ad6",
+  "key": "camp|Acacia Verve Dining Table|Wayfair|US",
+  "auto": true,
+  "title": "1 campaign chưa hiệu quả ở Acacia Verve Dining Table · Wayfair US",
+  "area": "Quảng cáo",
+  "sev": 1,
+  "where": "Acacia Verve Dining Table · Wayfair US",
+  "detail": [
+   "Tổng chi $31; 1 campaign chưa có đơn, 0 campaign ACoS ≥ 50%.",
+   "Campaign chi nhiều nhất: Thu Ngo | Verve | SP | ROAS ($31)"
+  ],
+  "fix": [
+   "Tạm dừng hoặc hạ bid các campaign chưa có đơn sau khi đã có đủ click; thêm negative keyword cho search term không liên quan."
+  ],
+  "metric": {
+   "spend": 30.64,
+   "n": 1
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-14",
+  "note": "",
+  "periods": [
+   "2026-W40",
+   "2026-W41"
+  ],
+  "first_period": "2026-W40",
+  "last_period": "2026-W41",
+  "detected": false,
+  "created": "2026-10-07T10:35:00",
+  "updated": "2026-10-19T04:21:30",
+  "log": [
+   {
+    "t": "2026-10-07T10:35:00",
+    "u": "quang",
+    "x": "Tự tạo từ phân tích kỳ 2026-W40"
+   },
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W41"
+   },
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Kỳ 2026-W42 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "0a820fd13c",
+  "key": "deadstock|Acacia - Emery - Wooden Bed Frame with Headboard",
+  "auto": true,
+  "title": "2 SKU của Acacia - Emery - Wooden Bed Frame with Headboard có tồn nhưng chưa phát sinh bán gần đây",
+  "area": "Tồn kho",
+  "sev": 1,
+  "where": "Nhóm: Acacia - Emery - Wooden Bed Frame with Headboard",
+  "detail": [
+   "Tổng 270 sản phẩm; SKU: KKHV, V08K"
+  ],
+  "fix": [
+   "Rà lại listing (giá, ảnh, từ khoá) hoặc đưa vào chương trình khuyến mãi để tăng vòng quay."
+  ],
+  "metric": {
+   "qty": 270
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-14",
+  "note": "",
+  "periods": [
+   "2026-W40",
+   "2026-W41",
+   "2026-W42"
+  ],
+  "first_period": "2026-W40",
+  "last_period": "2026-W42",
+  "detected": false,
+  "created": "2026-10-07T10:35:00",
+  "updated": "2026-10-28T00:48:16",
+  "log": [
+   {
+    "t": "2026-10-07T10:35:00",
+    "u": "quang",
+    "x": "Tự tạo từ phân tích kỳ 2026-W40"
+   },
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W41"
+   },
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W42"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Kỳ 2026-W43 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "1721889ced",
+  "key": "deadstock|Aurora - Wooden Bed Frame With Headboard",
+  "auto": true,
+  "title": "2 SKU của Aurora - Wooden Bed Frame With Headboard có tồn nhưng chưa phát sinh bán gần đây",
+  "area": "Tồn kho",
+  "sev": 1,
+  "where": "Nhóm: Aurora - Wooden Bed Frame With Headboard",
+  "detail": [
+   "Tổng 88 sản phẩm; SKU: LXA2, U73Q"
+  ],
+  "fix": [
+   "Rà lại listing (giá, ảnh, từ khoá) hoặc đưa vào chương trình khuyến mãi để tăng vòng quay."
+  ],
+  "metric": {
+   "qty": 88
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-14",
+  "note": "",
+  "periods": [
+   "2026-W40",
+   "2026-W41",
+   "2026-W42",
+   "2026-W43",
+   "2026-W44",
+   "2026-W45"
+  ],
+  "first_period": "2026-W40",
+  "last_period": "2026-W45",
+  "detected": true,
+  "created": "2026-10-07T10:35:00",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-10-07T10:35:00",
+    "u": "quang",
+    "x": "Tự tạo từ phân tích kỳ 2026-W40"
+   },
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W41"
+   },
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W42"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W43"
+   },
+   {
+    "t": "2026-11-02T08:34:29",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W44"
+   },
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W45"
+   }
+  ]
+ },
+ {
+  "id": "0d31ea4af0",
+  "key": "drop|Acacia - Wilma Dinning Table|Wayfair|US",
+  "auto": true,
+  "title": "Doanh thu tuần của Acacia - Wilma Dinning Table · Wayfair US chưa giữ được mức tuần trước",
+  "area": "Doanh số",
+  "sev": 2,
+  "where": "Acacia - Wilma Dinning Table · Wayfair US",
+  "detail": [
+   "Tuần này $2,175 so với $3,231 tuần trước (-33%).",
+   "Kỳ này chưa có quảng cáo Thu Ngo chạy cho nhóm này ở kênh đó."
+  ],
+  "fix": [
+   "Bật lại/tạo campaign cho nhóm này nếu tồn kho cho phép.",
+   "Kiểm tra trạng thái listing (active, giá, buy box/ranking) và so với tuần trước."
+  ],
+  "metric": {
+   "r": 2175.26,
+   "r_prev": 3230.9,
+   "d_w": -32.67
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-18",
+  "note": "",
+  "periods": [
+   "2026-W41",
+   "2026-W44"
+  ],
+  "first_period": "2026-W41",
+  "last_period": "2026-W44",
+  "detected": false,
+  "created": "2026-10-13T11:08:05",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Tự tạo từ phân tích kỳ 2026-W41"
+   },
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Kỳ 2026-W42 không còn phát hiện vấn đề này — có thể đóng task"
+   },
+   {
+    "t": "2026-11-02T08:34:29",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W44"
+   },
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Kỳ 2026-W45 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "b1237e20d0",
+  "key": "drop|Arozu - Tree House - Kid Bunk Bed|Wayfair|US",
+  "auto": true,
+  "title": "Doanh thu tuần của Arozu - Tree House - Kid Bunk Bed · Wayfair US chưa giữ được mức tuần trước",
+  "area": "Doanh số",
+  "sev": 2,
+  "where": "Arozu - Tree House - Kid Bunk Bed · Wayfair US",
+  "detail": [
+   "Tuần này $2,676 so với $4,384 tuần trước (-39%)."
+  ],
+  "fix": [
+   "Kiểm tra trạng thái listing (active, giá, buy box/ranking) và so với tuần trước."
+  ],
+  "metric": {
+   "r": 2676.42,
+   "r_prev": 4383.57,
+   "d_w": -38.94
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-18",
+  "note": "",
+  "periods": [
+   "2026-W41",
+   "2026-W44"
+  ],
+  "first_period": "2026-W41",
+  "last_period": "2026-W44",
+  "detected": false,
+  "created": "2026-10-13T11:08:05",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Tự tạo từ phân tích kỳ 2026-W41"
+   },
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Kỳ 2026-W42 không còn phát hiện vấn đề này — có thể đóng task"
+   },
+   {
+    "t": "2026-11-02T08:34:29",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W44"
+   },
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Kỳ 2026-W45 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "37c06ec06f",
+  "key": "lowstock|Acacia - Wilma Dinning Table",
+  "auto": true,
+  "title": "1 SKU của Acacia - Wilma Dinning Table sắp hết hàng",
+  "area": "Tồn kho",
+  "sev": 2,
+  "where": "Nhóm: Acacia - Wilma Dinning Table",
+  "detail": [
+   "R1AE: còn 19 (đủ ~2.1 tuần)"
+  ],
+  "fix": [
+   "Chốt số lượng và lịch nhập bổ sung cho các SKU này; nếu hàng về chậm, giảm quảng cáo để tránh hết hàng giữa chừng."
+  ],
+  "metric": {
+   "n": 1
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-18",
+  "note": "",
+  "periods": [
+   "2026-W41"
+  ],
+  "first_period": "2026-W41",
+  "last_period": "2026-W41",
+  "detected": false,
+  "created": "2026-10-13T11:08:05",
+  "updated": "2026-10-19T04:21:30",
+  "log": [
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Tự tạo từ phân tích kỳ 2026-W41"
+   },
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Kỳ 2026-W42 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "6b3f1f0868",
+  "key": "drop|Arozu - Tree House - Kid Bunk Bed|Amazon|US",
+  "auto": true,
+  "title": "Doanh thu tuần của Arozu - Tree House - Kid Bunk Bed · Amazon US chưa giữ được mức tuần trước",
+  "area": "Doanh số",
+  "sev": 3,
+  "where": "Arozu - Tree House - Kid Bunk Bed · Amazon US",
+  "detail": [
+   "Tuần này $0 so với $770 tuần trước (-100%).",
+   "Kỳ này chưa có quảng cáo Thu Ngo chạy cho nhóm này ở kênh đó."
+  ],
+  "fix": [
+   "Bật lại/tạo campaign cho nhóm này nếu tồn kho cho phép.",
+   "Kiểm tra trạng thái listing (active, giá, buy box/ranking) và so với tuần trước."
+  ],
+  "metric": {
+   "r": 0.0,
+   "r_prev": 769.99,
+   "d_w": -100.0
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-18",
+  "note": "",
+  "periods": [
+   "2026-W41",
+   "2026-W45"
+  ],
+  "first_period": "2026-W41",
+  "last_period": "2026-W45",
+  "detected": true,
+  "created": "2026-10-13T11:08:05",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Tự tạo từ phân tích kỳ 2026-W41"
+   },
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Kỳ 2026-W42 không còn phát hiện vấn đề này — có thể đóng task"
+   },
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W45"
+   }
+  ]
+ },
+ {
+  "id": "8f73a5591e",
+  "key": "drop|Acacia Verve Dining Table|Amazon|US",
+  "auto": true,
+  "title": "Doanh thu tuần của Acacia Verve Dining Table · Amazon US chưa giữ được mức tuần trước",
+  "area": "Doanh số",
+  "sev": 2,
+  "where": "Acacia Verve Dining Table · Amazon US",
+  "detail": [
+   "Tuần này $523 so với $783 tuần trước (-33%)."
+  ],
+  "fix": [
+   "Kiểm tra trạng thái listing (active, giá, buy box/ranking) và so với tuần trước."
+  ],
+  "metric": {
+   "r": 522.55,
+   "r_prev": 782.54,
+   "d_w": -33.22
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-18",
+  "note": "",
+  "periods": [
+   "2026-W41",
+   "2026-W43"
+  ],
+  "first_period": "2026-W41",
+  "last_period": "2026-W43",
+  "detected": false,
+  "created": "2026-10-13T11:08:05",
+  "updated": "2026-11-02T08:34:29",
+  "log": [
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Tự tạo từ phân tích kỳ 2026-W41"
+   },
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Kỳ 2026-W42 không còn phát hiện vấn đề này — có thể đóng task"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W43"
+   },
+   {
+    "t": "2026-11-02T08:34:29",
+    "u": "auto",
+    "x": "Kỳ 2026-W44 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "a10e1dfb7c",
+  "key": "drop|Acacia Lagom Office Desk|Shopify|CAN",
+  "auto": true,
+  "title": "Doanh thu tuần của Acacia Lagom Office Desk · Shopify CAN chưa giữ được mức tuần trước",
+  "area": "Doanh số",
+  "sev": 3,
+  "where": "Acacia Lagom Office Desk · Shopify CAN",
+  "detail": [
+   "Tuần này $0 so với $641 tuần trước (-100%).",
+   "Chưa có báo cáo quảng cáo của Shopify nên chưa đánh giá được vai trò của quảng cáo."
+  ],
+  "fix": [
+   "Kiểm tra trạng thái listing (active, giá, buy box/ranking) và so với tuần trước."
+  ],
+  "metric": {
+   "r": 0.0,
+   "r_prev": 640.84,
+   "d_w": -100.0
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-18",
+  "note": "",
+  "periods": [
+   "2026-W41",
+   "2026-W44"
+  ],
+  "first_period": "2026-W41",
+  "last_period": "2026-W44",
+  "detected": false,
+  "created": "2026-10-13T11:08:05",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Tự tạo từ phân tích kỳ 2026-W41"
+   },
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Kỳ 2026-W42 không còn phát hiện vấn đề này — có thể đóng task"
+   },
+   {
+    "t": "2026-11-02T08:34:29",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W44"
+   },
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Kỳ 2026-W45 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "8834e8507b",
+  "key": "tacos|Aurora - Wooden Bed Frame With Headboard|Amazon|US",
+  "auto": true,
+  "title": "TACoS 13.0% ở Aurora - Wooden Bed Frame With Headboard · Amazon US",
+  "area": "Quảng cáo",
+  "sev": 2,
+  "where": "Aurora - Wooden Bed Frame With Headboard · Amazon US",
+  "detail": [
+   "Chi quảng cáo $435 trên doanh thu $3,337; 19 campaign."
+  ],
+  "fix": [
+   "Hạ bid hoặc giảm ngân sách campaign có ROAS thấp; dồn ngân sách sang campaign/keyword đang ra đơn."
+  ],
+  "metric": {
+   "spend": 435.09,
+   "tacos": 13.04
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-18",
+  "note": "",
+  "periods": [
+   "2026-W41",
+   "2026-W42",
+   "2026-W43",
+   "2026-W44",
+   "2026-W45"
+  ],
+  "first_period": "2026-W41",
+  "last_period": "2026-W45",
+  "detected": true,
+  "created": "2026-10-13T11:08:05",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Tự tạo từ phân tích kỳ 2026-W41"
+   },
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W42"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W43"
+   },
+   {
+    "t": "2026-11-02T08:34:29",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W44"
+   },
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W45"
+   }
+  ]
+ },
+ {
+  "id": "ab4861dbd6",
+  "key": "margin_mc|Amazon|US",
+  "auto": true,
+  "title": "Kênh Amazon US: margin 2.5% — cần rà cơ cấu chi phí",
+  "area": "Lợi nhuận",
+  "sev": 2,
+  "where": "Kênh: Amazon US",
+  "detail": [
+   "Doanh thu $9,377, 23 đơn vị.",
+   "Khoản chiếm tỷ trọng lớn: giá vốn 49%, vận chuyển/fulfill 23%",
+   "SKU cần xem đầu tiên: RZV9 ($450), F708 ($693), H5N8 ($2,887)"
+  ],
+  "fix": [
+   "Rà lại giá bán (giá sỉ với Wayfair) và giá vốn: đàm phán lại giá nhập hoặc điều chỉnh giá cho SKU có biên thấp.",
+   "Xem lại chi phí vận chuyển/fulfill: gộp lô, đổi carrier hoặc kho gần hơn cho SKU nặng."
+  ],
+  "metric": {
+   "r": 9376.94,
+   "margin": 2.53
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-18",
+  "note": "",
+  "periods": [
+   "2026-W41",
+   "2026-W42",
+   "2026-W44",
+   "2026-W45"
+  ],
+  "first_period": "2026-W41",
+  "last_period": "2026-W45",
+  "detected": true,
+  "created": "2026-10-13T11:08:05",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Tự tạo từ phân tích kỳ 2026-W41"
+   },
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W42"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Kỳ 2026-W43 không còn phát hiện vấn đề này — có thể đóng task"
+   },
+   {
+    "t": "2026-11-02T08:34:29",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W44"
+   },
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W45"
+   }
+  ]
+ },
+ {
+  "id": "bbfdf357c9",
+  "key": "drop|Acacia Verve Dining Table|Amazon|CAN",
+  "auto": true,
+  "title": "Doanh thu tuần của Acacia Verve Dining Table · Amazon CAN chưa giữ được mức tuần trước",
+  "area": "Doanh số",
+  "sev": 2,
+  "where": "Acacia Verve Dining Table · Amazon CAN",
+  "detail": [
+   "Tuần này $0 so với $482 tuần trước (-100%).",
+   "Kỳ này chưa có quảng cáo Thu Ngo chạy cho nhóm này ở kênh đó."
+  ],
+  "fix": [
+   "Bật lại/tạo campaign cho nhóm này nếu tồn kho cho phép.",
+   "Kiểm tra trạng thái listing (active, giá, buy box/ranking) và so với tuần trước."
+  ],
+  "metric": {
+   "r": 0.0,
+   "r_prev": 481.7,
+   "d_w": -100.0
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-18",
+  "note": "",
+  "periods": [
+   "2026-W41",
+   "2026-W45"
+  ],
+  "first_period": "2026-W41",
+  "last_period": "2026-W45",
+  "detected": true,
+  "created": "2026-10-13T11:08:05",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Tự tạo từ phân tích kỳ 2026-W41"
+   },
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Kỳ 2026-W42 không còn phát hiện vấn đề này — có thể đóng task"
+   },
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W45"
+   }
+  ]
+ },
+ {
+  "id": "8de2855561",
+  "key": "drop|Acacia - Emery - Wooden Bed Frame with Headboard|Shopify|AUS",
+  "auto": true,
+  "title": "Doanh thu tuần của Acacia - Emery - Wooden Bed Frame with Headboard · Shopify AUS chưa giữ được mức tuần trước",
+  "area": "Doanh số",
+  "sev": 2,
+  "where": "Acacia - Emery - Wooden Bed Frame with Headboard · Shopify AUS",
+  "detail": [
+   "Tuần này $435 so với $898 tuần trước (-52%).",
+   "Chưa có báo cáo quảng cáo của Shopify nên chưa đánh giá được vai trò của quảng cáo."
+  ],
+  "fix": [
+   "Kiểm tra trạng thái listing (active, giá, buy box/ranking) và so với tuần trước."
+  ],
+  "metric": {
+   "r": 434.57,
+   "r_prev": 897.64,
+   "d_w": -51.59
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-18",
+  "note": "",
+  "periods": [
+   "2026-W41",
+   "2026-W44"
+  ],
+  "first_period": "2026-W41",
+  "last_period": "2026-W44",
+  "detected": false,
+  "created": "2026-10-13T11:08:05",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Tự tạo từ phân tích kỳ 2026-W41"
+   },
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Kỳ 2026-W42 không còn phát hiện vấn đề này — có thể đóng task"
+   },
+   {
+    "t": "2026-11-02T08:34:29",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W44"
+   },
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Kỳ 2026-W45 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "e94ffc9245",
+  "key": "drop|Acacia - Wilma Dinning Table|Amazon|US",
+  "auto": true,
+  "title": "Doanh thu tuần của Acacia - Wilma Dinning Table · Amazon US chưa giữ được mức tuần trước",
+  "area": "Doanh số",
+  "sev": 2,
+  "where": "Acacia - Wilma Dinning Table · Amazon US",
+  "detail": [
+   "Tuần này $0 so với $369 tuần trước (-100%).",
+   "Kỳ này chưa có quảng cáo Thu Ngo chạy cho nhóm này ở kênh đó."
+  ],
+  "fix": [
+   "Bật lại/tạo campaign cho nhóm này nếu tồn kho cho phép.",
+   "Kiểm tra trạng thái listing (active, giá, buy box/ranking) và so với tuần trước."
+  ],
+  "metric": {
+   "r": 0.0,
+   "r_prev": 368.56,
+   "d_w": -100.0
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-18",
+  "note": "",
+  "periods": [
+   "2026-W41"
+  ],
+  "first_period": "2026-W41",
+  "last_period": "2026-W41",
+  "detected": false,
+  "created": "2026-10-13T11:08:05",
+  "updated": "2026-10-19T04:21:30",
+  "log": [
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Tự tạo từ phân tích kỳ 2026-W41"
+   },
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Kỳ 2026-W42 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "75fc14c57f",
+  "key": "camp|Acacia - Emery - Wooden Bed Frame with Headboard|Amazon|US",
+  "auto": true,
+  "title": "2 campaign chưa hiệu quả ở Acacia - Emery - Wooden Bed Frame with Headboard · Amazon US",
+  "area": "Quảng cáo",
+  "sev": 1,
+  "where": "Acacia - Emery - Wooden Bed Frame with Headboard · Amazon US",
+  "detail": [
+   "Tổng chi $36; 2 campaign chưa có đơn, 0 campaign ACoS ≥ 50%.",
+   "Campaign chi nhiều nhất: Thu Ngo | Emery | SP | SQP | YSPY - TDS - SP - Default Manual - j6nex6cg ($20); Thu Ngo | Emery | SP | 01042026 - acacia bed frame ($16)"
+  ],
+  "fix": [
+   "Tạm dừng hoặc hạ bid các campaign chưa có đơn sau khi đã có đủ click; thêm negative keyword cho search term không liên quan."
+  ],
+  "metric": {
+   "spend": 36.22,
+   "n": 2
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-18",
+  "note": "",
+  "periods": [
+   "2026-W41",
+   "2026-W42",
+   "2026-W43",
+   "2026-W44"
+  ],
+  "first_period": "2026-W41",
+  "last_period": "2026-W44",
+  "detected": false,
+  "created": "2026-10-13T11:08:05",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Tự tạo từ phân tích kỳ 2026-W41"
+   },
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W42"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W43"
+   },
+   {
+    "t": "2026-11-02T08:34:29",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W44"
+   },
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Kỳ 2026-W45 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "d360b2831c",
+  "key": "drop|Acacia - Alma Dinning Table|Wayfair|CAN",
+  "auto": true,
+  "title": "Doanh thu tuần của Acacia - Alma Dinning Table · Wayfair CAN chưa giữ được mức tuần trước",
+  "area": "Doanh số",
+  "sev": 2,
+  "where": "Acacia - Alma Dinning Table · Wayfair CAN",
+  "detail": [
+   "Tuần này $158 so với $315 tuần trước (-50%)."
+  ],
+  "fix": [
+   "Kiểm tra trạng thái listing (active, giá, buy box/ranking) và so với tuần trước."
+  ],
+  "metric": {
+   "r": 157.7,
+   "r_prev": 315.4,
+   "d_w": -50.0
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-18",
+  "note": "",
+  "periods": [
+   "2026-W41"
+  ],
+  "first_period": "2026-W41",
+  "last_period": "2026-W41",
+  "detected": false,
+  "created": "2026-10-13T11:08:05",
+  "updated": "2026-10-19T04:21:30",
+  "log": [
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Tự tạo từ phân tích kỳ 2026-W41"
+   },
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Kỳ 2026-W42 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "d59935bc2a",
+  "key": "drop|Acacia Lagom Office Desk|Wayfair|CAN",
+  "auto": true,
+  "title": "Doanh thu tuần của Acacia Lagom Office Desk · Wayfair CAN chưa giữ được mức tuần trước",
+  "area": "Doanh số",
+  "sev": 2,
+  "where": "Acacia Lagom Office Desk · Wayfair CAN",
+  "detail": [
+   "Tuần này $0 so với $553 tuần trước (-100%)."
+  ],
+  "fix": [
+   "Kiểm tra trạng thái listing (active, giá, buy box/ranking) và so với tuần trước."
+  ],
+  "metric": {
+   "r": 0.0,
+   "r_prev": 552.94,
+   "d_w": -100.0
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-18",
+  "note": "",
+  "periods": [
+   "2026-W41",
+   "2026-W42",
+   "2026-W45"
+  ],
+  "first_period": "2026-W41",
+  "last_period": "2026-W45",
+  "detected": true,
+  "created": "2026-10-13T11:08:05",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Tự tạo từ phân tích kỳ 2026-W41"
+   },
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W42"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Kỳ 2026-W43 không còn phát hiện vấn đề này — có thể đóng task"
+   },
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W45"
+   }
+  ]
+ },
+ {
+  "id": "7495a7ff0a",
+  "key": "tacos|Acacia Verve Dining Table|Amazon|US",
+  "auto": true,
+  "title": "TACoS 16.8% ở Acacia Verve Dining Table · Amazon US",
+  "area": "Quảng cáo",
+  "sev": 2,
+  "where": "Acacia Verve Dining Table · Amazon US",
+  "detail": [
+   "Chi quảng cáo $132 trên doanh thu $788; 5 campaign."
+  ],
+  "fix": [
+   "Hạ bid hoặc giảm ngân sách campaign có ROAS thấp; dồn ngân sách sang campaign/keyword đang ra đơn."
+  ],
+  "metric": {
+   "spend": 132.17,
+   "tacos": 16.78
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-18",
+  "note": "",
+  "periods": [
+   "2026-W41"
+  ],
+  "first_period": "2026-W41",
+  "last_period": "2026-W41",
+  "detected": false,
+  "created": "2026-10-13T11:08:05",
+  "updated": "2026-10-19T04:21:30",
+  "log": [
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Tự tạo từ phân tích kỳ 2026-W41"
+   },
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Kỳ 2026-W42 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "ad045b3196",
+  "key": "camp|Aurora - Wooden Bed Frame With Headboard|Wayfair|US",
+  "auto": true,
+  "title": "2 campaign chưa hiệu quả ở Aurora - Wooden Bed Frame With Headboard · Wayfair US",
+  "area": "Quảng cáo",
+  "sev": 1,
+  "where": "Aurora - Wooden Bed Frame With Headboard · Wayfair US",
+  "detail": [
+   "Tổng chi $38; 2 campaign chưa có đơn, 0 campaign ACoS ≥ 50%.",
+   "Campaign chi nhiều nhất: Thu Ngo | Aurora | HIGH_POTENTIAL ($22); Thu Ngo | Aurora | SP | Kw | Ph ($16)"
+  ],
+  "fix": [
+   "Tạm dừng hoặc hạ bid các campaign chưa có đơn sau khi đã có đủ click; thêm negative keyword cho search term không liên quan."
+  ],
+  "metric": {
+   "spend": 38.11,
+   "n": 2
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-18",
+  "note": "",
+  "periods": [
+   "2026-W41",
+   "2026-W42"
+  ],
+  "first_period": "2026-W41",
+  "last_period": "2026-W42",
+  "detected": false,
+  "created": "2026-10-13T11:08:05",
+  "updated": "2026-10-28T00:48:16",
+  "log": [
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Tự tạo từ phân tích kỳ 2026-W41"
+   },
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W42"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Kỳ 2026-W43 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "3a7c5d30bf",
+  "key": "camp|Aurora - Wooden Bed Frame With Headboard|Amazon|US",
+  "auto": true,
+  "title": "1 campaign chưa hiệu quả ở Aurora - Wooden Bed Frame With Headboard · Amazon US",
+  "area": "Quảng cáo",
+  "sev": 2,
+  "where": "Aurora - Wooden Bed Frame With Headboard · Amazon US",
+  "detail": [
+   "Tổng chi $56; 1 campaign chưa có đơn, 0 campaign ACoS ≥ 50%.",
+   "Campaign chi nhiều nhất: Thu Ngo | Aurora | Queen - Walnut | SP | Single - TDS - SP - Default Manual - 9k4m4brv ($56)"
+  ],
+  "fix": [
+   "Tạm dừng hoặc hạ bid các campaign chưa có đơn sau khi đã có đủ click; thêm negative keyword cho search term không liên quan."
+  ],
+  "metric": {
+   "spend": 55.71,
+   "n": 1
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-18",
+  "note": "",
+  "periods": [
+   "2026-W41",
+   "2026-W42",
+   "2026-W43",
+   "2026-W44",
+   "2026-W45"
+  ],
+  "first_period": "2026-W41",
+  "last_period": "2026-W45",
+  "detected": true,
+  "created": "2026-10-13T11:08:05",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Tự tạo từ phân tích kỳ 2026-W41"
+   },
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W42"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W43"
+   },
+   {
+    "t": "2026-11-02T08:34:29",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W44"
+   },
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W45"
+   }
+  ]
+ },
+ {
+  "id": "e745aa6ef4",
+  "key": "camp|Acacia - Emery - Wooden Bed Frame with Headboard|Amazon|AUS",
+  "auto": true,
+  "title": "1 campaign chưa hiệu quả ở Acacia - Emery - Wooden Bed Frame with Headboard · Amazon AUS",
+  "area": "Quảng cáo",
+  "sev": 1,
+  "where": "Acacia - Emery - Wooden Bed Frame with Headboard · Amazon AUS",
+  "detail": [
+   "Tổng chi $31; 1 campaign chưa có đơn, 0 campaign ACoS ≥ 50%.",
+   "Campaign chi nhiều nhất: Thu Ngo | Emery | SP | Kw | Ex - TDS - SP - Default Manual - 8mflpvpn ($31)"
+  ],
+  "fix": [
+   "Tạm dừng hoặc hạ bid các campaign chưa có đơn sau khi đã có đủ click; thêm negative keyword cho search term không liên quan."
+  ],
+  "metric": {
+   "spend": 30.86,
+   "n": 1
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-20",
+  "note": "",
+  "periods": [
+   "2026-W41"
+  ],
+  "first_period": "2026-W41",
+  "last_period": "2026-W41",
+  "detected": false,
+  "created": "2026-10-13T11:08:05",
+  "updated": "2026-10-19T04:21:30",
+  "log": [
+   {
+    "t": "2026-10-13T11:08:05",
+    "u": "auto",
+    "x": "Tự tạo từ phân tích kỳ 2026-W41"
+   },
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Kỳ 2026-W42 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "9246f2c27b",
+  "key": "drop|Acacia - Alma Dinning Table|Amazon|US",
+  "auto": true,
+  "title": "Doanh thu tuần của Acacia - Alma Dinning Table · Amazon US chưa giữ được mức tuần trước",
+  "area": "Doanh số",
+  "sev": 3,
+  "where": "Acacia - Alma Dinning Table · Amazon US",
+  "detail": [
+   "Tuần này $0 so với $350 tuần trước (-100%).",
+   "Kỳ này chưa có quảng cáo Thu Ngo chạy cho nhóm này ở kênh đó."
+  ],
+  "fix": [
+   "Bật lại/tạo campaign cho nhóm này nếu tồn kho cho phép.",
+   "Kiểm tra trạng thái listing (active, giá, buy box/ranking) và so với tuần trước."
+  ],
+  "metric": {
+   "r": 0.0,
+   "r_prev": 349.99,
+   "d_w": -100.0
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-21",
+  "note": "",
+  "periods": [
+   "2026-W42",
+   "2026-W44"
+  ],
+  "first_period": "2026-W42",
+  "last_period": "2026-W44",
+  "detected": false,
+  "created": "2026-10-19T04:21:30",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Tự tạo từ phân tích kỳ 2026-W42"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Kỳ 2026-W43 không còn phát hiện vấn đề này — có thể đóng task"
+   },
+   {
+    "t": "2026-11-02T08:34:29",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W44"
+   },
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Kỳ 2026-W45 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "0312b0a03f",
+  "key": "drop|Acacia - Emery - Wooden Bed Frame with Headboard|Shopify|CAN",
+  "auto": true,
+  "title": "Doanh thu tuần của Acacia - Emery - Wooden Bed Frame with Headboard · Shopify CAN chưa giữ được mức tuần trước",
+  "area": "Doanh số",
+  "sev": 3,
+  "where": "Acacia - Emery - Wooden Bed Frame with Headboard · Shopify CAN",
+  "detail": [
+   "Tuần này $0 so với $829 tuần trước (-100%).",
+   "Chưa có báo cáo quảng cáo của Shopify nên chưa đánh giá được vai trò của quảng cáo."
+  ],
+  "fix": [
+   "Kiểm tra trạng thái listing (active, giá, buy box/ranking) và so với tuần trước."
+  ],
+  "metric": {
+   "r": 0.0,
+   "r_prev": 828.64,
+   "d_w": -100.0
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-21",
+  "note": "",
+  "periods": [
+   "2026-W42"
+  ],
+  "first_period": "2026-W42",
+  "last_period": "2026-W42",
+  "detected": false,
+  "created": "2026-10-19T04:21:30",
+  "updated": "2026-10-28T00:48:16",
+  "log": [
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Tự tạo từ phân tích kỳ 2026-W42"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Kỳ 2026-W43 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "d9f074ceea",
+  "key": "drop|Aurora - Wooden Bed Frame With Headboard|Amazon|US",
+  "auto": true,
+  "title": "Doanh thu tuần của Aurora - Wooden Bed Frame With Headboard · Amazon US chưa giữ được mức tuần trước",
+  "area": "Doanh số",
+  "sev": 2,
+  "where": "Aurora - Wooden Bed Frame With Headboard · Amazon US",
+  "detail": [
+   "Tuần này $1,855 so với $5,196 tuần trước (-64%)."
+  ],
+  "fix": [
+   "Kiểm tra trạng thái listing (active, giá, buy box/ranking) và so với tuần trước."
+  ],
+  "metric": {
+   "r": 1854.96,
+   "r_prev": 5195.57,
+   "d_w": -64.3
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-24",
+  "note": "",
+  "periods": [
+   "2026-W42"
+  ],
+  "first_period": "2026-W42",
+  "last_period": "2026-W42",
+  "detected": false,
+  "created": "2026-10-19T04:21:30",
+  "updated": "2026-10-28T00:48:16",
+  "log": [
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Tự tạo từ phân tích kỳ 2026-W42"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Kỳ 2026-W43 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "5c064cb86a",
+  "key": "drop|Acacia Lagom Office Desk|Amazon|CAN",
+  "auto": true,
+  "title": "Doanh thu tuần của Acacia Lagom Office Desk · Amazon CAN chưa giữ được mức tuần trước",
+  "area": "Doanh số",
+  "sev": 2,
+  "where": "Acacia Lagom Office Desk · Amazon CAN",
+  "detail": [
+   "Tuần này $340 so với $1,362 tuần trước (-75%)."
+  ],
+  "fix": [
+   "Kiểm tra trạng thái listing (active, giá, buy box/ranking) và so với tuần trước."
+  ],
+  "metric": {
+   "r": 340.45,
+   "r_prev": 1361.81,
+   "d_w": -75.0
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-24",
+  "note": "",
+  "periods": [
+   "2026-W42",
+   "2026-W44"
+  ],
+  "first_period": "2026-W42",
+  "last_period": "2026-W44",
+  "detected": false,
+  "created": "2026-10-19T04:21:30",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Tự tạo từ phân tích kỳ 2026-W42"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Kỳ 2026-W43 không còn phát hiện vấn đề này — có thể đóng task"
+   },
+   {
+    "t": "2026-11-02T08:34:29",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W44"
+   },
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Kỳ 2026-W45 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "1dbac67d0e",
+  "key": "drop|Acacia - Emery - Wooden Bed Frame with Headboard|Amazon|US",
+  "auto": true,
+  "title": "Doanh thu tuần của Acacia - Emery - Wooden Bed Frame with Headboard · Amazon US chưa giữ được mức tuần trước",
+  "area": "Doanh số",
+  "sev": 2,
+  "where": "Acacia - Emery - Wooden Bed Frame with Headboard · Amazon US",
+  "detail": [
+   "Tuần này $3,023 so với $4,490 tuần trước (-33%)."
+  ],
+  "fix": [
+   "Kiểm tra trạng thái listing (active, giá, buy box/ranking) và so với tuần trước."
+  ],
+  "metric": {
+   "r": 3023.07,
+   "r_prev": 4489.8,
+   "d_w": -32.67
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-24",
+  "note": "",
+  "periods": [
+   "2026-W42"
+  ],
+  "first_period": "2026-W42",
+  "last_period": "2026-W42",
+  "detected": false,
+  "created": "2026-10-19T04:21:30",
+  "updated": "2026-10-28T00:48:16",
+  "log": [
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Tự tạo từ phân tích kỳ 2026-W42"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Kỳ 2026-W43 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "912d253179",
+  "key": "drop|Acacia Lagom Office Desk|Wayfair|US",
+  "auto": true,
+  "title": "Doanh thu tuần của Acacia Lagom Office Desk · Wayfair US chưa giữ được mức tuần trước",
+  "area": "Doanh số",
+  "sev": 2,
+  "where": "Acacia Lagom Office Desk · Wayfair US",
+  "detail": [
+   "Tuần này $1,563 so với $2,572 tuần trước (-39%)."
+  ],
+  "fix": [
+   "Kiểm tra trạng thái listing (active, giá, buy box/ranking) và so với tuần trước."
+  ],
+  "metric": {
+   "r": 1563.13,
+   "r_prev": 2571.73,
+   "d_w": -39.22
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-24",
+  "note": "",
+  "periods": [
+   "2026-W42",
+   "2026-W43"
+  ],
+  "first_period": "2026-W42",
+  "last_period": "2026-W43",
+  "detected": false,
+  "created": "2026-10-19T04:21:30",
+  "updated": "2026-11-02T08:34:29",
+  "log": [
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Tự tạo từ phân tích kỳ 2026-W42"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W43"
+   },
+   {
+    "t": "2026-11-02T08:34:29",
+    "u": "auto",
+    "x": "Kỳ 2026-W44 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "7c7d6afac8",
+  "key": "drop|Arozu - Tree House - Kid Bunk Bed|Wayfair|CAN",
+  "auto": true,
+  "title": "Doanh thu tuần của Arozu - Tree House - Kid Bunk Bed · Wayfair CAN chưa giữ được mức tuần trước",
+  "area": "Doanh số",
+  "sev": 2,
+  "where": "Arozu - Tree House - Kid Bunk Bed · Wayfair CAN",
+  "detail": [
+   "Tuần này $1,381 so với $2,336 tuần trước (-41%)."
+  ],
+  "fix": [
+   "Kiểm tra trạng thái listing (active, giá, buy box/ranking) và so với tuần trước."
+  ],
+  "metric": {
+   "r": 1381.46,
+   "r_prev": 2335.92,
+   "d_w": -40.86
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-24",
+  "note": "",
+  "periods": [
+   "2026-W42"
+  ],
+  "first_period": "2026-W42",
+  "last_period": "2026-W42",
+  "detected": false,
+  "created": "2026-10-19T04:21:30",
+  "updated": "2026-10-28T00:48:16",
+  "log": [
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Tự tạo từ phân tích kỳ 2026-W42"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Kỳ 2026-W43 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "fc4cabffc4",
+  "key": "drop|Acacia Lagom Office Desk|Amazon|US",
+  "auto": true,
+  "title": "Doanh thu tuần của Acacia Lagom Office Desk · Amazon US chưa giữ được mức tuần trước",
+  "area": "Doanh số",
+  "sev": 2,
+  "where": "Acacia Lagom Office Desk · Amazon US",
+  "detail": [
+   "Tuần này $693 so với $1,379 tuần trước (-50%)."
+  ],
+  "fix": [
+   "Kiểm tra trạng thái listing (active, giá, buy box/ranking) và so với tuần trước."
+  ],
+  "metric": {
+   "r": 692.98,
+   "r_prev": 1379.46,
+   "d_w": -49.76
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-24",
+  "note": "",
+  "periods": [
+   "2026-W42",
+   "2026-W45"
+  ],
+  "first_period": "2026-W42",
+  "last_period": "2026-W45",
+  "detected": true,
+  "created": "2026-10-19T04:21:30",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Tự tạo từ phân tích kỳ 2026-W42"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Kỳ 2026-W43 không còn phát hiện vấn đề này — có thể đóng task"
+   },
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W45"
+   }
+  ]
+ },
+ {
+  "id": "5f71c102b8",
+  "key": "drop|Acacia - Alma Dinning Table|Amazon|CAN",
+  "auto": true,
+  "title": "Doanh thu tuần của Acacia - Alma Dinning Table · Amazon CAN chưa giữ được mức tuần trước",
+  "area": "Doanh số",
+  "sev": 2,
+  "where": "Acacia - Alma Dinning Table · Amazon CAN",
+  "detail": [
+   "Tuần này $0 so với $358 tuần trước (-100%).",
+   "Kỳ này chưa có quảng cáo Thu Ngo chạy cho nhóm này ở kênh đó."
+  ],
+  "fix": [
+   "Bật lại/tạo campaign cho nhóm này nếu tồn kho cho phép.",
+   "Kiểm tra trạng thái listing (active, giá, buy box/ranking) và so với tuần trước."
+  ],
+  "metric": {
+   "r": 0.0,
+   "r_prev": 358.41,
+   "d_w": -100.0
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-24",
+  "note": "",
+  "periods": [
+   "2026-W42"
+  ],
+  "first_period": "2026-W42",
+  "last_period": "2026-W42",
+  "detected": false,
+  "created": "2026-10-19T04:21:30",
+  "updated": "2026-10-28T00:48:16",
+  "log": [
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Tự tạo từ phân tích kỳ 2026-W42"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Kỳ 2026-W43 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "7fa3ad3d15",
+  "key": "tacos|Acacia - Alma Dinning Table|Wayfair|US",
+  "auto": true,
+  "title": "TACoS 11.7% ở Acacia - Alma Dinning Table · Wayfair US",
+  "area": "Quảng cáo",
+  "sev": 2,
+  "where": "Acacia - Alma Dinning Table · Wayfair US",
+  "detail": [
+   "Chi quảng cáo $182 trên doanh thu $1,558; 5 campaign."
+  ],
+  "fix": [
+   "Hạ bid hoặc giảm ngân sách campaign có ROAS thấp; dồn ngân sách sang campaign/keyword đang ra đơn."
+  ],
+  "metric": {
+   "spend": 182.18,
+   "tacos": 11.7
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-24",
+  "note": "",
+  "periods": [
+   "2026-W42"
+  ],
+  "first_period": "2026-W42",
+  "last_period": "2026-W42",
+  "detected": false,
+  "created": "2026-10-19T04:21:30",
+  "updated": "2026-10-28T00:48:16",
+  "log": [
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Tự tạo từ phân tích kỳ 2026-W42"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Kỳ 2026-W43 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "1a129fe1fc",
+  "key": "tacos|Arozu - Tree House - Kid Bunk Bed|Wayfair|CAN",
+  "auto": true,
+  "title": "TACoS 14.7% ở Arozu - Tree House - Kid Bunk Bed · Wayfair CAN",
+  "area": "Quảng cáo",
+  "sev": 2,
+  "where": "Arozu - Tree House - Kid Bunk Bed · Wayfair CAN",
+  "detail": [
+   "Chi quảng cáo $153 trên doanh thu $1,036; 4 campaign."
+  ],
+  "fix": [
+   "Hạ bid hoặc giảm ngân sách campaign có ROAS thấp; dồn ngân sách sang campaign/keyword đang ra đơn."
+  ],
+  "metric": {
+   "spend": 152.63,
+   "tacos": 14.73
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-24",
+  "note": "",
+  "periods": [
+   "2026-W42",
+   "2026-W43"
+  ],
+  "first_period": "2026-W42",
+  "last_period": "2026-W43",
+  "detected": false,
+  "created": "2026-10-19T04:21:30",
+  "updated": "2026-11-02T08:34:29",
+  "log": [
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Tự tạo từ phân tích kỳ 2026-W42"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W43"
+   },
+   {
+    "t": "2026-11-02T08:34:29",
+    "u": "auto",
+    "x": "Kỳ 2026-W44 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "3c53f43718",
+  "key": "camp|Acacia - Emery - Wooden Bed Frame with Headboard|Wayfair|US",
+  "auto": true,
+  "title": "2 campaign chưa hiệu quả ở Acacia - Emery - Wooden Bed Frame with Headboard · Wayfair US",
+  "area": "Quảng cáo",
+  "sev": 2,
+  "where": "Acacia - Emery - Wooden Bed Frame with Headboard · Wayfair US",
+  "detail": [
+   "Tổng chi $94; 2 campaign chưa có đơn, 0 campaign ACoS ≥ 50%.",
+   "Campaign chi nhiều nhất: Thu Ngo | Emery | SP | PAT - Canada ($75); Thu Ngo | Emery V1 | KW | Phrase 20251202 ($19)"
+  ],
+  "fix": [
+   "Tạm dừng hoặc hạ bid các campaign chưa có đơn sau khi đã có đủ click; thêm negative keyword cho search term không liên quan."
+  ],
+  "metric": {
+   "spend": 93.52000000000001,
+   "n": 2
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-24",
+  "note": "",
+  "periods": [
+   "2026-W42",
+   "2026-W43"
+  ],
+  "first_period": "2026-W42",
+  "last_period": "2026-W43",
+  "detected": false,
+  "created": "2026-10-19T04:21:30",
+  "updated": "2026-11-02T08:34:29",
+  "log": [
+   {
+    "t": "2026-10-19T04:21:30",
+    "u": "auto",
+    "x": "Tự tạo từ phân tích kỳ 2026-W42"
+   },
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W43"
+   },
+   {
+    "t": "2026-11-02T08:34:29",
+    "u": "auto",
+    "x": "Kỳ 2026-W44 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "6b9c8cecd3",
+  "key": "drop|Acacia Verve Dining Table|Wayfair|CAN",
+  "auto": true,
+  "title": "Doanh thu tuần của Acacia Verve Dining Table · Wayfair CAN chưa giữ được mức tuần trước",
+  "area": "Doanh số",
+  "sev": 3,
+  "where": "Acacia Verve Dining Table · Wayfair CAN",
+  "detail": [
+   "Tuần này $0 so với $709 tuần trước (-100%)."
+  ],
+  "fix": [
+   "Kiểm tra trạng thái listing (active, giá, buy box/ranking) và so với tuần trước."
+  ],
+  "metric": {
+   "r": 0.0,
+   "r_prev": 708.81,
+   "d_w": -100.0
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-10-30",
+  "note": "",
+  "periods": [
+   "2026-W43"
+  ],
+  "first_period": "2026-W43",
+  "last_period": "2026-W43",
+  "detected": false,
+  "created": "2026-10-28T00:48:16",
+  "updated": "2026-11-02T08:34:29",
+  "log": [
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Tự tạo từ phân tích kỳ 2026-W43"
+   },
+   {
+    "t": "2026-11-02T08:34:29",
+    "u": "auto",
+    "x": "Kỳ 2026-W44 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "017152402e",
+  "key": "drop|Aurora - Wooden Bed Frame With Headboard|Wayfair|US",
+  "auto": true,
+  "title": "Doanh thu tuần của Aurora - Wooden Bed Frame With Headboard · Wayfair US chưa giữ được mức tuần trước",
+  "area": "Doanh số",
+  "sev": 2,
+  "where": "Aurora - Wooden Bed Frame With Headboard · Wayfair US",
+  "detail": [
+   "Tuần này $4,718 so với $9,700 tuần trước (-51%)."
+  ],
+  "fix": [
+   "Kiểm tra trạng thái listing (active, giá, buy box/ranking) và so với tuần trước."
+  ],
+  "metric": {
+   "r": 4717.57,
+   "r_prev": 9699.51,
+   "d_w": -51.36
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-11-02",
+  "note": "",
+  "periods": [
+   "2026-W43"
+  ],
+  "first_period": "2026-W43",
+  "last_period": "2026-W43",
+  "detected": false,
+  "created": "2026-10-28T00:48:16",
+  "updated": "2026-11-02T08:34:29",
+  "log": [
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Tự tạo từ phân tích kỳ 2026-W43"
+   },
+   {
+    "t": "2026-11-02T08:34:29",
+    "u": "auto",
+    "x": "Kỳ 2026-W44 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "73086af066",
+  "key": "lowstock|Acacia Verve Dining Table",
+  "auto": true,
+  "title": "1 SKU của Acacia Verve Dining Table sắp hết hàng",
+  "area": "Tồn kho",
+  "sev": 2,
+  "where": "Nhóm: Acacia Verve Dining Table",
+  "detail": [
+   "VUM2: còn 55 (đủ ~3.9 tuần)"
+  ],
+  "fix": [
+   "Chốt số lượng và lịch nhập bổ sung cho các SKU này; nếu hàng về chậm, giảm quảng cáo để tránh hết hàng giữa chừng."
+  ],
+  "metric": {
+   "n": 1
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-11-02",
+  "note": "",
+  "periods": [
+   "2026-W43"
+  ],
+  "first_period": "2026-W43",
+  "last_period": "2026-W43",
+  "detected": false,
+  "created": "2026-10-28T00:48:16",
+  "updated": "2026-11-02T08:34:29",
+  "log": [
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Tự tạo từ phân tích kỳ 2026-W43"
+   },
+   {
+    "t": "2026-11-02T08:34:29",
+    "u": "auto",
+    "x": "Kỳ 2026-W44 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "1e90a0c15e",
+  "key": "camp|Arozu - Tree House - Kid Bunk Bed|Wayfair|CAN",
+  "auto": true,
+  "title": "1 campaign chưa hiệu quả ở Arozu - Tree House - Kid Bunk Bed · Wayfair CAN",
+  "area": "Quảng cáo",
+  "sev": 1,
+  "where": "Arozu - Tree House - Kid Bunk Bed · Wayfair CAN",
+  "detail": [
+   "Tổng chi $30; 1 campaign chưa có đơn, 0 campaign ACoS ≥ 50%.",
+   "Campaign chi nhiều nhất: Thu Ngo | Treehouse | SP | Kw | Ph 02122025 ($30)"
+  ],
+  "fix": [
+   "Tạm dừng hoặc hạ bid các campaign chưa có đơn sau khi đã có đủ click; thêm negative keyword cho search term không liên quan."
+  ],
+  "metric": {
+   "spend": 30.38,
+   "n": 1
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-11-02",
+  "note": "",
+  "periods": [
+   "2026-W43",
+   "2026-W44"
+  ],
+  "first_period": "2026-W43",
+  "last_period": "2026-W44",
+  "detected": false,
+  "created": "2026-10-28T00:48:16",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Tự tạo từ phân tích kỳ 2026-W43"
+   },
+   {
+    "t": "2026-11-02T08:34:29",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W44"
+   },
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Kỳ 2026-W45 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "a18d002cb3",
+  "key": "camp|Acacia Lagom Office Desk|Amazon|CAN",
+  "auto": true,
+  "title": "2 campaign chưa hiệu quả ở Acacia Lagom Office Desk · Amazon CAN",
+  "area": "Quảng cáo",
+  "sev": 1,
+  "where": "Acacia Lagom Office Desk · Amazon CAN",
+  "detail": [
+   "Tổng chi $37; 2 campaign chưa có đơn, 0 campaign ACoS ≥ 50%.",
+   "Campaign chi nhiều nhất: Thu Ngo | Lagom | SP | Avd - TDS - SP - Manual - dlevcj6f ($20); Thu Ngo | Lagom | SQP | Walnut - TDS - SP - Default Manual - 65xrt252 ($17)"
+  ],
+  "fix": [
+   "Tạm dừng hoặc hạ bid các campaign chưa có đơn sau khi đã có đủ click; thêm negative keyword cho search term không liên quan."
+  ],
+  "metric": {
+   "spend": 37.120000000000005,
+   "n": 2
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-11-04",
+  "note": "",
+  "periods": [
+   "2026-W43",
+   "2026-W45"
+  ],
+  "first_period": "2026-W43",
+  "last_period": "2026-W45",
+  "detected": true,
+  "created": "2026-10-28T00:48:16",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-10-28T00:48:16",
+    "u": "thungo201094",
+    "x": "Tự tạo từ phân tích kỳ 2026-W43"
+   },
+   {
+    "t": "2026-11-02T08:34:29",
+    "u": "auto",
+    "x": "Kỳ 2026-W44 không còn phát hiện vấn đề này — có thể đóng task"
+   },
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W45"
+   }
+  ]
+ },
+ {
+  "id": "87aea9c2c5",
+  "key": "camp|Acacia - Alma Dinning Table|Wayfair|US",
+  "auto": true,
+  "title": "1 campaign chưa hiệu quả ở Acacia - Alma Dinning Table · Wayfair US",
+  "area": "Quảng cáo",
+  "sev": 2,
+  "where": "Acacia - Alma Dinning Table · Wayfair US",
+  "detail": [
+   "Tổng chi $56; 1 campaign chưa có đơn, 0 campaign ACoS ≥ 50%.",
+   "Campaign chi nhiều nhất: Thu Ngo | Alma Table | SP | ROAS ($56)"
+  ],
+  "fix": [
+   "Tạm dừng hoặc hạ bid các campaign chưa có đơn sau khi đã có đủ click; thêm negative keyword cho search term không liên quan."
+  ],
+  "metric": {
+   "spend": 55.59,
+   "n": 1
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-11-07",
+  "note": "",
+  "periods": [
+   "2026-W44"
+  ],
+  "first_period": "2026-W44",
+  "last_period": "2026-W44",
+  "detected": false,
+  "created": "2026-11-02T08:34:29",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-11-02T08:34:29",
+    "u": "auto",
+    "x": "Tự tạo từ phân tích kỳ 2026-W44"
+   },
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Kỳ 2026-W45 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "632c19617e",
+  "key": "tacos|Acacia Lagom Office Desk|Amazon|CAN",
+  "auto": true,
+  "title": "TACoS 13.7% ở Acacia Lagom Office Desk · Amazon CAN",
+  "area": "Quảng cáo",
+  "sev": 2,
+  "where": "Acacia Lagom Office Desk · Amazon CAN",
+  "detail": [
+   "Chi quảng cáo $47 trên doanh thu $340; 7 campaign."
+  ],
+  "fix": [
+   "Hạ bid hoặc giảm ngân sách campaign có ROAS thấp; dồn ngân sách sang campaign/keyword đang ra đơn."
+  ],
+  "metric": {
+   "spend": 46.58,
+   "tacos": 13.68
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-11-07",
+  "note": "",
+  "periods": [
+   "2026-W44",
+   "2026-W45"
+  ],
+  "first_period": "2026-W44",
+  "last_period": "2026-W45",
+  "detected": true,
+  "created": "2026-11-02T08:34:29",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-11-02T08:34:29",
+    "u": "auto",
+    "x": "Tự tạo từ phân tích kỳ 2026-W44"
+   },
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Vấn đề vẫn còn ở kỳ 2026-W45"
+   }
+  ]
+ },
+ {
+  "id": "74a33241ef",
+  "key": "pl5_missing",
+  "auto": true,
+  "title": "1 SKU có doanh thu nhưng chưa có công thức phí trong file P&L",
+  "area": "Dữ liệu",
+  "sev": 2,
+  "where": "File P&L (rate card)",
+  "detail": [
+   "SKU: CQPN",
+   "Độ phủ P&L hiện 99.8%."
+  ],
+  "fix": [
+   "Bổ sung dòng SKU còn thiếu vào sheet kênh tương ứng của file P&L rồi build lại để margin đầy đủ."
+  ],
+  "metric": {
+   "n": 1
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-11-07",
+  "note": "",
+  "periods": [
+   "2026-W44"
+  ],
+  "first_period": "2026-W44",
+  "last_period": "2026-W44",
+  "detected": false,
+  "created": "2026-11-02T08:34:29",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-11-02T08:34:29",
+    "u": "auto",
+    "x": "Tự tạo từ phân tích kỳ 2026-W44"
+   },
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Kỳ 2026-W45 không còn phát hiện vấn đề này — có thể đóng task"
+   }
+  ]
+ },
+ {
+  "id": "282a199fbb",
+  "key": "drop|Acacia - Emery - Wooden Bed Frame with Headboard|Wayfair|CAN",
+  "auto": true,
+  "title": "Doanh thu tuần của Acacia - Emery - Wooden Bed Frame with Headboard · Wayfair CAN chưa giữ được mức tuần trước",
+  "area": "Doanh số",
+  "sev": 2,
+  "where": "Acacia - Emery - Wooden Bed Frame with Headboard · Wayfair CAN",
+  "detail": [
+   "Tuần này $1,031 so với $3,604 tuần trước (-71%)."
+  ],
+  "fix": [
+   "Kiểm tra trạng thái listing (active, giá, buy box/ranking) và so với tuần trước."
+  ],
+  "metric": {
+   "r": 1030.94,
+   "r_prev": 3603.95,
+   "d_w": -71.39
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-11-16",
+  "note": "",
+  "periods": [
+   "2026-W45"
+  ],
+  "first_period": "2026-W45",
+  "last_period": "2026-W45",
+  "detected": true,
+  "created": "2026-11-11T07:40:27",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Tự tạo từ phân tích kỳ 2026-W45"
+   }
+  ]
+ },
+ {
+  "id": "8f00138f3e",
+  "key": "drop|Aurora - Wooden Bed Frame With Headboard|Amazon|CAN",
+  "auto": true,
+  "title": "Doanh thu tuần của Aurora - Wooden Bed Frame With Headboard · Amazon CAN chưa giữ được mức tuần trước",
+  "area": "Doanh số",
+  "sev": 2,
+  "where": "Aurora - Wooden Bed Frame With Headboard · Amazon CAN",
+  "detail": [
+   "Tuần này $2,102 so với $3,234 tuần trước (-35%)."
+  ],
+  "fix": [
+   "Kiểm tra trạng thái listing (active, giá, buy box/ranking) và so với tuần trước."
+  ],
+  "metric": {
+   "r": 2102.41,
+   "r_prev": 3233.71,
+   "d_w": -34.98
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-11-16",
+  "note": "",
+  "periods": [
+   "2026-W45"
+  ],
+  "first_period": "2026-W45",
+  "last_period": "2026-W45",
+  "detected": true,
+  "created": "2026-11-11T07:40:27",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Tự tạo từ phân tích kỳ 2026-W45"
+   }
+  ]
+ },
+ {
+  "id": "f2637c08ea",
+  "key": "drop|Acacia Verve Dining Table|Shopify|US",
+  "auto": true,
+  "title": "Doanh thu tuần của Acacia Verve Dining Table · Shopify US chưa giữ được mức tuần trước",
+  "area": "Doanh số",
+  "sev": 2,
+  "where": "Acacia Verve Dining Table · Shopify US",
+  "detail": [
+   "Tuần này $0 so với $498 tuần trước (-100%).",
+   "Chưa có báo cáo quảng cáo của Shopify nên chưa đánh giá được vai trò của quảng cáo."
+  ],
+  "fix": [
+   "Kiểm tra trạng thái listing (active, giá, buy box/ranking) và so với tuần trước."
+  ],
+  "metric": {
+   "r": 0.0,
+   "r_prev": 498.0,
+   "d_w": -100.0
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-11-16",
+  "note": "",
+  "periods": [
+   "2026-W45"
+  ],
+  "first_period": "2026-W45",
+  "last_period": "2026-W45",
+  "detected": true,
+  "created": "2026-11-11T07:40:27",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Tự tạo từ phân tích kỳ 2026-W45"
+   }
+  ]
+ },
+ {
+  "id": "b7e4c105f5",
+  "key": "tacos|Aurora - Wooden Bed Frame With Headboard|Amazon|CAN",
+  "auto": true,
+  "title": "TACoS 11.6% ở Aurora - Wooden Bed Frame With Headboard · Amazon CAN",
+  "area": "Quảng cáo",
+  "sev": 2,
+  "where": "Aurora - Wooden Bed Frame With Headboard · Amazon CAN",
+  "detail": [
+   "Chi quảng cáo $244 trên doanh thu $2,102; 10 campaign."
+  ],
+  "fix": [
+   "Hạ bid hoặc giảm ngân sách campaign có ROAS thấp; dồn ngân sách sang campaign/keyword đang ra đơn."
+  ],
+  "metric": {
+   "spend": 243.93,
+   "tacos": 11.6
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-11-16",
+  "note": "",
+  "periods": [
+   "2026-W45"
+  ],
+  "first_period": "2026-W45",
+  "last_period": "2026-W45",
+  "detected": true,
+  "created": "2026-11-11T07:40:27",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Tự tạo từ phân tích kỳ 2026-W45"
+   }
+  ]
+ },
+ {
+  "id": "eca38de2c3",
+  "key": "tacos|Acacia - Emery - Wooden Bed Frame with Headboard|Amazon|CAN",
+  "auto": true,
+  "title": "TACoS 21.2% ở Acacia - Emery - Wooden Bed Frame with Headboard · Amazon CAN",
+  "area": "Quảng cáo",
+  "sev": 2,
+  "where": "Acacia - Emery - Wooden Bed Frame with Headboard · Amazon CAN",
+  "detail": [
+   "Chi quảng cáo $67 trên doanh thu $315; 12 campaign."
+  ],
+  "fix": [
+   "Hạ bid hoặc giảm ngân sách campaign có ROAS thấp; dồn ngân sách sang campaign/keyword đang ra đơn."
+  ],
+  "metric": {
+   "spend": 66.95,
+   "tacos": 21.23
+  },
+  "status": "todo",
+  "owner": "Ngô Thị Anh Thư",
+  "due": "2026-11-16",
+  "note": "",
+  "periods": [
+   "2026-W45"
+  ],
+  "first_period": "2026-W45",
+  "last_period": "2026-W45",
+  "detected": true,
+  "created": "2026-11-11T07:40:27",
+  "updated": "2026-11-11T07:40:27",
+  "log": [
+   {
+    "t": "2026-11-11T07:40:27",
+    "u": "auto",
+    "x": "Tự tạo từ phân tích kỳ 2026-W45"
+   }
+  ]
+ }
+]

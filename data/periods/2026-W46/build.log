@@ -1,0 +1,36 @@
+[mẫu report] Gọn v4.2 (gn-v4-2-c3733d)
+[etl] Chạy etl/custom_build.py ...
+[fx] dùng tỷ giá constant-currency của kỳ trước (D.fx.rates)
+[sales] file 2026-11-01→2026-11-30, 30 ngày, 53495 dòng
+[sales] CẢNH BÁO: kỳ trước là W45, kỳ này là W48 — thiếu 2 tuần ở giữa.
+[sales] tuần W48: 2026-11-22 → 2026-11-28
+[sales] W48: q=0 r=0.00 USD rfc=714351.43 ach=0.0%
+[inv] phạm vi: 71 SKU, gộp kit: ['B4F1', 'GDWQ']
+[inv] invdet: nsku=41 qty_total=5264 dòng≠0=196 âm=7
+[inv] invacct: 13 tổ hợp, 87 dòng chi tiết, qty_total=2224
+[lt] Thiếu file tuổi tồn kho (có CastleGate ['ARZ', 'DHI', 'MS'], FBA []) — GIỮ NGUYÊN lt của kỳ trước.
+[lỗi]
+Traceback (most recent call last):
+  File "/Users/quangha/Desktop/App Manage report/report_manager/server.py", line 213, in build_period
+    data = build_data(ctx)
+  File "/Users/quangha/Desktop/App Manage report/report_manager/etl/pipeline.py", line 41, in build_data
+    return mod.build(ctx)
+  File "/Users/quangha/Desktop/App Manage report/report_manager/etl/custom_build.py", line 74, in build
+    A = adsm.build_ads(files, S, D, rt, d0, d1, log=log)
+  File "/Users/quangha/Desktop/App Manage report/report_manager/etl/ads.py", line 238, in build_ads
+    wf = {a: read_wf(p, d0, d1) for a, p in files["wf_CR"].items()}
+  File "/Users/quangha/Desktop/App Manage report/report_manager/etl/ads.py", line 238, in <dictcomp>
+    wf = {a: read_wf(p, d0, d1) for a, p in files["wf_CR"].items()}
+  File "/Users/quangha/Desktop/App Manage report/report_manager/etl/ads.py", line 54, in read_wf
+    c = _read_any(path)
+  File "/Users/quangha/Desktop/App Manage report/report_manager/etl/ads.py", line 49, in _read_any
+    return pd.read_excel(path, **kw)
+  File "/Users/quangha/Library/Python/3.9/lib/python/site-packages/pandas/io/excel/_base.py", line 495, in read_excel
+    io = ExcelFile(
+  File "/Users/quangha/Library/Python/3.9/lib/python/site-packages/pandas/io/excel/_base.py", line 1550, in __init__
+    ext = inspect_excel_format(
+  File "/Users/quangha/Library/Python/3.9/lib/python/site-packages/pandas/io/excel/_base.py", line 1402, in inspect_excel_format
+    with get_handle(
+  File "/Users/quangha/Library/Python/3.9/lib/python/site-packages/pandas/io/common.py", line 882, in get_handle
+    handle = open(handle, ioargs.mode)
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/quangha/Desktop/App Manage report/report_manager/data/periods/2026-W46/uploads/wf_megsu_CR__MS_CR__10_.xlsx'

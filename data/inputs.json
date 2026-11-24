@@ -1,0 +1,4154 @@
+{
+ "skus": {
+  "V9Z2": {
+   "src": {
+    "cost": "pl",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 206.64,
+   "lead": 58,
+   "moq": 40,
+   "safety": 14
+  },
+  "GDWQ": {
+   "src": {
+    "cost": "pl",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 393.24,
+   "lead": 45,
+   "moq": 50,
+   "safety": 14
+  },
+  "K6ZW": {
+   "src": {
+    "cost": "pl",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 185.79,
+   "lead": 43,
+   "moq": 20,
+   "safety": 14
+  },
+  "H5N8": {
+   "src": {
+    "cost": "pl",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 229.35,
+   "lead": 45,
+   "moq": 50,
+   "safety": 14
+  },
+  "G45U": {
+   "src": {
+    "cost": "pl",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 202.52,
+   "lead": 49,
+   "moq": 60,
+   "safety": 14
+  },
+  "F708": {
+   "src": {
+    "cost": "pl",
+    "lead": "user",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 193.56,
+   "lead": 45,
+   "moq": 20,
+   "safety": 14
+  },
+  "R1SU": {
+   "src": {
+    "cost": "pl",
+    "lead": "user",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 161.08,
+   "lead": 30,
+   "moq": 60,
+   "safety": 14
+  },
+  "BKM8": {
+   "src": {
+    "cost": "pl",
+    "lead": "user",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 186.25,
+   "lead": 46,
+   "moq": 20,
+   "safety": 14
+  },
+  "B4F1": {
+   "src": {
+    "cost": "pl",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 393.44,
+   "lead": 40,
+   "moq": 50,
+   "safety": 14
+  },
+  "A9KU": {
+   "src": {
+    "cost": "pl",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 203.05,
+   "lead": 47,
+   "moq": 20,
+   "safety": 14
+  },
+  "RZV9": {
+   "src": {
+    "cost": "pl",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 208.26,
+   "lead": 48,
+   "moq": 60,
+   "safety": 14
+  },
+  "BDPV": {
+   "src": {
+    "cost": "pl",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 135.61,
+   "lead": 39,
+   "moq": 30,
+   "safety": 14
+  },
+  "UV19": {
+   "src": {
+    "cost": "pl",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 116.8,
+   "lead": 42,
+   "moq": 40,
+   "safety": 14
+  },
+  "CHV2": {
+   "src": {
+    "cost": "pl",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 206.53,
+   "lead": 58,
+   "moq": 40,
+   "safety": 14
+  },
+  "AZM2": {
+   "src": {
+    "cost": "pl",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 140.62,
+   "lead": 40,
+   "moq": 30,
+   "safety": 14
+  },
+  "VUM2": {
+   "src": {
+    "cost": "pl",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 117.1,
+   "lead": 41,
+   "moq": 20,
+   "safety": 14
+  },
+  "YSPY": {
+   "src": {
+    "cost": "pl",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 205.28,
+   "lead": 51,
+   "moq": 30,
+   "safety": 14
+  },
+  "F2KE": {
+   "src": {
+    "cost": "pl",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 217.33,
+   "lead": 56,
+   "moq": 20,
+   "safety": 14
+  },
+  "HMXC": {
+   "src": {
+    "cost": "pl",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 191.55,
+   "lead": 45,
+   "moq": 60,
+   "safety": 14
+  },
+  "KY7W": {
+   "src": {
+    "cost": "pl",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 190.13,
+   "lead": 60,
+   "moq": 50,
+   "safety": 14
+  },
+  "LDRW": {
+   "src": {
+    "cost": "user",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 195.04,
+   "lead": 40,
+   "moq": 30,
+   "safety": 14
+  },
+  "CQPN": {
+   "src": {
+    "cost": "pl",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 152.83,
+   "lead": 43,
+   "moq": 40,
+   "safety": 14
+  },
+  "M600": {
+   "src": {
+    "cost": "pl",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 196.66,
+   "lead": 60,
+   "moq": 20,
+   "safety": 14
+  },
+  "HFSS": {
+   "src": {
+    "cost": "pl",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 163.68,
+   "lead": 39,
+   "moq": 60,
+   "safety": 14
+  },
+  "R1AE": {
+   "src": {
+    "cost": "pl",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 159.41,
+   "lead": 44,
+   "moq": 20,
+   "safety": 14
+  },
+  "NE6D": {
+   "src": {
+    "cost": "pl",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 224.82,
+   "lead": 49,
+   "moq": 40,
+   "safety": 14
+  },
+  "S0YE": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 103.8,
+   "lead": 57,
+   "moq": 20,
+   "safety": 14
+  },
+  "SRY2": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 114.05,
+   "lead": 51,
+   "moq": 50,
+   "safety": 14
+  },
+  "EHMJ": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 100.92,
+   "lead": 59,
+   "moq": 50,
+   "safety": 14
+  },
+  "VX1H": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 104.2,
+   "lead": 50,
+   "moq": 40,
+   "safety": 14
+  },
+  "TTRF": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 118.22,
+   "lead": 59,
+   "moq": 60,
+   "safety": 14
+  },
+  "BZ3T": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 86.71,
+   "lead": 58,
+   "moq": 40,
+   "safety": 14
+  },
+  "WXY7": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 76.47,
+   "lead": 60,
+   "moq": 40,
+   "safety": 14
+  },
+  "SFQH": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 116.9,
+   "lead": 37,
+   "moq": 60,
+   "safety": 14
+  },
+  "TKAU": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 151.2,
+   "lead": 37,
+   "moq": 60,
+   "safety": 14
+  },
+  "T1XS": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 93.16,
+   "lead": 59,
+   "moq": 40,
+   "safety": 14
+  },
+  "MP2S": {
+   "src": {
+    "cost": "pl",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 221.2,
+   "lead": 37,
+   "moq": 60,
+   "safety": 14
+  },
+  "RR31": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 105.49,
+   "lead": 41,
+   "moq": 30,
+   "safety": 14
+  },
+  "ZDY4": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 105.49,
+   "lead": 40,
+   "moq": 50,
+   "safety": 14
+  },
+  "UQ1R": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 75.83,
+   "lead": 60,
+   "moq": 60,
+   "safety": 14
+  },
+  "RC26": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 90.94,
+   "lead": 56,
+   "moq": 30,
+   "safety": 14
+  },
+  "E0US": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 85.67,
+   "lead": 49,
+   "moq": 60,
+   "safety": 14
+  },
+  "U73Q": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 99.79,
+   "lead": 41,
+   "moq": 40,
+   "safety": 14
+  },
+  "GDWQ-1": {
+   "src": {
+    "cost": "pl",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 122.2,
+   "lead": 39,
+   "moq": 60,
+   "safety": 14
+  },
+  "Q0F5": {
+   "src": {
+    "cost": "pl",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 196.66,
+   "lead": 30,
+   "moq": 40,
+   "safety": 14
+  },
+  "FU8U": {
+   "src": {
+    "cost": "pl",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 181.6,
+   "lead": 35,
+   "moq": 20,
+   "safety": 14
+  },
+  "B4F1-2": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 125.0,
+   "lead": 54,
+   "moq": 30,
+   "safety": 14
+  },
+  "V08K": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 74.02,
+   "lead": 48,
+   "moq": 30,
+   "safety": 14
+  },
+  "ADN1": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 116.85,
+   "lead": 52,
+   "moq": 60,
+   "safety": 14
+  },
+  "BF0E": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 126.87,
+   "lead": 45,
+   "moq": 50,
+   "safety": 14
+  },
+  "LX32": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 86.53,
+   "lead": 44,
+   "moq": 30,
+   "safety": 14
+  },
+  "U6G4": {
+   "src": {
+    "cost": "pl",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 130.9,
+   "lead": 54,
+   "moq": 50,
+   "safety": 14
+  },
+  "XQG1": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 93.16,
+   "lead": 31,
+   "moq": 20,
+   "safety": 14
+  },
+  "R9SM": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 85.67,
+   "lead": 38,
+   "moq": 50,
+   "safety": 14
+  },
+  "GDWQ-3": {
+   "src": {
+    "cost": "pl",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 130.19,
+   "lead": 52,
+   "moq": 50,
+   "safety": 14
+  },
+  "TRAJ": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 116.9,
+   "lead": 50,
+   "moq": 40,
+   "safety": 14
+  },
+  "T68L": {
+   "src": {
+    "cost": "pl",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 181.6,
+   "lead": 31,
+   "moq": 60,
+   "safety": 14
+  },
+  "BJFA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 101.88,
+   "lead": 31,
+   "moq": 20,
+   "safety": 14
+  },
+  "QED1": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 61.5,
+   "lead": 50,
+   "moq": 40,
+   "safety": 14
+  },
+  "UKHE": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 97.5,
+   "lead": 40,
+   "moq": 40,
+   "safety": 14
+  },
+  "NKEP": {
+   "src": {
+    "cost": "pl",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 130.99,
+   "lead": 53,
+   "moq": 40,
+   "safety": 14
+  },
+  "PXLS": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 123.98,
+   "lead": 58,
+   "moq": 40,
+   "safety": 14
+  },
+  "RLRA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 123.98,
+   "lead": 58,
+   "moq": 60,
+   "safety": 14
+  },
+  "JF2G": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 151.2,
+   "lead": 34,
+   "moq": 30,
+   "safety": 14
+  },
+  "X5DV": {
+   "src": {
+    "cost": "pl",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 141.48,
+   "lead": 40,
+   "moq": 60,
+   "safety": 14
+  },
+  "KKHV": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 90.94,
+   "lead": 45,
+   "moq": 40,
+   "safety": 14
+  },
+  "XBZ2": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 151.2,
+   "lead": 48,
+   "moq": 30,
+   "safety": 14
+  },
+  "B4F1-1": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 131.25,
+   "lead": 41,
+   "moq": 50,
+   "safety": 14
+  },
+  "V0B3": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 123.98,
+   "lead": 55,
+   "moq": 50,
+   "safety": 14
+  },
+  "YHS8": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 88.83,
+   "lead": 53,
+   "moq": 50,
+   "safety": 14
+  },
+  "QCER": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 80.16,
+   "lead": 35,
+   "moq": 20,
+   "safety": 14
+  },
+  "B4F1-3": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 137.5,
+   "lead": 41,
+   "moq": 30,
+   "safety": 14
+  },
+  "WFG1": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 180.6,
+   "lead": 36,
+   "moq": 30,
+   "safety": 14
+  },
+  "FXT2": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 100.92,
+   "lead": 49,
+   "moq": 50,
+   "safety": 14
+  },
+  "WN2S": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 76.14,
+   "lead": 56,
+   "moq": 30,
+   "safety": 14
+  },
+  "LXA2": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 99.79,
+   "lead": 53,
+   "moq": 60,
+   "safety": 14
+  },
+  "GDWQ-2": {
+   "src": {
+    "cost": "pl",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 138.79,
+   "lead": 53,
+   "moq": 40,
+   "safety": 14
+  },
+  "VZM4": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 52.5,
+   "lead": 32,
+   "moq": 50,
+   "safety": 14
+  },
+  "QEK2": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 55.5,
+   "lead": 54,
+   "moq": 50,
+   "safety": 14
+  },
+  "QS0L": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 63.0,
+   "lead": 52,
+   "moq": 20,
+   "safety": 14
+  },
+  "X60X": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 52.5,
+   "lead": 54,
+   "moq": 60,
+   "safety": 14
+  },
+  "WT0D": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 63.0,
+   "lead": 38,
+   "moq": 60,
+   "safety": 14
+  },
+  "HYGG": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 54.0,
+   "lead": 55,
+   "moq": 30,
+   "safety": 14
+  },
+  "NTC-123-CA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 67.5,
+   "lead": 53,
+   "moq": 60,
+   "safety": 14
+  },
+  "BL02": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 66.0,
+   "lead": 44,
+   "moq": 40,
+   "safety": 14
+  },
+  "T5MA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 54.0,
+   "lead": 37,
+   "moq": 40,
+   "safety": 14
+  },
+  "CNGJ": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 55.5,
+   "lead": 31,
+   "moq": 50,
+   "safety": 14
+  },
+  "T4Q2": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 61.5,
+   "lead": 41,
+   "moq": 30,
+   "safety": 14
+  },
+  "ASD3": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 60.0,
+   "lead": 46,
+   "moq": 20,
+   "safety": 14
+  },
+  "R3KW": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 58.5,
+   "lead": 34,
+   "moq": 30,
+   "safety": 14
+  },
+  "ZHTN": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 60.0,
+   "lead": 49,
+   "moq": 30,
+   "safety": 14
+  },
+  "WWPX": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 52.5,
+   "lead": 55,
+   "moq": 50,
+   "safety": 14
+  },
+  "T9BQ": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 57.0,
+   "lead": 42,
+   "moq": 20,
+   "safety": 14
+  },
+  "NTC-96-CA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 58.5,
+   "lead": 59,
+   "moq": 50,
+   "safety": 14
+  },
+  "JD5P": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 66.0,
+   "lead": 49,
+   "moq": 50,
+   "safety": 14
+  },
+  "B1EM": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 66.0,
+   "lead": 50,
+   "moq": 20,
+   "safety": 14
+  },
+  "NKRR": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 58.5,
+   "lead": 47,
+   "moq": 20,
+   "safety": 14
+  },
+  "HLP4": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 52.5,
+   "lead": 58,
+   "moq": 50,
+   "safety": 14
+  },
+  "NTC-54-CA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 60.0,
+   "lead": 57,
+   "moq": 50,
+   "safety": 14
+  },
+  "NTC-65-CA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 61.5,
+   "lead": 31,
+   "moq": 20,
+   "safety": 14
+  },
+  "RPPQ": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 54.0,
+   "lead": 56,
+   "moq": 40,
+   "safety": 14
+  },
+  "QB3K": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 57.0,
+   "lead": 51,
+   "moq": 60,
+   "safety": 14
+  },
+  "CVYY": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 60.0,
+   "lead": 59,
+   "moq": 60,
+   "safety": 14
+  },
+  "SVDD": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 55.5,
+   "lead": 30,
+   "moq": 20,
+   "safety": 14
+  },
+  "ARJY": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 61.5,
+   "lead": 51,
+   "moq": 60,
+   "safety": 14
+  },
+  "WLJA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 57.0,
+   "lead": 53,
+   "moq": 40,
+   "safety": 14
+  },
+  "QF7W": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 66.0,
+   "lead": 37,
+   "moq": 50,
+   "safety": 14
+  },
+  "F3JS": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 61.5,
+   "lead": 38,
+   "moq": 60,
+   "safety": 14
+  },
+  "PN10": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 61.5,
+   "lead": 48,
+   "moq": 40,
+   "safety": 14
+  },
+  "JG1E": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 61.5,
+   "lead": 55,
+   "moq": 50,
+   "safety": 14
+  },
+  "J6YQ": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 64.5,
+   "lead": 57,
+   "moq": 60,
+   "safety": 14
+  },
+  "MP8Q": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 67.5,
+   "lead": 34,
+   "moq": 40,
+   "safety": 14
+  },
+  "NTC-53-CA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 55.5,
+   "lead": 55,
+   "moq": 20,
+   "safety": 14
+  },
+  "FDEN": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 66.0,
+   "lead": 60,
+   "moq": 30,
+   "safety": 14
+  },
+  "NTC-41-CA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 64.5,
+   "lead": 45,
+   "moq": 40,
+   "safety": 14
+  },
+  "JNTE": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 52.5,
+   "lead": 39,
+   "moq": 50,
+   "safety": 14
+  },
+  "NTC-110-CA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 63.0,
+   "lead": 47,
+   "moq": 30,
+   "safety": 14
+  },
+  "W7ZN": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 67.5,
+   "lead": 39,
+   "moq": 50,
+   "safety": 14
+  },
+  "UR5A": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 60.0,
+   "lead": 36,
+   "moq": 60,
+   "safety": 14
+  },
+  "TMJQ": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 52.5,
+   "lead": 56,
+   "moq": 40,
+   "safety": 14
+  },
+  "VD5L": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 64.5,
+   "lead": 32,
+   "moq": 20,
+   "safety": 14
+  },
+  "NTC-50-CA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 63.0,
+   "lead": 38,
+   "moq": 30,
+   "safety": 14
+  },
+  "ZQQ9": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 64.5,
+   "lead": 42,
+   "moq": 60,
+   "safety": 14
+  },
+  "U0X9": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 67.5,
+   "lead": 58,
+   "moq": 20,
+   "safety": 14
+  },
+  "XZ03": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 52.5,
+   "lead": 38,
+   "moq": 30,
+   "safety": 14
+  },
+  "NTC-90-CA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 60.0,
+   "lead": 60,
+   "moq": 30,
+   "safety": 14
+  },
+  "TQ4S": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 67.5,
+   "lead": 37,
+   "moq": 40,
+   "safety": 14
+  },
+  "GQN3": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 57.0,
+   "lead": 31,
+   "moq": 40,
+   "safety": 14
+  },
+  "UD5S": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 52.5,
+   "lead": 34,
+   "moq": 20,
+   "safety": 14
+  },
+  "FR76": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 60.0,
+   "lead": 57,
+   "moq": 20,
+   "safety": 14
+  },
+  "LFSE": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 64.5,
+   "lead": 48,
+   "moq": 50,
+   "safety": 14
+  },
+  "QCGK": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 58.5,
+   "lead": 33,
+   "moq": 40,
+   "safety": 14
+  },
+  "ER6C": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 54.0,
+   "lead": 49,
+   "moq": 50,
+   "safety": 14
+  },
+  "CAZF": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 63.0,
+   "lead": 54,
+   "moq": 50,
+   "safety": 14
+  },
+  "GVU9": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 52.5,
+   "lead": 33,
+   "moq": 30,
+   "safety": 14
+  },
+  "KTZH": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 67.5,
+   "lead": 40,
+   "moq": 20,
+   "safety": 14
+  },
+  "E1AH": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 60.0,
+   "lead": 43,
+   "moq": 30,
+   "safety": 14
+  },
+  "BSXG": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 57.0,
+   "lead": 57,
+   "moq": 30,
+   "safety": 14
+  },
+  "GF3E": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 66.0,
+   "lead": 50,
+   "moq": 40,
+   "safety": 14
+  },
+  "HRVJ": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 54.0,
+   "lead": 59,
+   "moq": 50,
+   "safety": 14
+  },
+  "EZT0": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 54.0,
+   "lead": 52,
+   "moq": 20,
+   "safety": 14
+  },
+  "D55U": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 57.0,
+   "lead": 52,
+   "moq": 60,
+   "safety": 14
+  },
+  "Y99N": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 67.5,
+   "lead": 49,
+   "moq": 20,
+   "safety": 14
+  },
+  "TTDM": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 58.5,
+   "lead": 56,
+   "moq": 20,
+   "safety": 14
+  },
+  "VAHN": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 66.0,
+   "lead": 57,
+   "moq": 30,
+   "safety": 14
+  },
+  "M4NG": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 58.5,
+   "lead": 49,
+   "moq": 50,
+   "safety": 14
+  },
+  "P3LT": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 57.0,
+   "lead": 56,
+   "moq": 50,
+   "safety": 14
+  },
+  "DU2J": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 60.0,
+   "lead": 40,
+   "moq": 60,
+   "safety": 14
+  },
+  "VJJK": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 52.5,
+   "lead": 41,
+   "moq": 20,
+   "safety": 14
+  },
+  "UPX8": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 57.0,
+   "lead": 50,
+   "moq": 60,
+   "safety": 14
+  },
+  "NTC-111-CA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 60.0,
+   "lead": 57,
+   "moq": 20,
+   "safety": 14
+  },
+  "NTC-103-CA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 63.0,
+   "lead": 51,
+   "moq": 50,
+   "safety": 14
+  },
+  "NEHD": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 60.0,
+   "lead": 51,
+   "moq": 40,
+   "safety": 14
+  },
+  "NTC-48-CA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 61.5,
+   "lead": 55,
+   "moq": 30,
+   "safety": 14
+  },
+  "SSLW": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 55.5,
+   "lead": 34,
+   "moq": 50,
+   "safety": 14
+  },
+  "GX59": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 63.0,
+   "lead": 54,
+   "moq": 30,
+   "safety": 14
+  },
+  "ESV8": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 58.5,
+   "lead": 40,
+   "moq": 20,
+   "safety": 14
+  },
+  "PG4R": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 63.0,
+   "lead": 47,
+   "moq": 60,
+   "safety": 14
+  },
+  "RM3D": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 63.0,
+   "lead": 50,
+   "moq": 40,
+   "safety": 14
+  },
+  "MH1B": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 52.5,
+   "lead": 53,
+   "moq": 20,
+   "safety": 14
+  },
+  "CEXB": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 67.5,
+   "lead": 44,
+   "moq": 60,
+   "safety": 14
+  },
+  "S625": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 57.0,
+   "lead": 46,
+   "moq": 40,
+   "safety": 14
+  },
+  "YJH2": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 57.0,
+   "lead": 32,
+   "moq": 30,
+   "safety": 14
+  },
+  "WMZD": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 67.5,
+   "lead": 30,
+   "moq": 50,
+   "safety": 14
+  },
+  "U0WR": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 66.0,
+   "lead": 42,
+   "moq": 30,
+   "safety": 14
+  },
+  "F8BM": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 60.0,
+   "lead": 54,
+   "moq": 40,
+   "safety": 14
+  },
+  "UGHB": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 60.0,
+   "lead": 41,
+   "moq": 30,
+   "safety": 14
+  },
+  "JCYD": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 64.5,
+   "lead": 48,
+   "moq": 50,
+   "safety": 14
+  },
+  "DW9M": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 61.5,
+   "lead": 42,
+   "moq": 50,
+   "safety": 14
+  },
+  "TLR8": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 66.0,
+   "lead": 33,
+   "moq": 60,
+   "safety": 14
+  },
+  "TVBY": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 60.0,
+   "lead": 41,
+   "moq": 60,
+   "safety": 14
+  },
+  "JF3H": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 54.0,
+   "lead": 32,
+   "moq": 30,
+   "safety": 14
+  },
+  "L3P3": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 66.0,
+   "lead": 54,
+   "moq": 30,
+   "safety": 14
+  },
+  "PLZ3": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 66.0,
+   "lead": 51,
+   "moq": 50,
+   "safety": 14
+  },
+  "TXSW": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 57.0,
+   "lead": 57,
+   "moq": 60,
+   "safety": 14
+  },
+  "ZGX3": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 67.5,
+   "lead": 58,
+   "moq": 40,
+   "safety": 14
+  },
+  "D5BS": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 63.0,
+   "lead": 51,
+   "moq": 30,
+   "safety": 14
+  },
+  "H4ZN": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 55.5,
+   "lead": 54,
+   "moq": 40,
+   "safety": 14
+  },
+  "BWL6": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 66.0,
+   "lead": 41,
+   "moq": 20,
+   "safety": 14
+  },
+  "LTZJ": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 55.5,
+   "lead": 52,
+   "moq": 50,
+   "safety": 14
+  },
+  "J61H": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 58.5,
+   "lead": 42,
+   "moq": 60,
+   "safety": 14
+  },
+  "WHA0": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 67.5,
+   "lead": 48,
+   "moq": 30,
+   "safety": 14
+  },
+  "R3NA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 61.5,
+   "lead": 54,
+   "moq": 60,
+   "safety": 14
+  },
+  "EHLJ": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 52.5,
+   "lead": 42,
+   "moq": 30,
+   "safety": 14
+  },
+  "D2YH": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 64.5,
+   "lead": 57,
+   "moq": 40,
+   "safety": 14
+  },
+  "NTC-22-CA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 60.0,
+   "lead": 45,
+   "moq": 50,
+   "safety": 14
+  },
+  "KXJB": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 58.5,
+   "lead": 51,
+   "moq": 20,
+   "safety": 14
+  },
+  "U3ZA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 63.0,
+   "lead": 31,
+   "moq": 20,
+   "safety": 14
+  },
+  "LBJT": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 67.5,
+   "lead": 39,
+   "moq": 30,
+   "safety": 14
+  },
+  "YW2N": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 63.0,
+   "lead": 41,
+   "moq": 50,
+   "safety": 14
+  },
+  "SJYZ": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 60.0,
+   "lead": 39,
+   "moq": 50,
+   "safety": 14
+  },
+  "MGC4": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 63.0,
+   "lead": 57,
+   "moq": 30,
+   "safety": 14
+  },
+  "NTC-33-CA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 54.0,
+   "lead": 39,
+   "moq": 20,
+   "safety": 14
+  },
+  "G5YR": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 61.5,
+   "lead": 51,
+   "moq": 30,
+   "safety": 14
+  },
+  "N9N0": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 61.5,
+   "lead": 33,
+   "moq": 20,
+   "safety": 14
+  },
+  "WUUS": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 54.0,
+   "lead": 47,
+   "moq": 20,
+   "safety": 14
+  },
+  "F30B": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 55.5,
+   "lead": 50,
+   "moq": 20,
+   "safety": 14
+  },
+  "R1S8": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 61.5,
+   "lead": 32,
+   "moq": 60,
+   "safety": 14
+  },
+  "ASQP": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 54.0,
+   "lead": 55,
+   "moq": 60,
+   "safety": 14
+  },
+  "L4ER": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 66.0,
+   "lead": 58,
+   "moq": 50,
+   "safety": 14
+  },
+  "NTC-102-CA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 60.0,
+   "lead": 40,
+   "moq": 60,
+   "safety": 14
+  },
+  "GPUK": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 66.0,
+   "lead": 34,
+   "moq": 40,
+   "safety": 14
+  },
+  "KZ9X": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 54.0,
+   "lead": 45,
+   "moq": 40,
+   "safety": 14
+  },
+  "K86C": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 61.5,
+   "lead": 60,
+   "moq": 30,
+   "safety": 14
+  },
+  "RMT6": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 66.0,
+   "lead": 34,
+   "moq": 30,
+   "safety": 14
+  },
+  "HCSV": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 55.5,
+   "lead": 36,
+   "moq": 40,
+   "safety": 14
+  },
+  "HCPU": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 61.5,
+   "lead": 60,
+   "moq": 30,
+   "safety": 14
+  },
+  "NTC-34-CA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 67.5,
+   "lead": 44,
+   "moq": 40,
+   "safety": 14
+  },
+  "NTC-37-CA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 54.0,
+   "lead": 51,
+   "moq": 20,
+   "safety": 14
+  },
+  "EWJ5": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 67.5,
+   "lead": 42,
+   "moq": 30,
+   "safety": 14
+  },
+  "R1T8": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 55.5,
+   "lead": 59,
+   "moq": 30,
+   "safety": 14
+  },
+  "NTC-69-CA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 67.5,
+   "lead": 36,
+   "moq": 60,
+   "safety": 14
+  },
+  "SV4E": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 67.5,
+   "lead": 55,
+   "moq": 40,
+   "safety": 14
+  },
+  "AFQP": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 55.5,
+   "lead": 30,
+   "moq": 40,
+   "safety": 14
+  },
+  "NTC-130-CA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 58.5,
+   "lead": 31,
+   "moq": 50,
+   "safety": 14
+  },
+  "SEVB": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 67.5,
+   "lead": 46,
+   "moq": 40,
+   "safety": 14
+  },
+  "NTC-49-CA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 61.5,
+   "lead": 53,
+   "moq": 60,
+   "safety": 14
+  },
+  "NTC-27-CA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 64.5,
+   "lead": 44,
+   "moq": 30,
+   "safety": 14
+  },
+  "TDC5": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 60.0,
+   "lead": 43,
+   "moq": 50,
+   "safety": 14
+  },
+  "JQLY": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 60.0,
+   "lead": 34,
+   "moq": 50,
+   "safety": 14
+  },
+  "CV94": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 60.0,
+   "lead": 34,
+   "moq": 40,
+   "safety": 14
+  },
+  "LNHS": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 60.0,
+   "lead": 44,
+   "moq": 40,
+   "safety": 14
+  },
+  "NTC-202-CA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 58.5,
+   "lead": 31,
+   "moq": 40,
+   "safety": 14
+  },
+  "PFX9": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 55.5,
+   "lead": 45,
+   "moq": 40,
+   "safety": 14
+  },
+  "JSM7": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 55.5,
+   "lead": 57,
+   "moq": 60,
+   "safety": 14
+  },
+  "NTC-38-CA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 67.5,
+   "lead": 43,
+   "moq": 50,
+   "safety": 14
+  },
+  "U34Y": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 63.0,
+   "lead": 41,
+   "moq": 60,
+   "safety": 14
+  },
+  "CL77": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 52.5,
+   "lead": 31,
+   "moq": 60,
+   "safety": 14
+  },
+  "VX37": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 52.5,
+   "lead": 34,
+   "moq": 40,
+   "safety": 14
+  },
+  "H57U": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 54.0,
+   "lead": 30,
+   "moq": 20,
+   "safety": 14
+  },
+  "P7U5": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 52.5,
+   "lead": 33,
+   "moq": 60,
+   "safety": 14
+  },
+  "AY9M": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 58.5,
+   "lead": 41,
+   "moq": 50,
+   "safety": 14
+  },
+  "T0SK": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 67.5,
+   "lead": 36,
+   "moq": 60,
+   "safety": 14
+  },
+  "BTR4": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 57.0,
+   "lead": 37,
+   "moq": 40,
+   "safety": 14
+  },
+  "NTC-43-CA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 58.5,
+   "lead": 51,
+   "moq": 30,
+   "safety": 14
+  },
+  "R9RY": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 64.5,
+   "lead": 51,
+   "moq": 30,
+   "safety": 14
+  },
+  "R691": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 58.5,
+   "lead": 49,
+   "moq": 50,
+   "safety": 14
+  },
+  "E9VC": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 67.5,
+   "lead": 35,
+   "moq": 20,
+   "safety": 14
+  },
+  "U892": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 57.0,
+   "lead": 53,
+   "moq": 30,
+   "safety": 14
+  },
+  "SPTU": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 57.0,
+   "lead": 39,
+   "moq": 20,
+   "safety": 14
+  },
+  "AE64": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 58.5,
+   "lead": 36,
+   "moq": 60,
+   "safety": 14
+  },
+  "CWL6": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 63.0,
+   "lead": 47,
+   "moq": 20,
+   "safety": 14
+  },
+  "DHSR": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 66.0,
+   "lead": 38,
+   "moq": 60,
+   "safety": 14
+  },
+  "ZLPD": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 55.5,
+   "lead": 47,
+   "moq": 30,
+   "safety": 14
+  },
+  "MTC9": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 66.0,
+   "lead": 38,
+   "moq": 20,
+   "safety": 14
+  },
+  "JJW7": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 57.0,
+   "lead": 36,
+   "moq": 20,
+   "safety": 14
+  },
+  "P0NE": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 61.5,
+   "lead": 36,
+   "moq": 50,
+   "safety": 14
+  },
+  "HW6T": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 67.5,
+   "lead": 37,
+   "moq": 50,
+   "safety": 14
+  },
+  "U2TF": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 63.0,
+   "lead": 36,
+   "moq": 60,
+   "safety": 14
+  },
+  "G02D": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 54.0,
+   "lead": 54,
+   "moq": 60,
+   "safety": 14
+  },
+  "DJ7Y": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 52.5,
+   "lead": 36,
+   "moq": 20,
+   "safety": 14
+  },
+  "R8A3": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 52.5,
+   "lead": 31,
+   "moq": 50,
+   "safety": 14
+  },
+  "F939": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 57.0,
+   "lead": 38,
+   "moq": 30,
+   "safety": 14
+  },
+  "BR30": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 54.0,
+   "lead": 40,
+   "moq": 40,
+   "safety": 14
+  },
+  "YUH3": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 57.0,
+   "lead": 58,
+   "moq": 20,
+   "safety": 14
+  },
+  "Q2C0": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 54.0,
+   "lead": 44,
+   "moq": 60,
+   "safety": 14
+  },
+  "NV27": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 64.5,
+   "lead": 51,
+   "moq": 50,
+   "safety": 14
+  },
+  "G6E5": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 61.5,
+   "lead": 43,
+   "moq": 20,
+   "safety": 14
+  },
+  "AX59": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 54.0,
+   "lead": 46,
+   "moq": 30,
+   "safety": 14
+  },
+  "SP9R": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 63.0,
+   "lead": 49,
+   "moq": 50,
+   "safety": 14
+  },
+  "VFJ2": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 63.0,
+   "lead": 45,
+   "moq": 30,
+   "safety": 14
+  },
+  "A3S5": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 58.5,
+   "lead": 38,
+   "moq": 40,
+   "safety": 14
+  },
+  "XNMY": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 52.5,
+   "lead": 32,
+   "moq": 40,
+   "safety": 14
+  },
+  "C1ZE": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 67.5,
+   "lead": 35,
+   "moq": 50,
+   "safety": 14
+  },
+  "P18Q": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 57.0,
+   "lead": 49,
+   "moq": 20,
+   "safety": 14
+  },
+  "TJSH": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 63.0,
+   "lead": 52,
+   "moq": 30,
+   "safety": 14
+  },
+  "VNWL": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 63.0,
+   "lead": 60,
+   "moq": 20,
+   "safety": 14
+  },
+  "NTC-47-CA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 55.5,
+   "lead": 55,
+   "moq": 30,
+   "safety": 14
+  },
+  "AZ24": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 64.5,
+   "lead": 36,
+   "moq": 30,
+   "safety": 14
+  },
+  "WX2S": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 63.0,
+   "lead": 51,
+   "moq": 20,
+   "safety": 14
+  },
+  "NTC-81-CA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 52.5,
+   "lead": 34,
+   "moq": 50,
+   "safety": 14
+  },
+  "WUQT": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 61.5,
+   "lead": 38,
+   "moq": 30,
+   "safety": 14
+  },
+  "MYBY": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 64.5,
+   "lead": 51,
+   "moq": 50,
+   "safety": 14
+  },
+  "KZ89": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 64.5,
+   "lead": 49,
+   "moq": 60,
+   "safety": 14
+  },
+  "NTC-40-CA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 67.5,
+   "lead": 58,
+   "moq": 60,
+   "safety": 14
+  },
+  "EYXE": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 63.0,
+   "lead": 56,
+   "moq": 50,
+   "safety": 14
+  },
+  "QGZY": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 57.0,
+   "lead": 31,
+   "moq": 60,
+   "safety": 14
+  },
+  "RXMJ": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 54.0,
+   "lead": 43,
+   "moq": 20,
+   "safety": 14
+  },
+  "PNKB": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 67.5,
+   "lead": 53,
+   "moq": 20,
+   "safety": 14
+  },
+  "YKXY": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 66.0,
+   "lead": 47,
+   "moq": 20,
+   "safety": 14
+  },
+  "FT62": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 64.5,
+   "lead": 40,
+   "moq": 60,
+   "safety": 14
+  },
+  "HA12": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 64.5,
+   "lead": 45,
+   "moq": 20,
+   "safety": 14
+  },
+  "NTC-108-CA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 66.0,
+   "lead": 30,
+   "moq": 30,
+   "safety": 14
+  },
+  "NTC-104-CA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 57.0,
+   "lead": 43,
+   "moq": 30,
+   "safety": 14
+  },
+  "KWPZ": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 67.5,
+   "lead": 36,
+   "moq": 20,
+   "safety": 14
+  },
+  "R43Z": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 55.5,
+   "lead": 50,
+   "moq": 30,
+   "safety": 14
+  },
+  "Y8Y6": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 63.0,
+   "lead": 38,
+   "moq": 40,
+   "safety": 14
+  },
+  "KA9C": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 52.5,
+   "lead": 31,
+   "moq": 20,
+   "safety": 14
+  },
+  "MBHD": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 54.0,
+   "lead": 41,
+   "moq": 50,
+   "safety": 14
+  },
+  "DX0L": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 63.0,
+   "lead": 50,
+   "moq": 60,
+   "safety": 14
+  },
+  "L8RW": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 67.5,
+   "lead": 46,
+   "moq": 40,
+   "safety": 14
+  },
+  "NTC-42-CA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 64.5,
+   "lead": 33,
+   "moq": 40,
+   "safety": 14
+  },
+  "QG7F": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 61.5,
+   "lead": 60,
+   "moq": 30,
+   "safety": 14
+  },
+  "VNNY": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 58.5,
+   "lead": 37,
+   "moq": 30,
+   "safety": 14
+  },
+  "ACAH": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 63.0,
+   "lead": 34,
+   "moq": 50,
+   "safety": 14
+  },
+  "EPUP": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 61.5,
+   "lead": 55,
+   "moq": 40,
+   "safety": 14
+  },
+  "NC7Z": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 66.0,
+   "lead": 51,
+   "moq": 30,
+   "safety": 14
+  },
+  "NTC-44-CA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 61.5,
+   "lead": 33,
+   "moq": 60,
+   "safety": 14
+  },
+  "XM99": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 52.5,
+   "lead": 37,
+   "moq": 50,
+   "safety": 14
+  },
+  "A087": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 64.5,
+   "lead": 51,
+   "moq": 50,
+   "safety": 14
+  },
+  "K3HQ": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 52.5,
+   "lead": 35,
+   "moq": 60,
+   "safety": 14
+  },
+  "U2U8": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 61.5,
+   "lead": 35,
+   "moq": 50,
+   "safety": 14
+  },
+  "TNG6": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 61.5,
+   "lead": 43,
+   "moq": 30,
+   "safety": 14
+  },
+  "UGCK": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 52.5,
+   "lead": 45,
+   "moq": 60,
+   "safety": 14
+  },
+  "NTC-25-CA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 60.0,
+   "lead": 55,
+   "moq": 40,
+   "safety": 14
+  },
+  "EBLM": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 64.5,
+   "lead": 39,
+   "moq": 50,
+   "safety": 14
+  },
+  "CVZC": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 63.0,
+   "lead": 55,
+   "moq": 40,
+   "safety": 14
+  },
+  "NTC-109-CA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 60.0,
+   "lead": 51,
+   "moq": 50,
+   "safety": 14
+  },
+  "SWDZ": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 63.0,
+   "lead": 31,
+   "moq": 40,
+   "safety": 14
+  },
+  "NTC-100-CA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 64.5,
+   "lead": 30,
+   "moq": 50,
+   "safety": 14
+  },
+  "RGK8": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 55.5,
+   "lead": 48,
+   "moq": 40,
+   "safety": 14
+  },
+  "SSRS": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 55.5,
+   "lead": 53,
+   "moq": 40,
+   "safety": 14
+  },
+  "NTC-133-CA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 58.5,
+   "lead": 56,
+   "moq": 40,
+   "safety": 14
+  },
+  "TD50": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 52.5,
+   "lead": 55,
+   "moq": 20,
+   "safety": 14
+  },
+  "Z7LW": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 55.5,
+   "lead": 38,
+   "moq": 30,
+   "safety": 14
+  },
+  "C5DG": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 66.0,
+   "lead": 52,
+   "moq": 50,
+   "safety": 14
+  },
+  "QCEQ": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 52.5,
+   "lead": 54,
+   "moq": 40,
+   "safety": 14
+  },
+  "TZT6": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 58.5,
+   "lead": 40,
+   "moq": 20,
+   "safety": 14
+  },
+  "WCEM": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 55.5,
+   "lead": 48,
+   "moq": 40,
+   "safety": 14
+  },
+  "YUER": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 61.5,
+   "lead": 56,
+   "moq": 30,
+   "safety": 14
+  },
+  "WVFQ": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 57.0,
+   "lead": 36,
+   "moq": 20,
+   "safety": 14
+  },
+  "QT9B": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 52.5,
+   "lead": 48,
+   "moq": 50,
+   "safety": 14
+  },
+  "NTC-203-CA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 57.0,
+   "lead": 38,
+   "moq": 60,
+   "safety": 14
+  },
+  "NTC-66-CA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 57.0,
+   "lead": 39,
+   "moq": 30,
+   "safety": 14
+  },
+  "N9CX": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 61.5,
+   "lead": 57,
+   "moq": 50,
+   "safety": 14
+  },
+  "NTC-107-CA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 61.5,
+   "lead": 57,
+   "moq": 50,
+   "safety": 14
+  },
+  "NTC-24-CA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 63.0,
+   "lead": 56,
+   "moq": 20,
+   "safety": 14
+  },
+  "A104": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 60.0,
+   "lead": 42,
+   "moq": 20,
+   "safety": 14
+  },
+  "X0M0": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 61.5,
+   "lead": 48,
+   "moq": 60,
+   "safety": 14
+  },
+  "WK96": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 61.5,
+   "lead": 33,
+   "moq": 40,
+   "safety": 14
+  },
+  "DV1N": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 54.0,
+   "lead": 55,
+   "moq": 30,
+   "safety": 14
+  },
+  "NTC-36-CA": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 55.5,
+   "lead": 51,
+   "moq": 30,
+   "safety": 14
+  },
+  "N5WD": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 63.0,
+   "lead": 56,
+   "moq": 40,
+   "safety": 14
+  },
+  "CFC8": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 66.0,
+   "lead": 37,
+   "moq": 50,
+   "safety": 14
+  },
+  "DA39": {
+   "src": {
+    "cost": "sim",
+    "lead": "sim",
+    "moq": "sim",
+    "safety": "sim"
+   },
+   "cost": 61.5,
+   "lead": 45,
+   "moq": 60,
+   "safety": 14
+  }
+ },
+ "targets": {
+  "margin": {
+   "v": 10.0,
+   "src": "sim"
+  },
+  "tacos": {
+   "v": 12.0,
+   "src": "sim"
+  },
+  "weeks_cover": {
+   "v": 8.0,
+   "src": "sim"
+  },
+  "rev_week": {
+   "v": 62522.0,
+   "src": "sim"
+  }
+ },
+ "register": [
+  {
+   "id": "dc87fc1d",
+   "area": "Giá vốn (COGS)",
+   "item": "Giá vốn thật từng SKU",
+   "why": "Tính biên theo SKU, định giá, điểm hoà vốn quảng cáo",
+   "status": "da_co",
+   "owner": "",
+   "note": "Có sẵn trong P&L cho SKU đã có công thức; SKU còn lại đang giả lập = 35–45% giá bán.",
+   "updated": "2026-10-11T08:45:16"
+  },
+  {
+   "id": "1b03bb5f",
+   "area": "Nhập hàng",
+   "item": "Lead time từng SKU / nhà cung cấp (ngày)",
+   "why": "Tính điểm đặt hàng và ngày phải đặt",
+   "status": "gia_lap",
+   "owner": "",
+   "note": "Đang giả lập 30–60 ngày.",
+   "updated": ""
+  },
+  {
+   "id": "ec1d7621",
+   "area": "Nhập hàng",
+   "item": "MOQ & bội số đặt hàng",
+   "why": "Số lượng đề xuất đặt",
+   "status": "gia_lap",
+   "owner": "",
+   "note": "Đang giả lập 20–60 cái.",
+   "updated": ""
+  },
+  {
+   "id": "dad5875e",
+   "area": "Nhập hàng",
+   "item": "Tồn an toàn (ngày bán)",
+   "why": "Đệm khi lead time dao động",
+   "status": "gia_lap",
+   "owner": "",
+   "note": "Đang đặt mặc định 14 ngày.",
+   "updated": ""
+  },
+  {
+   "id": "699b65cc",
+   "area": "Nhập hàng",
+   "item": "Hàng đang về / PO đã đặt (số lượng, ngày dự kiến)",
+   "why": "Trừ vào nhu cầu để khỏi đặt trùng",
+   "status": "thieu",
+   "owner": "",
+   "note": "",
+   "updated": ""
+  },
+  {
+   "id": "54951b96",
+   "area": "Mục tiêu",
+   "item": "Mục tiêu doanh thu, biên, TACoS theo tuần/tháng",
+   "why": "So sánh thực tế với kế hoạch",
+   "status": "gia_lap",
+   "owner": "",
+   "note": "Đang giả lập: doanh thu = tuần gần nhất × 1.05, biên 10%, TACoS 12%.",
+   "updated": ""
+  },
+  {
+   "id": "910682b3",
+   "area": "Giá",
+   "item": "Giá sàn và giá niêm yết từng SKU",
+   "why": "Mô phỏng 'nếu giảm giá X%' không lỗ",
+   "status": "thieu",
+   "owner": "",
+   "note": "",
+   "updated": ""
+  },
+  {
+   "id": "8979fa5d",
+   "area": "Giá",
+   "item": "Phí vận chuyển / nhập khẩu về kho (landed cost)",
+   "why": "Giá vốn đầy đủ thay vì chỉ giá xuất xưởng",
+   "status": "thieu",
+   "owner": "",
+   "note": "",
+   "updated": ""
+  },
+  {
+   "id": "892c7939",
+   "area": "Quảng cáo",
+   "item": "Ngân sách quảng cáo theo tháng / kênh",
+   "why": "Cảnh báo vượt ngân sách",
+   "status": "thieu",
+   "owner": "",
+   "note": "",
+   "updated": ""
+  },
+  {
+   "id": "77c3a95b",
+   "area": "Kế hoạch",
+   "item": "Lịch sự kiện (Prime Day, BFCM, Wayfair Way Day…)",
+   "why": "Dự báo nhu cầu và đặt hàng trước mùa cao điểm",
+   "status": "thieu",
+   "owner": "",
+   "note": "",
+   "updated": ""
+  },
+  {
+   "id": "93ae8491",
+   "area": "Tồn kho",
+   "item": "Tồn kho theo kho / nhà cung cấp ngoài Amazon, Wayfair",
+   "why": "Tổng tồn thật để tính điểm đặt hàng",
+   "status": "thieu",
+   "owner": "",
+   "note": "",
+   "updated": ""
+  }
+ ]
+}

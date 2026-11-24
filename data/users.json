@@ -1,0 +1,14 @@
+{
+ "thungo201094": {
+  "salt": "7yzsdkmpG5E9KbRGIM8V4A==",
+  "iter": 240000,
+  "hash": "GYps2ZWRrKJHJuyoVlJjGjWfUTQGVLgpCNlMnEe4YoI=",
+  "role": "admin"
+ },
+ "dungnguyen": {
+  "salt": "TcpdqbSapBNy2P38Yowdjw==",
+  "iter": 240000,
+  "hash": "isJdMLp7S1EUbCXjydiaCCB6DOtDim/vT25N240hfso=",
+  "role": "admin"
+ }
+}

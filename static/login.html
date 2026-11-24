@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Đăng nhập · Sale Report Manager</title>
+<style>
+:root{--bg:#0d1210;--card:#151b18;--inset:#0b100e;--line:#26302b;--ink:#e6ece8;--muted:#8b958f;--accent:#5fd0a0;--accent2:#7c9cff;--onacc:#06160e;--bad:#e5766b;color-scheme:dark}
+@media (prefers-color-scheme:light){:root:not([data-theme=dark]){--bg:#f3f6f5;--card:#fff;--inset:#f1f5f3;--line:#dbe4e0;--ink:#12201a;--muted:#62736b;--accent:#0f9d6b;--accent2:#4f6bed;--onacc:#fff;--bad:#d1384a;color-scheme:light}}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;min-height:100dvh;padding:16px;display:grid;place-items:center;background:var(--bg);background-image:radial-gradient(800px 420px at 10% -10%,color-mix(in srgb,var(--accent) 16%,transparent),transparent 70%),radial-gradient(700px 380px at 100% 100%,color-mix(in srgb,var(--accent2) 14%,transparent),transparent 70%);color:var(--ink);font:14px/1.5 -apple-system,Segoe UI,Roboto,sans-serif}
+form{width:min(360px,92vw);background:var(--card);border:1px solid var(--line);border-radius:18px;padding:30px;box-shadow:0 24px 70px -30px #000c;backdrop-filter:blur(10px)}.logo{width:44px;height:44px;border-radius:13px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;color:var(--onacc);font-weight:800;font-size:20px;margin-bottom:16px;box-shadow:0 10px 24px -10px var(--accent)}
+h1{font-size:18px;margin:0 0 4px}p{color:var(--muted);margin:0 0 20px}
+label{display:block;font-size:12px;color:var(--muted);margin:14px 0 6px;text-transform:uppercase;letter-spacing:.06em}
+input{width:100%;font:inherit;color:var(--ink);background:var(--inset);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+@media (pointer:coarse){input,button{font-size:16px}}
+input:focus{outline:none;border-color:var(--accent)}
+button{width:100%;margin-top:22px;font:inherit;font-weight:600;color:var(--onacc);background:linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 65%,var(--accent2)));box-shadow:0 8px 22px -10px var(--accent);border:0;border-radius:8px;padding:11px;cursor:pointer}
+button:disabled{opacity:.6;cursor:wait}#err{color:var(--bad);min-height:20px;margin-top:12px;font-size:13px}
+.note{color:var(--muted);font-size:12px;margin-top:14px}code{background:var(--inset);padding:1px 6px;border-radius:5px}
+</style></head><body>
+<form id="f" autocomplete="on">
+  <div class="logo">S</div><h1>Sale Report Manager</h1><p>Đăng nhập để xem và quản lý báo cáo bán hàng</p>
+  <label for="u">Tên đăng nhập</label><input id="u" name="username" autocomplete="username" autofocus required>
+  <label for="p">Mật khẩu</label><input id="p" name="password" type="password" autocomplete="current-password" required>
+  <button id="b">Đăng nhập</button><div id="err" role="alert"></div>
+  <div class="note" id="note"></div>
+</form>
+<script>
+const $=s=>document.querySelector(s);
+fetch('/api/auth/status').then(r=>r.json()).then(j=>{if(!j.has_users)$('#note').innerHTML='Chưa có tài khoản nào. Trên máy chạy app, mở Terminal và chạy: <code>python3 manage_users.py add tên_của_bạn</code>'});
+$('#f').onsubmit=async e=>{e.preventDefault();$('#b').disabled=true;$('#err').textContent='';
+  try{const r=await fetch('/api/auth/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:$('#u').value,password:$('#p').value})});
+    const j=await r.json().catch(()=>({}));
+    if(r.ok){const n=new URLSearchParams(location.search).get('next');location.href=(n&&n.startsWith('/')&&!n.startsWith('//'))?n:'/'}
+    else $('#err').textContent=j.error||'Đăng nhập thất bại'}
+  catch(x){$('#err').textContent='Không kết nối được server'}
+  $('#b').disabled=false};
+</script></body></html>

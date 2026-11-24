@@ -1,0 +1,24 @@
+{
+ "users": {
+  "quang": {
+   "role": "admin",
+   "mods": {}
+  },
+  "thu": {
+   "role": "admin",
+   "mods": {}
+  },
+  "a_dung": {
+   "role": "report",
+   "mods": {}
+  },
+  "thungo201094": {
+   "role": "admin",
+   "mods": {}
+  },
+  "dungnguyen": {
+   "role": "report",
+   "mods": {}
+  }
+ }
+}

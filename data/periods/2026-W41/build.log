@@ -1,0 +1,21 @@
+[mẫu report] Gọn v4 (gon-v4-f20a98)
+[etl] Chạy etl/custom_build.py ...
+[fx] dùng tỷ giá constant-currency của kỳ trước (D.fx.rates)
+[sales] file 2026-10-01→2026-10-11, 11 ngày, 2120 dòng
+[sales] tuần W41: 2026-10-04 → 2026-10-10
+[sales] W41: q=330 r=68222.87 USD rfc=119693.25 ach=57.0%
+[inv] phạm vi: 71 SKU, gộp kit: ['B4F1', 'GDWQ']
+[inv] invdet: nsku=45 qty_total=4784 dòng≠0=190 âm=8
+[inv] invacct: 13 tổ hợp, 86 dòng chi tiết, qty_total=1542
+[lt] FBA: 21 SKU, tot=689, ≥271 ngày=12 | CastleGate: 21 SKU, tot=911, ≥271 ngày=1
+[ads] campthu=189 dòng, rank={'Arozu': 5, 'Megsu': 6, 'DHI': 6}, st={'Arozu': 738, 'Megsu': 723, 'DHI': 191}
+[ads_daily] Amazon|AUS: 2026-07-15→2026-10-12; Amazon|CAN: 2026-07-15→2026-10-12; Amazon|US: 2026-07-15→2026-10-12; Wayfair|CAN: 2026-10-04→2026-10-11; Wayfair|US: 2026-10-04→2026-10-11
+[amzmkt] SQP A ACACIA FURNITURE: 5 tuần (W37→W41), 203 cụm từ chi tiết
+[amzmkt] Business Report: 23 ASIN, 23 gắn được nhóm
+[amzmkt] SQP A ACACIA FURNITURE: 3 tuần (W38→W41), 213 cụm từ chi tiết
+[market] 17 listing có hạng, 1652 cụm từ; so với kỳ trước: có
+[quality] 92/580 listing thuộc danh mục (ARZ 33/208, MS 27/172, DHI 32/200)
+[etl] ĐÃ CẬP NHẬT: bán hàng + chuỗi thời gian; tồn kho (invdet, invacct); Long-term Storage (lt); quảng cáo (campthu, scope, adsum, tacos, dgmk_room, adlist_cover, ads); quảng cáo theo ngày (ads_daily); thị trường Amazon (amzmkt); thị trường (market); chất lượng sản phẩm (quality); sku_meta, top_sku2, grpcmp, askuw_mp, sizecolor; Profit PL5 (độ phủ 100.0% doanh thu)
+[etl] GIỮ NGUYÊN số của kỳ trước (chưa có ETL): 
+[ok] Build xong trong 8.2s — report 3061 KB
+[phân tích] 36 vấn đề → task mới 0, cập nhật 36

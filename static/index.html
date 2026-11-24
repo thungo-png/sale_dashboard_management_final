@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sale Report Manager</title>
+<style>
+:root{--bg:#0d1210;--card:#151b18;--card2:#121714;--inset:#0b100e;--btn:#1c2420;--line:var(--line);--ink:#e6ece8;--text:#e6ece8;--muted:#8b958f;--accent:#5fd0a0;--onacc:#06160e;--accent2:#7c9cff;--bad:#e5766b;--warn:#e0b252;--sh:0 1px 2px #0005,0 12px 30px -16px #000a;color-scheme:dark}
+:root[data-theme="light"]{--bg:#f3f6f5;--card:#ffffff;--card2:#f8faf9;--inset:#f1f5f3;--btn:#eef3f1;--line:#dbe4e0;--ink:#12201a;--text:#12201a;--muted:#62736b;--accent:#0f9d6b;--onacc:#ffffff;--accent2:#4f6bed;--bad:#d1384a;--warn:#b7791f;--sh:0 1px 2px #0f241a10,0 12px 30px -18px #0f241a30;color-scheme:light}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);background-image:radial-gradient(900px 420px at 8% -8%,color-mix(in srgb,var(--accent) 13%,transparent),transparent 70%),radial-gradient(700px 360px at 100% 0,color-mix(in srgb,var(--accent2) 10%,transparent),transparent 70%);background-attachment:fixed;color:var(--ink);font:14px/1.5 -apple-system,Segoe UI,Roboto,sans-serif;display:flex;height:100vh}
+aside{width:280px;border-right:1px solid var(--line);padding:16px;overflow:auto;background:var(--card)}
+main{flex:1;display:flex;flex-direction:column;min-width:0}
+h1{font-size:16px;margin:0 0 12px}h3{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:18px 0 8px}
+input,select,textarea,button{font:inherit;color:var(--ink);background:var(--inset);border:1px solid var(--line);border-radius:7px;padding:7px 10px}
+button{cursor:pointer;background:var(--btn)}button:hover{border-color:var(--accent)}button.pri{background:var(--accent);color:var(--onacc);border-color:var(--accent);font-weight:600}
+.per{padding:9px 10px;border:1px solid var(--line);border-radius:8px;margin-bottom:6px;cursor:pointer}
+.per.on{border-color:var(--accent)}.per small{color:var(--muted);display:block}
+.tag{font-size:11px;padding:1px 7px;border-radius:9px;border:1px solid var(--line);float:right}
+.built{color:var(--accent)}.error{color:var(--bad)}.draft{color:var(--warn)}
+.steps{display:flex;align-items:center;gap:0;padding:14px 20px;border-bottom:1px solid var(--line)}
+.step{display:flex;align-items:center;gap:10px;background:none;border:0;padding:4px 8px;border-radius:10px;text-align:left}
+.step:hover{border:0;background:var(--btn)}.step:disabled{opacity:.45;cursor:not-allowed;background:none}
+.dot{width:30px;height:30px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-weight:700;font-size:13px;color:var(--muted);flex:none;background:var(--inset)}
+.step{white-space:nowrap}.step .t{font-weight:600;line-height:1.2}.step .st{font-size:12px;color:var(--muted);display:block;font-weight:400}
+.step.on .dot{border-color:var(--accent);color:var(--accent);box-shadow:0 0 0 4px #5fd0a022}.step.on .t{color:var(--accent)}
+.step.done .dot{background:var(--accent);border-color:var(--accent);color:var(--onacc)}
+.step.err .dot{border-color:var(--bad);color:var(--bad)}.step.err .st{color:var(--bad)}.step.warn .st{color:var(--warn)}
+.bar{flex:1;height:2px;background:var(--line);min-width:24px;margin:0 6px;border-radius:2px}.bar.done{background:var(--accent)}
+.steps{flex-wrap:wrap;row-gap:8px}#cur{max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px}.gear{margin-left:auto;white-space:nowrap;background:none;border:1px solid var(--line)}.chip{display:inline-block;padding:1px 8px;border-radius:10px;font-size:11px;border:1px solid var(--line);margin-right:4px}.s3{border-color:#e0a050;color:#e0a050}.s2{border-color:#c9c36a;color:#c9c36a}.s1{color:var(--muted)}
+.isu,.tk{border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin:8px 0;background:var(--card2)}.isu h4,.tk h4{margin:4px 0;font-size:14px}.isu ul,.tk ul{margin:4px 0 4px 18px;padding:0;color:var(--muted);font-size:13px}.isu .fx,.tk .fx{color:var(--text);list-style:none;margin-left:4px}
+.board{display:grid;grid-template-columns:repeat(3,minmax(250px,1fr));gap:12px;align-items:start}.col h3{margin:6px 0}.tk .ed{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}.tk .ed input,.tk .ed select{font-size:12px;padding:3px 6px;max-width:130px}.late{color:#ff7b7b}
+.pwm{height:6px;background:var(--line);border-radius:3px;margin:8px 0 4px;overflow:hidden}.pwm i{display:block;height:100%;width:0;transition:width .2s,background .2s}.pwt{font-size:12px;min-height:18px}.gear2{margin-left:6px;white-space:nowrap;background:none;border:1px solid var(--line)}.gear2.on{border-color:var(--accent);color:var(--accent)}.gear.on{border-color:var(--accent);color:var(--accent)}
+.next{margin-top:16px;display:flex;gap:8px;align-items:center}
+section{padding:16px;overflow:auto;flex:1}.hide{display:none}
+.slot{display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--line)}
+.slot .l{flex:1}.slot .f{color:var(--accent);font-size:12px;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.req{color:var(--bad)}pre{background:var(--inset);border:1px solid var(--line);border-radius:8px;padding:12px;white-space:pre-wrap;max-height:60vh;overflow:auto;font-size:12.5px}
+iframe{width:100%;height:100%;border:0;background:#fff}textarea{width:100%;height:60vh;font-family:ui-monospace,monospace;font-size:12.5px}
+.row{display:flex;gap:8px;margin-bottom:8px}.row input{flex:1 1 150px;min-width:0}
+
+/* ---- responsive ---- */
+html,body{height:100%}body{height:100vh;height:100dvh}
+#mbar,#bk{display:none}
+.board{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.row{flex-wrap:wrap}.row input,.row select{min-width:0}
+table{max-width:100%}
+.steps::-webkit-scrollbar{display:none}
+@media (max-width:900px){
+ body{flex-direction:column}
+ #mbar{display:flex;align-items:center;gap:10px;padding:8px 12px;padding-top:max(8px,env(safe-area-inset-top));border-bottom:1px solid var(--line);background:var(--card);flex:none}
+ #mbar b{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14px}
+ #mbar button{padding:6px 12px}
+ aside{position:fixed;z-index:30;top:0;bottom:0;left:0;width:min(86vw,320px);transform:translateX(-105%);transition:transform .2s;box-shadow:4px 0 24px #000a;padding-top:max(16px,env(safe-area-inset-top))}
+ body.menu aside{transform:none}
+ #bk{position:fixed;inset:0;background:#0009;z-index:20}body.menu #bk{display:block}
+ main{flex:1;min-height:0}
+ .steps{flex-wrap:nowrap;overflow-x:auto;padding:10px 12px;gap:2px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+ .bar{flex:none;width:14px;min-width:14px;margin:0 2px}
+ .step{padding:4px 6px;flex:none}.gear,.gear2{flex:none}.gear{margin-left:auto}.gear2{margin-left:6px}
+ #cur{display:none}.gear .lbl,.gear2 .lbl{display:none}
+ section{padding:12px}
+ .slot{flex-wrap:wrap}.slot .f{max-width:100%}
+}
+@media (max-width:560px){
+ .step:not(.on) .t,.step:not(.on) .st{display:none}
+ .step.on .st{max-width:160px;overflow:hidden;text-overflow:ellipsis}
+ .bar{display:none}.step.on .t{font-size:13px}.step.on .st{max-width:140px}
+ .board{grid-template-columns:1fr}
+ .tk .ed input,.tk .ed select{max-width:none;flex:1 1 120px}
+ .row>button{flex:1 1 auto}
+ pre{max-height:50vh}
+}
+@media (pointer:coarse){
+ input,select,textarea,button{font-size:16px}button{min-height:40px}
+ .tk .ed input,.tk .ed select{font-size:16px}
+ .per{padding:12px}
+}
+.fab{position:absolute;right:18px;bottom:max(18px,env(safe-area-inset-bottom));z-index:5;box-shadow:0 2px 10px #0008}
+
+/* ---- visual polish ---- */
+aside{background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(14px)}
+.brand{display:flex;align-items:center;gap:10px;margin-bottom:6px}.brand i{width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;color:var(--onacc);font-style:normal;font-weight:800;font-size:15px;box-shadow:0 6px 16px -6px var(--accent)}
+.brand h1{margin:0;font-size:16px;letter-spacing:-.01em}.brand small{display:block;color:var(--muted);font-size:11px;font-weight:400}
+input,select,textarea,button{transition:border-color .15s,box-shadow .15s,background .15s,transform .1s}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 22%,transparent)}
+button:active{transform:translateY(1px)}
+button.pri{background:linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 70%,var(--accent2)));border:0;box-shadow:0 6px 18px -8px var(--accent)}
+button.pri:hover{filter:brightness(1.07)}
+.per{background:var(--card2);transition:border-color .15s,transform .15s,box-shadow .15s}.per:hover{transform:translateX(2px);border-color:color-mix(in srgb,var(--accent) 50%,var(--line))}
+.per.on{background:color-mix(in srgb,var(--accent) 9%,var(--card2));box-shadow:0 0 0 1px var(--accent) inset}
+.steps{background:color-mix(in srgb,var(--card) 70%,transparent);backdrop-filter:blur(12px)}
+.step.on{background:color-mix(in srgb,var(--accent) 10%,transparent)}
+.isu,.tk{box-shadow:var(--sh);transition:transform .15s,border-color .15s}.isu:hover,.tk:hover{transform:translateY(-1px);border-color:color-mix(in srgb,var(--accent) 35%,var(--line))}
+.slot{border-radius:8px;padding:8px 6px}.slot:hover{background:color-mix(in srgb,var(--accent) 5%,transparent)}
+pre{background:var(--inset)}
+#themebtn{width:100%;margin-top:14px;display:flex;align-items:center;justify-content:center;gap:8px;background:none}
+@media (max-width:900px){#mbar #themebtn{width:auto;margin:0;padding:6px 10px}}
+::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:var(--line);border-radius:6px;border:2px solid transparent;background-clip:content-box}
+
+.kp{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:var(--sh);position:relative;overflow:hidden}.kp::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--tc,var(--accent))}
+.kp .k{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}.kp .v{font-size:22px;font-weight:700;letter-spacing:-.02em;margin:2px 0}.kp .s{font-size:12px;color:var(--muted)}
+.kgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(180px,100%),1fr));gap:10px;margin-bottom:14px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:14px;align-items:start}.cols>*{min-width:0}
+.al{border-left:3px solid var(--line)}.al.urgent{border-left-color:var(--bad)}.al.warn{border-left-color:var(--warn)}
+.al .tt{font-weight:600}.al .fx{color:var(--muted);font-size:12.5px;margin-top:2px}
+.dlt{display:grid;grid-template-columns:minmax(0,1fr) 90px;gap:8px;align-items:center;font-size:13px;padding:4px 0}.dlt .b{height:8px;border-radius:4px;background:var(--line);position:relative}.dlt .b i{position:absolute;top:0;bottom:0;border-radius:4px}
+.up{color:var(--accent)}.dn{color:var(--bad)}
+table.t{border-collapse:collapse;width:100%;font-size:13px}table.t th{text-align:left;color:var(--muted);font-weight:500;font-size:11px;letter-spacing:.05em;text-transform:uppercase;padding:6px 8px;border-bottom:1px solid var(--line)}table.t td{padding:6px 8px;border-bottom:1px solid var(--line)}table.t td.n,table.t th.n{text-align:right}
+a{color:var(--accent)}#rvc,#vmenu{display:none}
+body.viewer aside,body.viewer nav.steps,body.viewer #mbar,body.viewer #bk,body.viewer .fab{display:none!important}
+body.viewer #rvc{display:flex;flex-direction:column;gap:6px;position:fixed;top:max(8px,env(safe-area-inset-top));right:10px;z-index:40}
+#rvc button{width:30px;height:30px;min-height:0;padding:0;border-radius:50%;font-size:14px;line-height:1;opacity:.7;background:var(--card);border:1px solid var(--line);color:inherit;box-shadow:0 1px 6px #0003}#rvc button:hover{opacity:1}
+body.viewer #vmenu.on{display:block;position:fixed;top:max(8px,env(safe-area-inset-top));right:48px;z-index:41;width:min(280px,calc(100vw - 64px));background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;box-shadow:0 8px 30px #0005;font-size:13px}
+</style></head><body>
+<header id="mbar"><button id="menu" aria-label="Mở danh sách kỳ" onclick="menu(1)">☰ Kỳ</button><b id="mtitle">Sale Report Manager</b><button id="themebtn2" class="themebtn" title="Đổi giao diện" onclick="cycleTheme()">◐</button></header>
+<div id="bk" onclick="menu(0)"></div>
+<div id="rvc"><button id="themebtn3" title="Đổi giao diện sáng / tối" onclick="cycleTheme()">◐</button><button title="Tài khoản" onclick="vMenu()">👤</button></div><div id="vmenu"></div>
+<aside>
+  <div class="brand"><i>S</i><div><h1>Sale Report Manager</h1><small>Amazon · Wayfair · Thu Ngo</small></div></div><div id="who" style="color:var(--muted);font-size:12px;margin:-6px 0 12px"></div>
+  <div id="newp"><div class="row"><input id="nid" placeholder="ID kỳ, vd 2026-W40"></div>
+  <div class="row"><input id="nlabel" placeholder="Tên hiển thị"><select id="ntype"><option value="week">Tuần</option><option value="month">Tháng</option><option value="quarter">Quý</option></select></div>
+  <div class="row"><select id="ntpl" title="Mẫu report dùng cho kỳ này (quản lý ở 🧩 Mẫu report)"></select></div>
+  <button class="pri" onclick="createP()" style="width:100%">+ Tạo kỳ mới</button></div>
+  <h3>Các kỳ báo cáo</h3><div id="plist"></div>
+  <button id="themebtn" class="themebtn" onclick="cycleTheme()">◐ Giao diện</button>
+</aside>
+<main>
+  <nav class="steps">
+    <button class="step" data-t="up"><span class="dot">1</span><span><span class="t">Upload file</span><span class="st" id="st-up"></span></span></button><span class="bar" id="bar1"></span>
+    <button class="step" data-t="bd"><span class="dot">2</span><span><span class="t">Build</span><span class="st" id="st-bd"></span></span></button><span class="bar" id="bar2"></span>
+    <button class="step" data-t="vw"><span class="dot">3</span><span><span class="t">Xem report</span><span class="st" id="st-vw"></span></span></button><span class="bar" id="bar3"></span>
+    <button class="step" data-t="an"><span class="dot">4</span><span><span class="t">Phân tích &amp; Task</span><span class="st" id="st-an"></span></span></button>
+    <button class="gear2 hm" data-t="hm" title="Hôm nay">🏠<span class="lbl"> Hôm nay</span></button><button class="gear2" data-t="cm" title="So sánh hai kỳ">⇄<span class="lbl"> So sánh</span></button><button class="gear2" data-t="in" title="Dữ liệu đầu vào: giá vốn, lead time, điểm đặt hàng">📥<span class="lbl"> Đầu vào</span></button><button class="gear2" data-t="ao" title="Tối ưu quảng cáo Wayfair: từ khoá, đề xuất bid, ranking">🎯<span class="lbl"> Tối ưu QC</span></button><button class="gear2" data-t="rt" title="Quản lý mẫu report">🧩<span class="lbl"> Mẫu report</span></button><button class="gear2" data-t="pm" title="Phân quyền theo module">🔐<span class="lbl"> Phân quyền</span></button><button class="gear" data-t="cf" title="Cấu hình">⚙</button><button class="gear2" data-t="ac" title="Tài khoản">👤</button>
+    <span id="cur" style="color:var(--muted);margin-left:14px"></span>
+  </nav>
+  <section id="t-up"></section>
+  <section id="t-bd" class="hide"></section>
+  <section id="t-vw" class="hide" style="padding:0"></section>
+  <section id="t-cf" class="hide"></section>
+  <section id="t-an" class="hide"></section>
+  <section id="t-ac" class="hide"></section>
+  <section id="t-hm" class="hide"></section>
+  <section id="t-cm" class="hide"></section>
+  <section id="t-in" class="hide"></section>
+  <section id="t-ao" class="hide"></section>
+  <section id="t-pm" class="hide"></section><section id="t-rt" class="hide"></section>
+</main>
+<script>
+let themePref=(()=>{try{return localStorage.getItem('srm_theme')||'auto'}catch(e){return 'auto'}})();
+const mqL=matchMedia('(prefers-color-scheme: light)');
+function applyTheme(){const e=themePref==='auto'?(mqL.matches?'light':'dark'):themePref;document.documentElement.dataset.theme=e;
+  const t={auto:'◐ Tự động',light:'☀ Sáng',dark:'☾ Tối'}[themePref];document.querySelectorAll('#themebtn').forEach(b=>b.textContent=t);document.querySelectorAll('#themebtn2').forEach(b=>b.textContent=t.split(' ')[0]);document.querySelectorAll('#themebtn3').forEach(b=>b.textContent=t.split(' ')[0])}
+function cycleTheme(){themePref={auto:'light',light:'dark',dark:'auto'}[themePref];try{localStorage.setItem('srm_theme',themePref)}catch(e){}applyTheme()}
+mqL.addEventListener&&mqL.addEventListener('change',()=>{if(themePref==='auto')applyTheme()});
+let cur=null,slots=[],meta=null;
+const $=s=>document.querySelector(s);
+const api=(u,o)=>fetch('/api/'+u,o).then(async r=>{if(r.status===401){location.href='/login';throw new Error('Phiên đăng nhập đã hết hạn')}const j=await r.json().catch(()=>({}));if(!r.ok)throw new Error(j.error||r.statusText);return j});
+async function logout(){await fetch('/api/auth/logout',{method:'POST'});location.href='/login'}
+fetch('/api/auth/status').then(r=>r.json()).then(j=>{if(j.user)$('#who').innerHTML=esc(j.user)+' · <a href="#" onclick="logout();return false">Đăng xuất</a>'});
+const esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+
+let curTab='up';applyTheme();
+function menu(o){document.body.classList.toggle('menu',!!o)}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')menu(0)});
+new MutationObserver(()=>{$('#mtitle').textContent=$('#cur').textContent||'Sale Report Manager'}).observe($('#cur'),{childList:true,characterData:true,subtree:true});
+
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>tab(b.dataset.t));
+function paintSteps(){const B=t=>document.querySelector(`nav [data-t=${t}]`);
+  const have=!!meta, miss=have?slots.filter(x=>x.required&&!meta.files[x.key]&&!(meta.files.data_json)).length:0, nf=have?Object.keys(meta.files).length:0;
+  const built=have&&meta.status==='built', err=have&&meta.status==='error', upOk=have&&miss===0&&nf>0;
+  const set=(t,cls,txt)=>{const b=B(t);b.className='step'+(curTab===t?' on':'')+(cls?' '+cls:'');b.querySelector('.dot').textContent=cls==='done'?'✓':cls==='err'?'!':b.querySelector('.dot').dataset.n||b.querySelector('.dot').textContent;$('#st-'+t).textContent=txt};
+  document.querySelectorAll('nav .dot').forEach((d,i)=>{if(!d.dataset.n)d.dataset.n=String(i+1)});
+  set('up',upOk?'done':nf?'warn':'',!have?'Chọn hoặc tạo kỳ':upOk?`Đủ file (${nf})`:nf?`Còn thiếu ${miss} file bắt buộc`:'Chưa có file');
+  set('bd',err?'err':built?'done':'',!have?'':err?'Build lỗi — xem log':built?'Đã build '+(meta.built||'').slice(5,16).replace('T',' '):upOk?'Sẵn sàng build':'Chờ đủ file');
+  set('vw',built?'done':'',built?'Mở report':'Chờ build xong');
+  const a=have&&meta.analysis;set('an',a&&a.stale===0&&false?'done':a?'warn':'',!built?'Chờ build xong':a?`${a.n} vấn đề · task mới ${a.new}`:'Chưa phân tích');
+  B('bd').disabled=!have||!(upOk||built||err); B('vw').disabled=!built;B('an').disabled=!built; B('cf').classList.toggle('on',curTab==='cf');['ac','hm','cm','in','ao','pm','rt'].forEach(x=>B(x).classList.toggle('on',curTab===x));
+  $('#bar1').className='bar'+(upOk?' done':''); $('#bar2').className='bar'+(built?' done':'');$('#bar3').className='bar'+(built&&meta.analysis?' done':'');}
+function tab(t){curTab=t;paintSteps();try{document.querySelector(`nav [data-t=${t}]`).scrollIntoView({inline:'center',block:'nearest'})}catch(e){}
+  ['up','bd','vw','cf','ac','an','hm','cm','in','ao','pm','rt'].forEach(x=>$('#t-'+x).classList.toggle('hide',x!==t));
+  if(t==='vw')renderView(); if(t==='cf')renderCfg(); if(t==='ac')renderAcc(); if(t==='an')renderAn(); if(t==='bd')renderBuild(); if(t==='hm')renderHome(); if(t==='cm')renderCmp(); if(t==='in')renderInp(); if(t==='ao')renderAo(); if(t==='pm')renderPerm(); if(t==='rt')renderRt();}
+
+async function loadList(){const l=await api('periods');
+  $('#plist').innerHTML=l.map(p=>`<div class="per ${p.id===cur?'on':''}" onclick="pick('${p.id}')"><span class="tag ${p.status}">${p.status}</span><b>${esc(p.label)}</b><small>${p.id} · ${p.built?p.built.slice(0,16).replace('T',' '):'chưa build'}</small></div>`).join('')||'<small>Chưa có kỳ nào</small>';}
+async function pick(id){menu(0);cur=id;meta=await api('periods/'+id);curTab='up';tab(canTab('up')?'up':canTab('vw')?'vw':firstTab());$('#cur').textContent=meta.label+' ('+id+')';await loadList();if(canTab('up')){renderUp();renderBuild()}
+  if(!$('#t-vw').classList.contains('hide'))renderView();}
+async function createP(){try{const m=await api('periods',{method:'POST',body:JSON.stringify({id:$('#nid').value.trim(),label:$('#nlabel').value,type:$('#ntype').value,template:$('#ntpl').value||undefined})});
+  $('#nid').value=$('#nlabel').value='';await pick(m.id);tab('up')}catch(e){alert(e.message)}}
+
+function renderUp(){paintSteps();const el=$('#t-up');if(!meta){el.innerHTML='<p>Chọn hoặc tạo một kỳ ở cột trái.</p>';return}
+  let g='',h=`<div class="slot" style="flex-direction:column;align-items:stretch;border:1px dashed var(--accent);border-radius:8px;padding:12px;margin-bottom:10px">
+    <b>Upload 1 lần bằng file .zip</b>
+    <small style="color:var(--muted)">Nén tất cả file của kỳ (có thể để trong thư mục con) thành 1 file .zip. App tự xếp từng file vào đúng ô bên dưới theo tên file; file không nhận ra sẽ được liệt kê để bạn upload tay.</small>
+    <div class="row" style="margin:8px 0 0"><input type="file" id="zipf" accept=".zip" hidden onchange="upZip(this.files[0])"><button class="pri" onclick="$('#zipf').click()">Chọn file .zip</button><span id="zipst" style="color:var(--muted);align-self:center"></span></div>
+    <div id="zipres"></div></div>`;
+  if(meta.uploads_cleaned)h+=`<div class="slot" style="border:1px solid var(--line);border-radius:8px;padding:10px;margin-bottom:10px;color:var(--muted)">🧹 File raw của kỳ này đã được dọn dẹp tự động (${esc((meta.uploads_cleaned.at||'').slice(0,10))}). Report và biểu đồ vẫn xem bình thường; muốn build lại kỳ này, hãy upload lại file.</div>`;
+  for(const s of slots){if(s.group!==g){g=s.group;h+=`<h3>${esc(g)}</h3>`}
+    const f=meta.files[s.key];
+    h+=`<div class="slot"><div class="l">${esc(s.label)} ${s.required?'<span class="req">*</span>':''}</div>
+      <span class="f">${f?esc(f.split('__').slice(1).join('__')):''}</span>
+      <input type="file" id="f-${s.key}" accept="${s.accept}" hidden onchange="up('${s.key}',this.files[0])">
+      <button onclick="$('#f-${s.key}').click()">${f?'Thay':'Chọn'}</button>${f?`<button onclick="del('${s.key}')">Xoá</button>`:''}</div>`}
+  h+=`<div class="next"><button class="pri" onclick="tab('bd')" ${slots.filter(x=>x.required&&!meta.files[x.key]&&!meta.files.data_json).length?'disabled':''}>Tiếp tục: Build →</button></div>`;
+  el.innerHTML=h}
+async function up(k,f){if(!f)return;meta=await api(`periods/${cur}/upload/${k}?name=${encodeURIComponent(f.name)}`,{method:'POST',body:f});renderUp()}
+async function upZip(f){if(!f)return;const st=$('#zipst');st.textContent='Đang upload & phân loại...';
+  try{const r=await api(`periods/${cur}/upload_zip`,{method:'POST',body:f});const rep=r.zip_report;delete r.zip_report;meta=r;renderUp();
+    $('#zipst').textContent=`Đã xếp ${rep.assigned.length} file vào ô`;
+    const miss=slots.filter(s=>s.required&&!meta.files[s.key]).map(s=>s.key);
+    $('#zipres').innerHTML=(rep.notes.length?'<pre style="max-height:none">'+esc(rep.notes.join('\n'))+'</pre>':'')+(miss.length?`<p class="draft">Còn thiếu ô bắt buộc: ${esc(miss.join(', '))}</p>`:'<p class="built">Đủ các ô bắt buộc.</p>');
+  }catch(e){st.textContent='Lỗi: '+(e.message==='not found'?'server đang chạy bản cũ — hãy tắt (Ctrl+C) và chạy lại python3 server.py':e.message)}}
+async function del(k){meta=await api(`periods/${cur}/upload/${k}`,{method:'DELETE'});renderUp()}
+
+async function renderBuild(){paintSteps();const el=$('#t-bd');if(!meta){el.innerHTML='';return}
+  const miss=slots.filter(s=>s.required&&!meta.files[s.key]).length, hasJson=!!meta.files.data_json;
+  const l=await api(`periods/${cur}/log`);
+  el.innerHTML=`<p>Trạng thái: <b class="${meta.status}">${meta.status}</b>${meta.built?' · build lúc '+meta.built.replace('T',' '):''}</p>
+   <p style="color:var(--muted)">${hasJson?'Có data.json → sẽ bỏ qua ETL.':miss?`Còn thiếu ${miss} file bắt buộc (dấu *).`:'Đủ file bắt buộc.'}</p>
+   <p>Mẫu report của kỳ này: <select id="ptpl" onchange="setPtpl(this.value)"></select> <small style="color:var(--muted)">đổi mẫu có hiệu lực ngay khi mở report (vẽ lại từ data.json)</small> <span id="ptplm" style="color:var(--muted)"></span></p>
+   <button class="pri" onclick="build()">Build report</button>
+   ${meta.status==='built'?` <button onclick="location.href='/api/periods/${cur}/data'">Tải data.json</button> <button onclick="window.open('/report/${cur}')">Mở report ở tab mới</button>`:''}
+   ${meta.checks&&meta.checks.missing_keys&&meta.checks.missing_keys.length?`<p class="draft">Thiếu key schema: ${esc(meta.checks.missing_keys.join(', '))}</p>`:''}
+   ${meta.status==='built'?'<div id="nfbox"></div>':''}
+   <h3>Log</h3><pre id="log">${esc(l.log.join('\n')||'(chưa có)')}</pre>`;fillPtpl();if(meta.status==='built')renderNotify()}
+
+async function renderNotify(){const el=$('#nfbox');if(!el)return;
+ el.innerHTML=`<h3>Gửi report</h3><p style="color:var(--muted);margin:4px 0">Gửi tóm tắt kỳ này kèm link tới Google Chat và email. Chỉ gửi khi bạn bấm nút.</p>
+  <div class="row"><button onclick="nfPrev()">Xem trước nội dung</button><button class="pri" onclick="nfSend()">📤 Gửi</button><span id="nfm" style="color:var(--muted)"></span></div>
+  <pre id="nfp" style="display:none;white-space:pre-wrap"></pre><div id="nfc"></div>`;
+ let c;try{c=await api('notify/config')}catch(e){return}
+ const d=document.createElement('details');d.innerHTML=`<summary style="cursor:pointer;margin:8px 0">⚙ Cài đặt kênh gửi (quản trị)</summary>
+  <div style="max-width:620px">
+  <div class="row"><label><input type="checkbox" id="nf-ug" ${c.use_gchat?'checked':''}> Gửi Google Chat</label> <label><input type="checkbox" id="nf-ue" ${c.use_email?'checked':''}> Gửi email</label></div>
+  <div class="row"><input id="nf-wh" placeholder="${c.gchat_set?'Webhook Google Chat đã lưu (để trống = giữ nguyên)':'Webhook Google Chat (https://chat.googleapis.com/...)'}" autocomplete="off"></div>
+  <div class="row"><input id="nf-su" placeholder="Gmail dùng để gửi (vd: ten@gmail.com)" value="${esc(c.smtp_user||'')}" autocomplete="off"></div>
+  <div class="row"><input id="nf-sp" type="password" placeholder="${c.smtp_pass_set?'Mật khẩu ứng dụng đã lưu (để trống = giữ nguyên)':'Mật khẩu ứng dụng Gmail (16 ký tự)'}" autocomplete="new-password"></div>
+  <div class="row"><input id="nf-fn" placeholder="Tên người gửi" value="${esc(c.from_name||'')}"></div>
+  <div class="row"><input id="nf-rc" placeholder="Người nhận, cách nhau bằng dấu phẩy" value="${esc((c.recipients||[]).join(', '))}"></div>
+  <div class="row"><input id="nf-pu" placeholder="Link cố định (nếu có; để trống = tự lấy link tunnel đang chạy)" value="${esc(c.public_url||'')}"></div>
+  <div class="row"><button class="pri" onclick="nfSave()">Lưu cài đặt</button></div></div>`;
+ $('#nfc').appendChild(d)}
+async function nfSave(){const b={use_gchat:$('#nf-ug').checked,use_email:$('#nf-ue').checked,gchat_webhook:$('#nf-wh').value,smtp_user:$('#nf-su').value,smtp_pass:$('#nf-sp').value,from_name:$('#nf-fn').value,recipients:$('#nf-rc').value,public_url:$('#nf-pu').value};
+ try{await api('notify/config',{method:'PUT',body:JSON.stringify(b)});$('#nfm').textContent='Đã lưu cài đặt';renderNotify()}catch(e){$('#nfm').textContent=e.message}}
+async function nfPrev(){try{const r=await api('notify/preview',{method:'POST',body:JSON.stringify({period:cur})});const p=$('#nfp');p.style.display='block';p.textContent=r.text+(r.link?'':'\n\n⚠ Chưa lấy được link: bật tunnel hoặc nhập link cố định ở phần cài đặt.')}catch(e){$('#nfm').textContent=e.message}}
+async function nfSend(){if(!confirm('Gửi tóm tắt + link tới người nhận?'))return;$('#nfm').textContent='Đang gửi...';
+ try{const r=await api('notify/send',{method:'POST',body:JSON.stringify({period:cur})});const f=(n,v)=>v===null?'':n+': '+(v==='ok'?'✓ đã gửi':'✗ '+v);
+  $('#nfm').innerHTML=[f('Email',r.email),f('Google Chat',r.gchat)].filter(Boolean).map(esc).join(' · ')+(r.link?'':' · ⚠ gửi không kèm link (chưa có link)')}catch(e){$('#nfm').textContent=e.message}}
+async function build(){$('#log').textContent='Đang build...';try{const r=await api(`periods/${cur}/build`,{method:'POST'});meta=r.meta;
+  await loadList();renderBuild();if(meta.status==='built')tab('vw')}catch(e){$('#log').textContent=e.message}}
+
+function renderView(){const el=$('#t-vw');
+  el.innerHTML=meta&&meta.status==='built'?`<button class="pri fab" onclick="tab('an')">Tiếp tục: Phân tích &amp; Task →</button><iframe src="/report/${cur}"></iframe>`:'<p style="padding:16px">Kỳ này chưa có report. Hãy build ở bước 2.</p>'}
+
+const PWC=['#e5646b','#e0a050','#c9c36a','#6fcf97','#3fbf8a'];
+function pwBox(id,userSel,ph){return `<div class="pwb"><div class="row" style="margin:0"><input id="${id}" type="password" placeholder="${ph}" autocomplete="new-password" oninput="pwLive('${id}','${userSel}')"><button type="button" onclick="pwShow('${id}')" title="Hiện/ẩn">👁</button><button type="button" onclick="pwGen('${id}','${userSel}')">Tạo mật khẩu mạnh</button></div>
+ <div class="pwm"><i id="${id}-bar"></i></div><div id="${id}-msg" class="pwt"></div></div>`}
+function pwShow(id){const e=$('#'+id);e.type=e.type==='password'?'text':'password'}
+function pwGen(id,u){const A='abcdefghjkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789!@#$%^&*-_=+',b=new Uint32Array(18);crypto.getRandomValues(b);
+ let p=[...b].map(x=>A[x%A.length]).join('');const e=$('#'+id);e.value=p;e.type='text';pwLive(id,u)}
+let pwT={};
+function pwUser(u){if(!u)return '';if(u[0]==='#'){const e=document.querySelector(u);return e?e.value:''}return u}
+function pwLive(id,u){clearTimeout(pwT[id]);const v=$('#'+id).value;if(!v){$('#'+id+'-bar').style.width='0';$('#'+id+'-msg').innerHTML='<span style="color:var(--muted)">≥10 ký tự, đủ 3/4 loại (thường, HOA, số, ký hiệu) hoặc cụm từ ≥16 ký tự; không chứa tên đăng nhập.</span>';return}
+ pwT[id]=setTimeout(async()=>{try{const r=await api('auth/strength',{method:'POST',body:JSON.stringify({password:v,username:pwUser(u)})});
+  if($('#'+id).value!==v)return;const b=$('#'+id+'-bar');b.style.width=(r.score+1)*20+'%';b.style.background=PWC[r.score];
+  $('#'+id+'-msg').innerHTML=`<b style="color:${PWC[r.score]}">${r.label}</b>${r.ok?' — đạt yêu cầu':''}${r.problems.map(p=>`<div style="color:#e5646b">✗ ${esc(p)}</div>`).join('')}`}catch(e){}},250)}
+async function renderAcc(){const el=$('#t-ac');let d;try{d=await api('users')}catch(e){el.innerHTML='<p>Lỗi: '+esc(e.message)+'</p>';return}
+ const adm=d.is_admin;el.innerHTML=`${adm?`<h3>Tài khoản đăng nhập</h3>
+ <table style="border-collapse:collapse;width:100%;max-width:560px">${d.users.map(u=>`<tr><td style="padding:6px 14px 6px 0"><b>${esc(u)}</b>${u===d.me?' <small style="color:var(--accent)">(bạn)</small>':''}</td>
+ <td><button onclick="accReset('${esc(u)}')">Đặt lại mật khẩu</button> ${u===d.me?'':`<button onclick="accDel('${esc(u)}')">Xoá</button>`}</td></tr>`).join('')}</table>
+ <div id="rsbox"></div>
+ <h3>Thêm tài khoản</h3><div style="max-width:560px"><div class="row"><input id="au" placeholder="Tên đăng nhập (chữ, số, . _ - @)" autocomplete="off" oninput="pwLive('ap','#au')"></div>
+ ${pwBox('ap','#au','Mật khẩu')}<div class="row" style="margin-top:8px"><input id="ap2" type="password" placeholder="Nhập lại mật khẩu" autocomplete="new-password"><button class="pri" onclick="accAdd()">+ Thêm</button></div></div>`:''}
+ <h3>Đổi mật khẩu của tôi</h3><div style="max-width:560px"><div class="row"><input id="po" type="password" placeholder="Mật khẩu hiện tại" autocomplete="current-password"></div>
+ ${pwBox('pn',JSON.stringify(d.me).replace(/"/g,''),'Mật khẩu mới')}<div class="row" style="margin-top:8px"><input id="pn2" type="password" placeholder="Nhập lại mật khẩu mới" autocomplete="new-password"><button class="pri" onclick="accSelf()">Đổi</button></div></div>
+ <p id="accm" style="color:var(--muted)"></p><p style="color:var(--muted);font-size:12px">Quyền từng người đặt ở trang 🔐 Phân quyền (chỉ quản trị). Mật khẩu được băm PBKDF2 và không thể xem lại; quên thì đặt lại.</p>`;if(adm)pwLive('ap','#au');pwLive('pn','')}
+const accMsg=(t,bad)=>{const m=$('#accm');if(m){m.textContent=t;m.style.color=bad?'#ff7b7b':'var(--accent)'}};
+async function accAdd(){if($('#ap').value!==$('#ap2').value)return accMsg('Hai lần nhập mật khẩu không khớp',1);try{await api('users',{method:'POST',body:JSON.stringify({username:$('#au').value,password:$('#ap').value})});await renderAcc();accMsg('Đã thêm tài khoản')}catch(e){accMsg(e.message,1)}}
+function accReset(u){$('#rsbox').innerHTML=`<div class="isu" style="max-width:560px"><b>Đặt lại mật khẩu cho ${esc(u)}</b>${pwBox('rp',JSON.stringify(u).replace(/"/g,''),'Mật khẩu mới')}
+ <div class="row" style="margin-top:8px"><input id="rp2" type="password" placeholder="Nhập lại mật khẩu mới" autocomplete="new-password"><button class="pri" onclick="accDoReset('${esc(u)}')">Lưu</button><button onclick="$('#rsbox').innerHTML=''">Huỷ</button></div></div>`;pwLive('rp','')}
+async function accDoReset(u){if($('#rp').value!==$('#rp2').value)return accMsg('Hai lần nhập mật khẩu không khớp',1);try{await api('users/'+encodeURIComponent(u),{method:'PUT',body:JSON.stringify({password:$('#rp').value})});$('#rsbox').innerHTML='';accMsg('Đã đặt lại mật khẩu cho '+u)}catch(e){accMsg(e.message,1)}}
+async function accDel(u){if(!confirm('Xoá tài khoản '+u+'?'))return;try{await api('users/'+encodeURIComponent(u),{method:'DELETE'});await renderAcc();accMsg('Đã xoá '+u)}catch(e){accMsg(e.message,1)}}
+async function accSelf(){if($('#pn').value!==$('#pn2').value)return accMsg('Hai lần nhập mật khẩu mới không khớp',1);try{await api('auth/password',{method:'POST',body:JSON.stringify({old:$('#po').value,new:$('#pn').value})});$('#po').value=$('#pn').value=$('#pn2').value='';pwLive('pn','');accMsg('Đã đổi mật khẩu')}catch(e){accMsg(e.message,1)}}
+const SEVN={3:'Ưu tiên cao',2:'Ưu tiên vừa',1:'Theo dõi'};
+const sevChip=s=>`<span class="chip s${s}">${SEVN[s]||''}</span>`;
+let anArea='';
+let anSub='issues';
+async function renderAn(){const el=$('#t-an');
+ if(!meta||meta.status!=='built'){el.innerHTML='<p style="color:var(--muted)">Build kỳ này xong để phân tích và tạo task.</p>';return}
+ el.innerHTML=`<div class="row" style="margin-bottom:10px"><button class="${anSub==='issues'?'pri':''}" onclick="anSub='issues';renderAn()">🔎 Vấn đề phát hiện</button><button class="${anSub==='notes'?'pri':''}" onclick="anSub='notes';renderAn()">📝 Ghi chú &amp; sự kiện</button><button class="${anSub==='tasks'?'pri':''}" onclick="anSub='tasks';renderAn()">✅ Task cần xử lý</button>
+ <span style="flex:1"></span><span id="anm" style="color:var(--muted);font-size:12px"></span><button onclick="anSync()">⟳ Phân tích lại &amp; đồng bộ task</button></div><div id="an-body"></div>`;
+ return anSub==='issues'?renderIssues():anSub==='notes'?renderNotes():renderTk()}
+async function renderIssues(){const el=$('#an-body');
+ if(!meta||meta.status!=='built'){el.innerHTML='<p style="color:var(--muted)">Chọn một kỳ đã build để phân tích.</p>';return}
+ let r;try{r=await api(`periods/${cur}/analysis`)}catch(e){el.innerHTML='<p>Lỗi: '+esc(e.message)+'</p>';return}
+ const s=r.summary,areas=Object.keys(s.by_area),list=r.issues.filter(i=>!anArea||i.area===anArea);
+ el.innerHTML=`<p style="color:var(--muted)">Kỳ ${esc(meta.label)} · ${esc(s.range)} — phát hiện <b>${s.n}</b> điểm cần xử lý. Task được tự tạo sau mỗi lần build.</p>
+ <p>${sevChip(3)}${s.by_sev[3]} ${sevChip(2)}${s.by_sev[2]} ${sevChip(1)}${s.by_sev[1]} &nbsp; <button class="${!anArea?'pri':''}" onclick="anArea='';renderAn()">Tất cả</button>
+ ${areas.map(a=>`<button class="${anArea===a?'pri':''}" onclick="anArea='${a}';renderAn()">${esc(a)} (${s.by_area[a]})</button>`).join(' ')}</p>
+ ${list.map(i=>`<div class="isu">${sevChip(i.sev)}<span class="chip">${esc(i.area)}</span><h4>${esc(i.title)}</h4>
+ <div style="font-size:12px;color:var(--muted)">Vấn đề nằm ở: ${esc(i.where)}</div><ul>${i.detail.map(d=>`<li>${esc(d)}</li>`).join('')}</ul>
+ <ul class="fx">${i.fix.map(d=>`<li>→ ${esc(d)}</li>`).join('')}</ul></div>`).join('')||'<p>Không có vấn đề nào ở mục này.</p>'}`}
+async function anSync(){$('#anm').textContent='Đang phân tích…';try{const r=await api(`periods/${cur}/analyze`,{method:'POST'});meta=await api('periods/'+cur);paintSteps();await (anSub==='issues'?renderIssues():renderTk());$('#anm').textContent=`Task mới ${r.tasks.new}, cập nhật ${r.tasks.updated}, tái phát ${r.tasks.recurred}, có thể đóng ${r.tasks.stale}`}catch(e){$('#anm').textContent='Lỗi: '+e.message}}
+let tkF={only:true,owner:'',area:'',done:false},TK=[];
+const today=()=>new Date().toISOString().slice(0,10);
+async function renderTk(){const el=$('#an-body');try{TK=await api('tasks')}catch(e){el.innerHTML='<p>Lỗi: '+esc(e.message)+'</p>';return}
+ let l=TK.filter(t=>(!tkF.only||!cur||(t.periods||[]).includes(cur)||!t.auto)&&(!tkF.owner||(t.owner||'').toLowerCase().includes(tkF.owner.toLowerCase()))&&(!tkF.area||t.area===tkF.area));
+ const areas=[...new Set(TK.map(t=>t.area))];
+ const col=(st,title)=>{const c=l.filter(t=>t.status===st).sort((a,b)=>b.sev-a.sev||(a.due||'').localeCompare(b.due||''));return `<div class="col"><h3>${title} (${c.length})</h3>${c.map(tkCard).join('')||'<small style="color:var(--muted)">Trống</small>'}</div>`};
+ el.innerHTML=`<div class="row" style="margin-bottom:8px"><label><input type="checkbox" ${tkF.only?'checked':''} onchange="tkF.only=this.checked;renderTk()"> Chỉ kỳ đang chọn</label>
+ <select onchange="tkF.area=this.value;renderTk()"><option value="">Mọi mảng</option>${areas.map(a=>`<option ${tkF.area===a?'selected':''}>${esc(a)}</option>`).join('')}</select>
+ <input placeholder="Lọc người phụ trách" value="${esc(tkF.owner)}" onchange="tkF.owner=this.value;renderTk()">
+ <label><input type="checkbox" ${tkF.done?'checked':''} onchange="tkF.done=this.checked;renderTk()"> Hiện task đã bỏ qua</label></div>
+ <div class="row" style="margin-bottom:10px"><input id="ntt" placeholder="Thêm task thủ công…" style="flex:1"><input id="ntd" type="date"><button class="pri" onclick="tkAdd()">+ Thêm</button></div>
+ <div class="board">${col('todo','Cần làm')}${col('doing','Đang làm')}${col('done','Hoàn thành')}</div>${tkF.done?`<div class="board" style="grid-template-columns:1fr">${col('dismissed','Bỏ qua')}</div>`:''}`}
+function tkCard(t){const late=t.due&&t.due<today()&&(t.status==='todo'||t.status==='doing');
+ return `<div class="tk">${sevChip(t.sev)}<span class="chip">${esc(t.area)}</span>${t.recurred?'<span class="chip">Tái phát</span>':''}${t.auto&&t.detected===false&&t.status!=='done'?'<span class="chip" style="color:var(--accent);border-color:var(--accent)">Kỳ mới không còn phát hiện — có thể đóng</span>':''}
+ <h4>${esc(t.title)}</h4>${t.where?`<div style="font-size:12px;color:var(--muted)">${esc(t.where)}</div>`:''}
+ <div style="font-size:12px" class="${late?'late':''}">Hạn: ${esc(t.due||'—')} · ${esc(t.owner||'chưa giao')}${(t.periods||[]).length>1?` · xuất hiện ${t.periods.length} kỳ`:''}</div>
+ <details><summary style="cursor:pointer;font-size:12px;color:var(--muted)">Chi tiết &amp; hướng xử lý</summary><ul>${(t.detail||[]).map(d=>`<li>${esc(d)}</li>`).join('')}</ul><ul class="fx">${(t.fix||[]).map(d=>`<li>→ ${esc(d)}</li>`).join('')}</ul>
+ <div style="font-size:11px;color:var(--muted)">${(t.log||[]).slice(-4).map(x=>esc(x.t.slice(5,16).replace('T',' ')+' · '+x.u+' · '+x.x)).join('<br>')}</div></details>
+ <div class="ed"><select onchange="tkSet('${t.id}',{status:this.value})">${[['todo','Cần làm'],['doing','Đang làm'],['done','Hoàn thành'],['dismissed','Bỏ qua']].map(([v,n])=>`<option value="${v}" ${t.status===v?'selected':''}>${n}</option>`).join('')}</select>
+ <input value="${esc(t.owner||'')}" placeholder="Người phụ trách" onchange="tkSet('${t.id}',{owner:this.value})"><input type="date" value="${esc(t.due||'')}" onchange="tkSet('${t.id}',{due:this.value})">
+ <input value="${esc(t.note||'')}" placeholder="Ghi chú" style="max-width:100%;flex:1" onchange="tkSet('${t.id}',{note:this.value})">${t.auto?'':`<button onclick="tkDel('${t.id}')">Xoá</button>`}</div></div>`}
+async function tkSet(id,p){try{await api('tasks/'+id,{method:'PUT',body:JSON.stringify(p)});if(p.status)renderTk()}catch(e){alert(e.message)}}
+async function tkDel(id){if(!confirm('Xoá task này?'))return;await api('tasks/'+id,{method:'DELETE'});renderTk()}
+async function tkAdd(){const t=$('#ntt').value;if(!t.trim())return;try{await api('tasks',{method:'POST',body:JSON.stringify({title:t,due:$('#ntd').value,period:cur})});renderTk()}catch(e){alert(e.message)}}
+
+const USD=n=>(n<0?'−':'')+'$'+Math.round(Math.abs(n)).toLocaleString('vi-VN');
+const PCT=(n,d=1)=>(n==null?'—':Number(n).toLocaleString('vi-VN',{maximumFractionDigits:d,minimumFractionDigits:d})+'%');
+const SGN=n=>(n>0?'+':n<0?'−':'')+USD(Math.abs(n)).replace('−','');
+const kp=(k,v,s,c)=>`<div class="kp" style="--tc:${c||'var(--accent)'}"><div class="k">${k}</div><div class="v">${v}</div><div class="s">${s||''}</div></div>`;
+/* ---------- Hôm nay ---------- */
+async function renderHome(){const el=$('#t-hm');el.innerHTML='<p style="color:var(--muted)">Đang tải…</p>';let c;try{c=await api('cockpit')}catch(e){el.innerHTML='<p>Lỗi: '+esc(e.message)+'</p>';return}
+ if(c.empty){el.innerHTML='<p style="color:var(--muted)">Chưa có kỳ nào được build. Tạo kỳ ở cột trái, upload file rồi Build để xem việc hôm nay.</p>';return}
+ const k=c.kpi,urg=c.alerts.filter(a=>a.level==='urgent'),warn=c.alerts.filter(a=>a.level==='warn'),info=c.alerts.filter(a=>a.level==='info');
+ const link=a=>{const l=a.link||{};const h=l.sku?'#sku='+encodeURIComponent(l.sku):l.grp?'#grp='+encodeURIComponent(l.grp):'#mg';return `<a href="/report/${c.period}${h}" target="_blank">Mở trong report ↗</a>`};
+ const alc=a=>`<div class="isu al ${a.level}"><span class="chip">${esc(a.area)}</span><div class="tt">${esc(a.title)}</div>${a.detail?`<div class="fx">${esc(a.detail)}</div>`:''}${a.fix?`<div class="fx" style="color:var(--ink)">→ ${esc(a.fix)}</div>`:''}<div style="margin-top:6px;font-size:12px">${link(a)}</div></div>`;
+ const tkc=t=>`<div class="isu al ${t.due<new Date().toISOString().slice(0,10)?'urgent':'warn'}"><span class="chip">Task</span> <span class="chip">Hạn ${esc(t.due||'—')}</span><div class="tt">${esc(t.title)}</div><div class="fx">${esc(t.owner||'chưa giao')}</div><div style="margin-top:6px"><button onclick="hmDone('${t.id}')">✓ Xong</button> <button onclick="hmStart('${t.id}')">Đang làm</button></div></div>`;
+ const sc=c.sku_counts,sn=c.sku_names;
+ el.innerHTML=`<h3 style="margin-top:0">Việc hôm nay · tuần ${c.week} (${esc(c.range)})</h3>
+ <div class="kgrid">${kp('Doanh thu tuần',USD(k.r),(k.wow!=null?(k.wow>0?'+':'')+PCT(k.wow)+' so tuần trước · ':'')+'đạt '+PCT(k.ach)+' FC')}${kp('Margin PL5',PCT(k.margin),'theo file P&L','var(--accent2)')}${kp('Cần làm ngay',String(urg.length+c.tasks.late.length),urg.length+' cảnh báo · '+c.tasks.late.length+' task quá hạn','var(--bad)')}${kp('Task đang mở',String(c.tasks.open),c.tasks.due.length+' đến hạn trong 2 ngày','var(--warn)')}</div>
+ <div class="cols"><div><h3>🔴 Khẩn — làm ngay</h3>${c.tasks.late.map(tkc).join('')+urg.map(alc).join('')||'<p style="color:var(--muted)">Không có việc khẩn. 👍</p>'}</div>
+ <div><h3>🟡 Trong vài ngày tới</h3>${c.tasks.due.map(tkc).join('')+warn.slice(0,8).map(alc).join('')||'<p style="color:var(--muted)">Chưa có.</p>'}${warn.length>8?`<p style="color:var(--muted)">… và ${warn.length-8} cảnh báo khác trong báo cáo.</p>`:''}</div>
+ <div><h3>🟢 Cơ hội & theo dõi</h3>${c.room.map(a=>`<div class="isu al"><span class="chip">Quảng cáo</span><div class="tt">${esc(a.grp)} · ${a.mp} ${a.cty} còn dư địa quảng cáo</div><div class="fx">TACoS ${a.tacos}% so với hoà vốn ${a.breakeven}% — có thể thử tăng ngân sách có kiểm soát.</div></div>`).join('')}
+ ${c.ads_focus.length?`<div class="isu al"><span class="chip">Quảng cáo</span><div class="tt">${c.ads_focus.length} cụm cần rà trước khi tăng chi</div><div class="fx">${c.ads_focus.map(a=>esc(a.grp)+' · '+a.mp+' '+a.cty).join('; ')}</div></div>`:''}
+ <div class="isu"><div class="tt">Danh mục SKU</div><div style="margin-top:6px">${Object.keys(sn).filter(x=>sc[x]).map(x=>`<span class="chip">${esc(sn[x])}: ${sc[x]}</span>`).join(' ')}</div><div style="margin-top:6px;font-size:12px"><a href="/report/${c.period}#mg" target="_blank">Xem ma trận SKU ↗</a></div></div>
+ ${info.map(alc).join('')}${c.questions.length?`<div class="isu"><div class="tt">Câu hỏi cho buổi họp</div><ul style="margin:6px 0 0 18px;padding:0;color:var(--muted)">${c.questions.slice(0,4).map(q=>`<li>${esc(q)}</li>`).join('')}</ul></div>`:''}</div></div>
+ <h3>Bản tin & cảnh báo gửi đi</h3><div class="row"><button onclick="hmDigest('weekly',0)">Xem bản tin tuần</button><button onclick="hmDigest('events',0)">Xem cảnh báo mới</button><button class="pri" onclick="hmDigest('weekly',1)">Gửi bản tin ngay</button></div><pre id="hmd" style="display:none"></pre>`}
+async function hmDone(id){await api('tasks/'+id,{method:'PUT',body:JSON.stringify({status:'done'})});renderHome()}
+async function hmStart(id){await api('tasks/'+id,{method:'PUT',body:JSON.stringify({status:'doing'})});renderHome()}
+async function hmDigest(mode,send){const p=$('#hmd');p.style.display='block';p.textContent='Đang xử lý…';try{const r=await api('digest',{method:'POST',body:JSON.stringify({mode,send})});
+ let t=r.text;if(send){t+='\n\n— '+(r.configured?'Kết quả gửi: '+JSON.stringify(r.result):'Chưa cấu hình "notify" (email/webhook) trong ⚙ Cấu hình nên chưa gửi được. Xem README mục Bản tin.')}p.textContent=t}catch(e){p.textContent='Lỗi: '+e.message}}
+/* ---------- So sánh hai kỳ ---------- */
+let cmA='',cmB='';
+async function renderCmp(){const el=$('#t-cm');const ps=(await api('periods')).filter(p=>p.status==='built');
+ if(ps.length<2){el.innerHTML='<p style="color:var(--muted)">Cần ít nhất 2 kỳ đã build để so sánh.</p>';return}
+ if(!cmA||!ps.find(p=>p.id===cmA))cmA=ps[0].id;if(!cmB||!ps.find(p=>p.id===cmB)||cmB===cmA)cmB=(ps.find(p=>p.id!==cmA)||ps[1]).id;
+ const opt=(v)=>ps.map(p=>`<option value="${p.id}" ${p.id===v?'selected':''}>${esc(p.label)} (${p.id})</option>`).join('');
+ el.innerHTML=`<div class="row" style="align-items:center"><b>Kỳ xem</b><select id="cmA" onchange="cmA=this.value;renderCmp()">${opt(cmA)}</select><b>so với kỳ gốc</b><select id="cmB" onchange="cmB=this.value;renderCmp()">${opt(cmB)}</select></div><div id="cmr"><p style="color:var(--muted)">Đang so sánh…</p></div>`;
+ let r;try{r=await api(`compare?a=${encodeURIComponent(cmA)}&b=${encodeURIComponent(cmB)}`)}catch(e){$('#cmr').innerHTML='<p>Lỗi: '+esc(e.message)+'</p>';return}
+ const a=r.a,b=r.b,dq=a.q-b.q,pc=b.r?(a.r-b.r)/b.r*100:0;
+ const mx=Math.max(...r.effects.map(e=>Math.abs(e.v)),1),LB={volume:'Số lượng bán',price:'Giá bán thực hiện',new:'SKU/kênh mới bán',lost:'SKU/kênh ngừng bán',other:'Chênh nguồn dữ liệu'};
+ const dl=(x,n)=>`<tr><td>${esc(x.name||x.grp||x.sku)}${x.sku&&x.grp?`<br><small style="color:var(--muted)">${esc(x.sku)}</small>`:''}</td><td class="n">${USD(x.r0)}</td><td class="n">${USD(x.r1)}</td><td class="n ${x.d>=0?'up':'dn'}">${SGN(x.d)}</td></tr>`;
+ const grow=r.grp.slice(-5).reverse(),drop=r.grp.slice(0,5),sg=r.sku.slice(-6).reverse(),sd=r.sku.slice(0,6);
+ const tb=(t,rows)=>`<div class="isu"><div class="tt">${t}</div><table class="t"><thead><tr><th>Mục</th><th class="n">Kỳ gốc</th><th class="n">Kỳ xem</th><th class="n">Chênh</th></tr></thead><tbody>${rows.map(dl).join('')}</tbody></table></div>`;
+ $('#cmr').innerHTML=`<p style="margin:8px 0 14px">${esc(r.summary)}</p>${r.warn.map(w=>`<div class="isu al warn">${esc(w)}</div>`).join('')}
+ <div class="kgrid">${kp('Doanh thu',USD(a.r),SGN(a.r-b.r)+' ('+(pc>0?'+':'')+PCT(pc)+') · gốc '+USD(b.r))}${kp('Số lượng',String(a.q),(dq>0?'+':'')+dq+' · gốc '+b.q,'var(--accent2)')}${kp('Giá bán TB',USD(a.asp),'gốc '+USD(b.asp),'var(--warn)')}${kp('Margin PL5',a.margin==null?'—':PCT(a.margin),'gốc '+(b.margin==null?'—':PCT(b.margin)),'var(--bad)')}</div>
+ <div class="cols"><div class="isu"><div class="tt">Doanh thu thay đổi do đâu?</div>${r.effects.map(e=>`<div class="dlt"><div><div style="display:flex;justify-content:space-between"><span>${LB[e.k]}</span><b class="${e.v>=0?'up':'dn'}">${SGN(e.v)}</b></div><div class="b"><i style="${e.v>=0?'left:50%':'right:50%'};width:${Math.abs(e.v)/mx*50}%;background:var(${e.v>=0?'--accent':'--bad'})"></i></div></div><span></span></div>`).join('')}
+ <p style="color:var(--muted);font-size:12px;margin:8px 0 0">Số lượng = đổi SL ở giá kỳ gốc; Giá = đổi giá ở SL kỳ xem. Tổng khớp với thay đổi doanh thu theo dòng SKU×kênh.</p></div>
+ ${r.pl?`<div class="isu"><div class="tt">Cấu trúc lợi nhuận (P&L)</div><table class="t"><thead><tr><th>Khoản</th><th class="n">Kỳ gốc</th><th class="n">Kỳ xem</th><th class="n">Chênh</th></tr></thead><tbody>${r.pl.items.map(i=>`<tr><td>${esc(i.k)}</td><td class="n">${USD(i.b)}</td><td class="n">${USD(i.a)}</td><td class="n">${SGN(i.d)}</td></tr>`).join('')}</tbody></table></div>`:''}</div>
+ <div class="cols" style="margin-top:14px">${tb('Nhóm tăng nhiều nhất',grow)}${tb('Nhóm giảm nhiều nhất',drop)}${tb('SKU tăng nhiều nhất',sg)}${tb('SKU giảm nhiều nhất',sd)}</div>`}
+
+/* ---------- Dữ liệu đầu vào: giá vốn, lead time, điểm đặt hàng ---------- */
+let inSub='rop',inF='',inQ='',inD=null;
+const SRC={sim:['Giả lập','var(--warn)'],pl:['P&L','var(--accent2)'],user:['Đã nhập','var(--accent)']};
+const stag=k=>{const x=SRC[k]||SRC.sim;return `<span class="chip" style="color:${x[1]};border-color:${x[1]}">${x[0]}</span>`};
+const IST={now:['Đặt ngay','var(--bad)'],soon:['Sắp tới điểm đặt','var(--warn)'],ok:['Đủ hàng','var(--accent)'],none:['Không có đơn','var(--muted)']};
+async function renderInp(){const el=$('#t-in');el.innerHTML='<p style="color:var(--muted)">Đang tải…</p>';
+ try{inD=await api('inputs')}catch(e){el.innerHTML='<p>Lỗi: '+esc(e.message)+'</p>';return}paintInp()}
+function paintInp(){const el=$('#t-in'),d=inD,S=d.summary;
+ const subs=[['rop','Điểm đặt hàng'],['tg','Mục tiêu'],['reg','Sổ dữ liệu cần bổ sung']];
+ const nm=(d.register||[]).filter(r=>r.status!=='da_co').length;
+ let h=`<div class="isu al warn"><b>Một phần dữ liệu ở trang này đang là GIẢ LẬP</b> để bạn dùng thử ngay: lead time, MOQ, tồn an toàn, mục tiêu, và giá vốn của SKU chưa có trong P&L. Giá vốn có nhãn <b>P&L</b> là số thật từ file P&L. Nhập số thật vào ô nào thì ô đó đổi nhãn thành <b>Đã nhập</b> và không bị ghi đè nữa. Danh sách việc cần bổ sung nằm ở tab <b>Sổ dữ liệu cần bổ sung</b> (còn ${nm} mục).</div>
+ <div class="row" style="margin:8px 0">${subs.map(([k,t])=>`<button class="${inSub===k?'pri':''}" onclick="inSub='${k}';paintInp()">${t}</button>`).join(' ')}</div>`;
+ if(inSub==='rop'){
+  if(!S){el.innerHTML=h+'<p style="color:var(--muted)">Cần ít nhất một kỳ đã build để tính điểm đặt hàng.</p>';return}
+  const c=S.counts;
+  h+=`<div class="kgrid">${kp('Cần đặt ngay',String(c.now),'tồn ≤ điểm đặt hàng','var(--bad)')}${kp('Sắp tới điểm đặt',String(c.soon),'trong ngưỡng +30%','var(--warn)')}${kp('Vốn cần cho đề xuất đặt',USD(S.reorder_value),'theo giá vốn hiện có','var(--accent2)')}${kp('Giá trị tồn (theo giá vốn)',USD(S.stock_value),S.n_sim+' / '+S.n+' SKU còn số giả lập')}</div>
+  <p style="color:var(--muted);font-size:12.5px;margin:0 0 8px">Trang này chỉ để <b>nhập thông số</b> (giá vốn, lead time, MOQ, tồn an toàn). Tồn kho, số tuần tồn, ngày nên đặt và số lượng đề xuất xem ở <b>cột “Đặt hàng” trong bảng tồn kho của report</b> (tab Tồn kho) — cùng một nguồn số liệu, không nhập hai nơi. Điểm đặt = bán/ngày × (lead time + tồn an toàn); bán/ngày = SL bán trong kỳ ÷ số ngày của kỳ. Kỳ đang dùng: ${esc(d.period||'')}.</p>
+  <div class="row" style="align-items:center"><select onchange="inF=this.value;paintInp()"><option value="">Tất cả trạng thái</option>${Object.entries(IST).map(([k,v])=>`<option value="${k}" ${inF===k?'selected':''}>${v[0]}</option>`).join('')}</select><input id="inq" placeholder="Tìm SKU / tên / nhóm" value="${esc(inQ)}" oninput="inQ=this.value;clearTimeout(window._iq);window._iq=setTimeout(()=>{paintInp();const e=$('#inq');e.focus();e.setSelectionRange(1e4,1e4)},250)" style="flex:2 1 220px"></div>`;
+  const q=inQ.toLowerCase(),rows=d.rows.filter(r=>(!inF||r.status===inF)&&(!q||(r.sku+' '+r.name+' '+r.grp).toLowerCase().includes(q)));
+  const ord={now:0,soon:1,ok:2,none:3};rows.sort((a,b)=>ord[a.status]-ord[b.status]);
+  const inp=(r,f,step)=>`<input type="number" min="0" step="${step}" value="${r[f]}" style="width:78px" onchange="inSet('${r.sku}','${f}',this.value)"><br>${stag(r.src[f])}`;
+  h+=`<div style="overflow-x:auto"><table class="t"><thead><tr><th>SKU</th><th class="n">Giá vốn (USD)</th><th class="n">Lead time (ngày)</th><th class="n">MOQ</th><th class="n">Tồn an toàn (ngày)</th><th class="n">Điểm đặt</th><th>Trạng thái</th><th></th></tr></thead><tbody>${rows.map(r=>`<tr><td><b>${esc(r.sku)}</b><br><small style="color:var(--muted)">${esc((r.name||'').slice(0,46))}</small><br><small style="color:var(--muted)">Tồn ${Math.round(r.stock)} · bán ${r.vel}/ngày</small></td><td class="n">${inp(r,'cost','0.01')}<br><small style="color:var(--muted)">${r.cost_pct==null?'':r.cost_pct+'% giá bán'}</small></td><td class="n">${inp(r,'lead','1')}</td><td class="n">${inp(r,'moq','1')}</td><td class="n">${inp(r,'safety','1')}</td><td class="n"><b>${r.rop}</b></td><td><span class="chip" style="color:${IST[r.status][1]};border-color:${IST[r.status][1]}">${IST[r.status][0]}</span></td><td>${Object.values(r.src).includes('user')?`<button title="Về giá trị giả lập" onclick="inReset('${r.sku}')">↺</button>`:''}</td></tr>`).join('')||'<tr><td colspan="8" style="color:var(--muted)">Không có SKU phù hợp.</td></tr>'}</tbody></table></div>`;
+ }else if(inSub==='tg'){
+  h+=`<p style="color:var(--muted)">Mục tiêu dùng để so sánh thực tế với kế hoạch. Giá trị mặc định đang giả lập; nhập số thật rồi bấm Lưu.</p><div class="kgrid">${d.targets.map(t=>`<div class="kp" style="--tc:var(--accent)"><div class="k">${esc(t.label)} ${stag(t.src)}</div><div class="v"><input type="number" step="any" value="${t.v}" style="width:120px" id="tg_${t.key}"></div><div class="s"><button onclick="inTg('${t.key}')">Lưu</button></div></div>`).join('')}</div>`;
+ }else{
+  const ST=d.status;
+  h+=`<p style="color:var(--muted)">Ghi lại những dữ liệu còn thiếu hoặc đang giả lập để bổ sung sau. Đổi trạng thái sang <b>Đã có dữ liệu thật</b> khi xong.</p>
+  <div style="overflow-x:auto"><table class="t"><thead><tr><th>Nhóm</th><th>Dữ liệu cần</th><th>Dùng để</th><th>Trạng thái</th><th>Người phụ trách</th><th>Ghi chú</th><th></th></tr></thead><tbody>${d.register.map(r=>`<tr><td>${esc(r.area)}</td><td>${esc(r.item)}</td><td><small>${esc(r.why)}</small></td><td><select onchange="inReg('${r.id}','status',this.value)">${Object.entries(ST).map(([k,v])=>`<option value="${k}" ${r.status===k?'selected':''}>${v}</option>`).join('')}</select></td><td><input value="${esc(r.owner)}" style="width:120px" onchange="inReg('${r.id}','owner',this.value)"></td><td><input value="${esc(r.note)}" style="width:100%;min-width:200px" onchange="inReg('${r.id}','note',this.value)"></td><td><button onclick="inRegDel('${r.id}')">Xoá</button></td></tr>`).join('')}</tbody></table></div>
+  <div class="row" style="margin-top:10px"><input id="rg_a" placeholder="Nhóm" style="flex:0 0 120px"><input id="rg_i" placeholder="Dữ liệu cần bổ sung" style="flex:2 1 240px"><input id="rg_w" placeholder="Dùng để làm gì" style="flex:2 1 240px"><button class="pri" onclick="inRegAdd()">+ Thêm</button></div>`;
+ }
+ el.innerHTML=h}
+async function inSet(sku,f,v){try{await api('inputs/sku/'+encodeURIComponent(sku),{method:'PUT',body:JSON.stringify({[f]:v})});inD=await api('inputs');paintInp()}catch(e){alert(e.message);paintInp()}}
+async function inReset(sku){await api('inputs/sku/'+encodeURIComponent(sku),{method:'DELETE'});inD=await api('inputs');paintInp()}
+async function inTg(k){try{await api('inputs/targets/'+k,{method:'PUT',body:JSON.stringify({v:$('#tg_'+k).value})});inD=await api('inputs');paintInp()}catch(e){alert(e.message)}}
+async function inReg(id,f,v){try{await api('inputs/register/'+id,{method:'PUT',body:JSON.stringify({[f]:v})});inD=await api('inputs');if(f==='status')paintInp()}catch(e){alert(e.message)}}
+async function inRegDel(id){await api('inputs/register/'+id,{method:'DELETE'});inD=await api('inputs');paintInp()}
+async function inRegAdd(){try{await api('inputs/register',{method:'POST',body:JSON.stringify({area:$('#rg_a').value,item:$('#rg_i').value,why:$('#rg_w').value})});inD=await api('inputs');paintInp()}catch(e){alert(e.message)}}
+/* ---------- Ghi chú & sự kiện ---------- */
+async function renderNotes(){const el=$('#an-body');const d=await api('notes?period='+encodeURIComponent(cur)),T=d.types;
+ el.innerHTML=`<p style="color:var(--muted)">Ghi lại những gì đã thay đổi trong kỳ (Deal, đổi giá, hết hàng…) để giải thích biến động. Sự kiện hiện trên biểu đồ xu hướng của report (dấu ◆).</p>
+ <div class="row"><input id="nd" type="date" value="${new Date().toISOString().slice(0,10)}" style="flex:0 0 150px"><select id="nt">${Object.entries(T).map(([k,v])=>`<option value="${k}">${esc(v)}</option>`).join('')}</select><input id="nx" placeholder="Nội dung, vd: Chạy Deal 15% cho Emery Queen trên Amazon US" style="flex:3 1 260px"><button class="pri" onclick="noteAdd()">+ Thêm</button></div>
+ <div id="nl">${d.notes.map(n=>`<div class="isu"><span class="chip">${esc(n.date)}</span><span class="chip">${esc(T[n.type]||n.type)}</span> ${esc(n.text)} <small style="color:var(--muted)">· ${esc(n.user||'')}</small> <button style="float:right" onclick="noteDel('${n.id}')">Xoá</button></div>`).join('')||'<p style="color:var(--muted)">Chưa có ghi chú nào cho kỳ này.</p>'}</div>`}
+async function noteAdd(){try{await api('notes',{method:'POST',body:JSON.stringify({period:cur,date:$('#nd').value,type:$('#nt').value,text:$('#nx').value})});renderNotes()}catch(e){alert(e.message)}}
+async function noteDel(id){await api('notes/'+id,{method:'DELETE'});renderNotes()}
+async function renderCfg(){const c=await api('config');
+  $('#t-cf').innerHTML=`<p style="color:var(--muted)">Cấu hình dùng chung cho ETL: PIC, chuẩn hoá tên nhóm, regex lọc quảng cáo, quốc gia/tiền tệ theo tài khoản, tỷ giá, patch giao diện.</p>
+   <textarea id="cfg">${esc(JSON.stringify(c,null,2))}</textarea><p><button class="pri" onclick="saveCfg()">Lưu cấu hình</button> <span id="cfgm"></span></p><div id="clean"></div>`;paintClean()}
+const mb=b=>(b/1048576).toFixed(1)+' MB';
+async function paintClean(){const el=$('#clean');if(!el)return;try{const d=await api('cleanup'),s=d.settings,st=d.state||{},p=d.plan,lr=st.last_result;
+  el.innerHTML=`<h3>🧹 Dọn dẹp file raw đã upload</h3><p style="color:var(--muted)">Mỗi ${s.interval_days} ngày, app tự xoá file raw upload của các kỳ đã build (giữ ${s.keep_latest} kỳ mới nhất và kỳ build chưa đủ ${s.min_age_days} ngày). Report, biểu đồ, trend, task không bị ảnh hưởng. Chỉnh bằng khoá <code>"cleanup"</code> ở trên: <code>{"enabled":true,"interval_days":7,"keep_latest":1,"min_age_days":7}</code>. Trạng thái: <b>${s.enabled?'đang bật':'đang tắt'}</b>.</p>
+   <p>Lần dọn gần nhất: ${st.last_run?esc(st.last_run.replace('T',' ')):'chưa có'}${lr?` — xoá ${lr.files} file, ${mb(lr.bytes)}`:''}</p>
+   <p>Sẽ dọn ở lần tới: ${p.candidates.length?p.candidates.map(c=>`${esc(c.period)} (${c.n} file, ${mb(c.bytes)})`).join('; '):'không có kỳ nào'}${p.skipped.length?`<br><small style="color:var(--muted)">Giữ lại: ${p.skipped.map(c=>esc(c.period)).join(', ')}</small>`:''}</p>
+   <p><button onclick="runClean(true)">Xem trước</button> <button class="pri" onclick="if(confirm('Xoá file raw của các kỳ đủ điều kiện? Không hoàn tác được.'))runClean(false)">Dọn ngay</button> <span id="cleanm"></span></p>`}catch(e){el.innerHTML=''}}
+async function runClean(dry){try{const r=await api('cleanup/run',{method:'POST',body:JSON.stringify({dry})});$('#cleanm').textContent=(dry?'Xem trước: sẽ xoá ':'Đã xoá ')+r.files+' file ('+mb(r.bytes)+')'+(r.skipped.some(x=>x.reason.includes('cache'))?' — có kỳ bị bỏ qua do chưa làm mới được cache':'');if(!dry)setTimeout(paintClean,1500)}catch(e){$('#cleanm').textContent='Lỗi: '+e.message}}
+async function saveCfg(){try{await api('config',{method:'PUT',body:JSON.stringify(JSON.parse($('#cfg').value))});$('#cfgm').textContent='Đã lưu'}catch(e){$('#cfgm').textContent='Lỗi: '+e.message}}
+
+/* ---------- Tối ưu quảng cáo Wayfair (Nhóm 3): từ khoá, đề xuất bid, ranking & SOV ---------- */
+let aoSub='kw',aoD=null,aoRk=null,aoAcc='',aoOpen={},aoOnly=true,aoSel='';
+const AOK={Arozu:'arozu',Megsu:'megsu',DHI:'dhi'};
+const n2=x=>x==null?'—':Number(x).toLocaleString('vi-VN',{minimumFractionDigits:2,maximumFractionDigits:2});
+const cu=(x,c)=>x==null?'—':(c==='CAD'?'C$':'$')+n2(x);
+const aoAccts=()=>Object.entries(aoD.comp.accounts).filter(([n,A])=>!A.empty&&(!aoAcc||aoAcc===n));
+const ACT={pause:['Tạm dừng','var(--bad)'],troas:['Đổi Target ROAS','var(--accent2)'],down:['Giảm bid','var(--warn)'],up:['Có thể tăng bid','var(--accent)'],watch:['Cần xem từ khoá','var(--muted)']};
+const KIND={remove:['Xoá khỏi campaign','var(--bad)'],half:['Giảm 50% bid','var(--warn)'],cut:['Giảm bid','var(--warn)'],raise:['Tăng bid','var(--accent)']};
+const SRCN={pl:['Từ P&L','var(--accent2)'],fixed:['Cố định','var(--muted)'],override:['Đã chốt tay','var(--accent)']};
+const chipc=(t,c)=>`<span class="chip" style="color:${c};border-color:${c};white-space:nowrap">${t}</span>`;
+const aoUsd=(l)=>l.reduce((s,x)=>s+x.spend*(aoD.comp.fx[x.cur]||1),0);
+const SKIPT={camp_inactive:'campaign đang INACTIVE trong template',kw_inactive:'từ khoá thuộc campaign INACTIVE',lst_inactive:'listing / campaign INACTIVE',neg_inactive:'negative của campaign INACTIVE',neg_exists:'negative đã có sẵn',neg_dup:'negative trùng (không phân biệt hoa/thường)',neg_conflict:'negative xung đột với target keyword (Wayfair sẽ từ chối)',neg_cap:'campaign đã chạm trần 100 negative',camp_not_troas:'campaign không phải AI Bidding-TROAS',kw_no_bid:'từ khoá chưa có bid hiện tại',kw_no_change:'bid mới không khác bid hiện tại',lst_no_bid:'listing chưa có bid hiện tại',lst_no_change:'bid mới không khác bid hiện tại'};
+
+async function renderAo(){const el=$('#t-ao');el.innerHTML='<p style="color:var(--muted)">Đang đọc dữ liệu quảng cáo… (lần đầu đọc các file report có thể mất khoảng 30 giây, những lần sau gần như tức thì)</p>';
+ try{aoD=await api('adsopt/overview')}catch(e){el.innerHTML='<p>Lỗi: '+esc(e.message)+'</p>';return}
+ aoRk=null;paintAo()}
+async function aoGoto(k){aoSub=k;if(k==='rk'&&!aoRk){$('#t-ao').innerHTML='<p style="color:var(--muted)">Đang tải xu hướng thứ hạng…</p>';try{aoRk=await api('adsopt/rank')}catch(e){alert(e.message)}}paintAo()}
+function paintAo(){const el=$('#t-ao'),d=aoD;
+ const subs=[['kw','Từ khoá & search term'],['bid','Đề xuất bid'],['rk','Ranking & share of voice'],['cfg','Cài đặt & template']];
+ let h=`<div class="row" style="margin-bottom:8px">${subs.map(([k,t])=>`<button class="${aoSub===k?'pri':''}" onclick="aoGoto('${k}')">${t}</button>`).join(' ')}</div>`;
+ if(d.empty){el.innerHTML=h+'<p style="color:var(--muted)">Cần ít nhất một kỳ đã build (có file report quảng cáo Wayfair) để phân tích.</p>';return}
+ const w=d.comp.window;
+ if(aoSub!=='cfg'){
+  h+=`<div class="isu ${w.days<30?'al warn':''}" style="margin-top:0"><b>Dữ liệu phân tích:</b> ${w.days?`${w.periods.map(esc).join(' + ')} · ${w.days}/${w.max_days} ngày`:'chưa có file report quảng cáo trong các kỳ đã build'}
+   ${w.days&&w.days<30?`<div class="fx" style="color:var(--muted)">Mỗi bộ file hằng tuần chỉ phủ khoảng 1 tuần nên số liệu còn mỏng. App tự cộng dồn các tuần đã upload (tối đa ${w.max_days} ngày), càng nhiều tuần thì đề xuất càng chắc. Nên rà các dòng trước khi upload lên Wayfair.</div>`:''}</div>`;
+  const names=Object.entries(d.comp.accounts).filter(([n,A])=>!A.empty).map(([n])=>n);
+  if(names.length>1&&aoSub!=='rk')h+=`<div class="row" style="align-items:center"><span style="color:var(--muted)">Tài khoản:</span><select onchange="aoAcc=this.value;paintAo()"><option value="">Tất cả</option>${names.map(n=>`<option ${aoAcc===n?'selected':''}>${n}</option>`).join('')}</select></div>`;
+ }
+ if(!d.comp.has_data&&aoSub!=='cfg'&&aoSub!=='rk'){el.innerHTML=h+'<p style="color:var(--muted)">Kỳ đã build chưa có file CR / KTR / KOR / PR của Wayfair. Upload đủ file ở bước 1 rồi Build lại.</p>';return}
+ el.innerHTML=h+'<div id="ao-body"></div><div id="aomsg"></div>';
+ const b=$('#ao-body');
+ if(aoSub==='kw')b.innerHTML=aoKw();else if(aoSub==='bid')b.innerHTML=aoBid();else if(aoSub==='rk')b.innerHTML=aoRank();else b.innerHTML=aoCfg();
+ if(aoSub==='rk'&&aoSel)aoDrawSel()}
+const tplNote=n=>{const t=aoD.templates[n];return t&&!t.missing&&t.check&&t.check.ok};
+const expBtn=(n,parts,label)=>{const ok=tplNote(n);return `<button class="${ok?'pri':''}" ${ok?'':'disabled'} title="${ok?'':'Cần upload template bulk mới nhất của '+n+' ở tab Cài đặt & template'}" onclick="aoExport('${AOK[n]}','${parts}')">⤓ ${label}</button>`};
+function aoKw(){const A=aoAccts(),rows=[],win=[],nt=[];A.forEach(([n,a])=>{a.neg.forEach(x=>rows.push({n,cur:a.cur,...x}));a.winners.forEach(x=>win.push({n,cur:a.cur,...x}));a.newterms.forEach(x=>nt.push({n,cur:a.cur,...x}))});
+ const ok=rows.filter(x=>x.status==='ok'),cf=rows.filter(x=>x.status==='conflict'),ia=rows.filter(x=>x.status==='inactive');
+ const sum=aoUsd;
+ const stc=x=>x.status==='ok'?chipc('Thêm được','var(--accent)'):x.status==='conflict'?chipc('Xung đột với “'+esc(x.conflict)+'”','var(--warn)'):chipc('Campaign đang tạm dừng','var(--muted)');
+ let h=`<div class="kgrid">${kp('Search term chi tiền, chưa ra đơn',String(rows.length),'tổng chi khoảng $'+n2(sum(rows))+' (quy USD)','var(--warn)')}${kp('Thêm negative được',String(ok.length),'chi khoảng $'+n2(sum(ok))+' có thể tái phân bổ','var(--accent)')}${kp('Xử lý bằng bid từ khoá',String(cf.length),'trùng / chứa target keyword nên Wayfair không nhận negative','var(--accent2)')}${kp('Từ khoá nên tăng bid',String(win.length),'ra đơn tốt, ACOS thấp hơn ngưỡng','var(--accent)')}${kp('Search term nên thêm làm từ khoá',String(nt.length),'ra đơn, chưa là target keyword','var(--accent2)')}</div>
+  <div class="row" style="align-items:center;flex-wrap:wrap">${A.map(([n])=>expBtn(n,'neg,kwup','Xuất bulk '+n+' (negative + tăng bid từ khoá)')).join(' ')}</div>
+  <p style="color:var(--muted);font-size:12.5px;margin:4px 0 12px">File bulk được ghi vào <b>bản sao template Wayfair mới nhất</b> bạn upload ở tab Cài đặt: chỉ điền các cột “New …”, bỏ qua campaign / từ khoá đang INACTIVE, chặn negative trùng, xung đột target keyword và vượt trần 100 / campaign. Nên mở file rà lại trước khi upload lên Wayfair.</p>`;
+ const lim=l=>l.slice(0,120);
+ h+=`<h3>Negative keyword đề xuất (${rows.length})</h3>`+(rows.length?`<div style="overflow-x:auto"><table class="t"><thead><tr><th>Tài khoản</th><th>Campaign</th><th>Search term</th><th class="n">Chi</th><th class="n">Click</th><th>Trạng thái</th></tr></thead><tbody>${lim(rows).map(x=>`<tr><td>${x.n}</td><td><small>${esc(x.campaign)}</small></td><td><b>${esc(x.term)}</b></td><td class="n">${cu(x.spend,x.cur)}</td><td class="n">${x.clicks}</td><td>${stc(x)}</td></tr>`).join('')}</tbody></table></div>${rows.length>120?`<p style="color:var(--muted)">Hiện 120 dòng đầu; file xuất có đủ.</p>`:''}`:'<p style="color:var(--muted)">Không có search term nào vượt ngưỡng chi tối thiểu mà chưa ra đơn.</p>');
+ if(cf.length)h+=`<p style="color:var(--muted);font-size:12.5px">Search term bị đánh “xung đột” là cụm nằm trong (hoặc chứa) một target keyword đang chạy trong cùng campaign, nên cách xử lý đúng là giảm / xoá bid của target keyword đó (xem tab Đề xuất bid), không thêm negative.</p>`;
+ h+=`<h3>Từ khoá ra đơn tốt — nên tăng bid (${win.length})</h3>`+(win.length?`<div style="overflow-x:auto"><table class="t"><thead><tr><th>Tài khoản</th><th>Campaign</th><th>Từ khoá</th><th class="n">Đơn</th><th class="n">Chi</th><th class="n">ACOS</th><th class="n">Ngưỡng</th><th class="n">Bid hiện tại → đề xuất</th></tr></thead><tbody>${win.map(x=>`<tr><td>${x.n}</td><td><small>${esc(x.campaign)}</small></td><td><b>${esc(x.keyword)}</b> <small style="color:var(--muted)">${esc(x.match||'')}</small></td><td class="n">${x.orders}</td><td class="n">${cu(x.spend,x.cur)}</td><td class="n">${PCT(x.acos)}</td><td class="n">${PCT(x.target)}</td><td class="n">${cu(x.bid,x.cur)} → <b class="up">${cu(x.new_bid,x.cur)}</b> <small>(+${Math.round((x.ratio-1)*100)}%)</small></td></tr>`).join('')}</tbody></table></div>`:'<p style="color:var(--muted)">Chưa có từ khoá nào đủ đơn và ACOS thấp để đề xuất tăng bid trong dữ liệu hiện có.</p>');
+ h+=`<h3>Search term ra đơn — nên thêm làm từ khoá đích (${nt.length})</h3>`+(nt.length?`<div style="overflow-x:auto"><table class="t"><thead><tr><th>Tài khoản</th><th>Campaign</th><th>Search term</th><th class="n">Đơn</th><th class="n">Chi</th><th class="n">Doanh thu</th><th class="n">ACOS</th></tr></thead><tbody>${lim(nt).map(x=>`<tr><td>${x.n}</td><td><small>${esc(x.campaign)}</small></td><td><b>${esc(x.term)}</b></td><td class="n">${x.orders}</td><td class="n">${cu(x.spend,x.cur)}</td><td class="n">${cu(x.sales,x.cur)}</td><td class="n">${PCT(x.acos)}</td></tr>`).join('')}</tbody></table></div><p style="color:var(--muted);font-size:12.5px">Danh sách này chỉ để tham khảo — template bulk hiện không có sheet thêm target keyword nên bạn thêm tay trên Wayfair.</p>`:'<p style="color:var(--muted)">Chưa có search term nào đủ đơn và chưa nằm trong target keyword.</p>');
+ return h}
+function aoBid(){const A=aoAccts(),d=aoD;let all=[];A.forEach(([n,a])=>a.campaigns.forEach(c=>all.push({n,cur:a.cur,...c})));
+ const cnt=k=>all.filter(c=>c.action===k).length,kwn=all.reduce((s,c)=>s+c.kw_up+c.kw_down+c.kw_rm,0),lsn=all.reduce((s,c)=>s+c.lst_up+c.lst_down+c.lst_rm,0);
+ let deep=0;A.forEach(([n,a])=>{deep+=a.kw_actions.concat(a.lst_actions).filter(x=>x.ratio!=null&&x.ratio<0.5).length});
+ const nonpl=d.n_targets-d.n_pl;
+ let h=`<div class="isu ${d.n_low?'al warn':''}" style="margin-top:0"><b>Ngưỡng ACOS đang dùng:</b> ${d.n_pl} / ${d.n_targets} nhóm × thị trường lấy từ ngưỡng hoà vốn của P&L (${d.cfg.mode==='margin'?'biên trước QC trừ biên giữ lại '+d.cfg.target_margin+'%':'biên trước QC × '+d.cfg.safety}), ${nonpl} nhóm × thị trường dùng ngưỡng cố định ${d.cfg.fixed_acos}%${d.n_low?` (${d.n_low} nhóm có biên trước quảng cáo trong P&L thấp hơn ${d.cfg.min_target}% nên chưa suy ra được ngưỡng hoà vốn)`:''}.
+   ${d.n_low?'<div class="fx" style="color:var(--muted)">Cách xử lý: rà lại giá vốn / phí Wayfair trong P&L (hoặc chốt tay ngưỡng ACOS cho từng nhóm ở tab Cài đặt). Khi biên trước quảng cáo của nhóm đủ dương, app tự chuyển sang ngưỡng hoà vốn từ P&L.</div>':''}</div>
+  <div class="kgrid">${kp('Giảm bid',String(cnt('down')),'campaign Manual có ACOS cao hơn ngưỡng','var(--warn)')}${kp('Có thể tăng bid',String(cnt('up')),'ACOS thấp hơn ngưỡng và đã ra đơn','var(--accent)')}${kp('Đổi Target ROAS',String(cnt('troas')),'campaign AI Bidding-TROAS','var(--accent2)')}${kp('Tạm dừng',String(cnt('pause')),'chi cao, ACOS vượt ngưỡng an toàn '+d.cfg.pause_acos+'%','var(--bad)')}${kp('Thay đổi cấp từ khoá / listing',kwn+' / '+lsn,'file bulk ghi theo từng dòng này')}</div>
+  ${deep?`<div class="isu al warn"><b>${deep} dòng giảm bid hơn 50%.</b> <span class="fx" style="color:var(--muted)">Nên rà các dòng này trước khi upload vì có thể ảnh hưởng số đơn.</span></div>`:''}
+  <div class="row" style="align-items:center;flex-wrap:wrap">${A.map(([n])=>expBtn(n,'camp,kwbid,lstbid,kwup','Xuất bulk '+n+' (campaign + từ khoá + listing)')).join(' ')}</div>
+  <div class="row" style="align-items:center"><label><input type="checkbox" ${aoOnly?'checked':''} onchange="aoOnly=this.checked;paintAo()"> Chỉ campaign có đề xuất</label></div>`;
+ const rows=all.filter(c=>!aoOnly||c.action).sort((a,b)=>b.spend-a.spend);
+ h+=rows.length?`<div style="overflow-x:auto"><table class="t"><thead><tr><th>TK</th><th>Campaign</th><th>Nhóm</th><th class="n">Chi</th><th class="n">Đơn</th><th class="n">ACOS</th><th class="n">Ngưỡng</th><th>Đề xuất</th><th class="n">Chi tiết</th></tr></thead><tbody>${rows.map(c=>{const k=c.n+c.campaign_id,open=aoOpen[k],A0=d.comp.accounts[c.n];
+   const det=open?`<tr><td></td><td colspan="8">${aoCampDetail(A0,c)}</td></tr>`:'';
+   return `<tr><td>${c.n}</td><td><small>${esc(c.name)}</small><br><small style="color:var(--muted)">${esc(c.strategy)}${c.active?'':' · tạm dừng'}</small></td><td><small>${esc((c.grp||'—').replace(/^Acacia\s*-?\s*/,''))}</small></td><td class="n">${cu(c.spend,c.cur)}</td><td class="n">${c.orders}</td><td class="n">${PCT(c.acos)}</td><td class="n">${PCT(c.target)}<br>${chipc(SRCN[c.src][0],SRCN[c.src][1])}</td><td>${c.action?chipc(ACT[c.action][0],ACT[c.action][1])+'<br><small>'+esc(c.reason)+'</small>':'<span style="color:var(--muted)">Giữ nguyên</span>'}</td><td class="n">${(c.kw_up+c.kw_down+c.kw_rm+c.lst_up+c.lst_down+c.lst_rm)?`<button style="font-size:12px;white-space:nowrap" onclick="aoOpen['${k}']=!aoOpen['${k}'];paintAo()">${open?'Ẩn':(c.kw_up+c.kw_down+c.kw_rm)+' từ khoá · '+(c.lst_up+c.lst_down+c.lst_rm)+' listing'}</button>`:'—'}</td></tr>${det}`}).join('')}</tbody></table></div>`:'<p style="color:var(--muted)">Không có campaign nào cần chỉnh theo ngưỡng hiện tại.</p>';
+ return h}
+function aoCampDetail(A,c){const kw=A.kw_actions.filter(x=>x.campaign_id===c.campaign_id),ls=A.lst_actions.filter(x=>x.campaign_id===c.campaign_id);
+ const row=(nm,x)=>`<tr><td>${esc(nm)}</td><td>${chipc(KIND[x.kind][0],KIND[x.kind][1])}</td><td class="n">${cu(x.spend,A.cur)}</td><td class="n">${x.orders}</td><td class="n">${PCT(x.acos)}</td><td class="n">${x.new_bid!=null?cu(x.bid,A.cur)+' → <b>'+cu(x.new_bid,A.cur)+'</b>':x.kind==='remove'?'Xoá':'—'}</td></tr>`;
+ return `<table class="t"><thead><tr><th>Từ khoá / listing</th><th>Hành động</th><th class="n">Chi</th><th class="n">Đơn</th><th class="n">ACOS</th><th class="n">Bid</th></tr></thead><tbody>${kw.map(x=>row(x.keyword+' ('+(x.match||'')+')',x)).join('')}${ls.map(x=>row('Listing '+x.listing,x)).join('')}</tbody></table>`}
+function spark(vals,w,h){w=w||110;h=h||28;vals=vals.filter(v=>v!=null);if(vals.length<2)return '<span style="color:var(--muted)">—</span>';
+ const mn=Math.min(...vals),mx=Math.max(...vals),rg=(mx-mn)||1,P=vals.map((v,i)=>[2+i*(w-4)/(vals.length-1),2+(v-mn)/rg*(h-4)]),up=vals[vals.length-1]<=vals[0],c=up?'var(--accent)':'var(--bad)',L=P[P.length-1];
+ return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" style="vertical-align:middle"><polyline fill="none" stroke="${c}" stroke-width="1.6" points="${P.map(p=>p[0].toFixed(1)+','+p[1].toFixed(1)).join(' ')}"/><circle cx="${L[0].toFixed(1)}" cy="${L[1].toFixed(1)}" r="2.6" fill="${c}"/></svg>`}
+function aoRank(){const r=aoRk;if(!r)return '<p style="color:var(--muted)">Đang tải…</p>';if(!r.has_data)return '<p style="color:var(--muted)">Chưa có kỳ nào được build.</p>';
+ const al=r.alerts,Wn=r.weeks.length;
+ let h=`<div class="isu" style="margin-top:0"><b>Xu hướng ${Wn} tuần:</b> ${r.weeks.map(w=>esc(w.label)+(w.src==='file'?'':' <small style="color:var(--muted)">(từ báo cáo)</small>')).join(' · ')}
+  <div class="fx" style="color:var(--muted)">Thứ hạng càng thấp càng tốt (hạng 1 là đầu ngành hàng); đường đi lên = thứ hạng đang cải thiện. Cảnh báo khi hạng thấp đi từ ${r.cfg.rank_min_drop} bậc và ${r.cfg.rank_min_pct}% trở lên (trong tuần hoặc so với tuần trước). Cùng một mã listing có cùng thứ hạng ở mọi tài khoản nên được gộp.${Wn<3?' Mới có '+Wn+' tuần nên xu hướng còn ngắn; mỗi tuần build thêm sẽ dài ra.':''}</div></div>`;
+ h+=`<h3>Cảnh báo (${al.length})</h3>`+(al.length?al.slice(0,14).map(a=>`<div class="isu al ${a.sev>=3?'urgent':'warn'}"><span class="chip">${a.kind==='rank'?'Thứ hạng':'Share of voice'}</span><span class="chip">${esc(a.acct)}</span><div class="tt">${a.kind==='rank'?esc(a.listing)+' · '+esc(a.cls||''):esc(a.cls||'')}</div><div class="fx">${esc(a.why)}</div></div>`).join('')+(al.length>14?`<p style="color:var(--muted)">… và ${al.length-14} cảnh báo khác.</p>`:''):'<p style="color:var(--muted)">Chưa có listing hay từ khoá nào tụt vượt ngưỡng.</p>');
+ h+=`<h3>Thứ hạng từng listing</h3><div style="overflow-x:auto"><table class="t"><thead><tr><th>Listing</th><th>Nhóm</th><th>Ngành hàng</th><th>Đang chạy ở</th><th class="n">Hạng hiện tại</th><th class="n">Trong tuần</th><th class="n">So tuần trước</th><th>Xu hướng ngày</th><th></th></tr></thead><tbody>${r.listings.map((l,i)=>{const dd=x=>x==null?'—':(x>0?'<span class="dn">+'+x+'</span>':x<0?'<span class="up">'+x+'</span>':'0');
+  const days=l.daily.map(p=>p[1]),wk=l.series.map(s=>s&&s.last);
+  return `<tr style="cursor:pointer" onclick="aoSel='${l.lst}';paintAo()"><td><b>${esc(l.listing)}</b></td><td><small>${esc((l.grp||'—').replace(/^Acacia\s*-?\s*/,''))}</small></td><td>${esc(l.cls||'')}</td><td><small>${l.accts.map(a=>esc(a.acct)+(a.status.toUpperCase()==='ACTIVE'?'':' <span style="color:var(--muted)">(tạm dừng)</span>')).join(', ')}</small></td><td class="n"><b>${l.last}</b></td><td class="n">${dd(l.d_week)}</td><td class="n">${dd(l.d_wow)}</td><td>${spark(days.length>1?days:wk)}</td><td>${l.alert==='drop'?chipc('Tụt hạng','var(--bad)'):l.alert==='rise'?chipc('Lên hạng','var(--accent)'):''}</td></tr>`}).join('')}</tbody></table></div><p style="color:var(--muted);font-size:12.5px">Số dương = thứ hạng thấp đi (xấu hơn). Bấm một dòng để xem biểu đồ chi tiết.</p><div id="aosel"></div>`;
+ h+=`<h3>Share of voice theo từ khoá tìm kiếm</h3><div class="cols">${Object.entries(r.accounts).map(([n,A])=>`<div class="isu"><div class="tt">${n}</div><table class="t"><thead><tr><th>Tuần</th><th class="n">Có mặt trang 1</th><th class="n">Top 8</th><th class="n">Có mặt trong tìm kiếm</th></tr></thead><tbody>${A.sov.map(s=>`<tr><td>${esc(s.label)}</td><td class="n">${s.p1==null?'—':n2(s.p1)+'%'}</td><td class="n">${s.top8==null?'—':n2(s.top8)+'%'}</td><td class="n">${s.shs==null?'—':n2(s.shs)+'%'}</td></tr>`).join('')}</tbody></table>
+   <small style="color:var(--muted)">Bình quân gia quyền theo lượt hiển thị của các từ khoá thuộc ngành hàng đang bán. “Có mặt trong tìm kiếm” chỉ có khi tuần đó có file ST.</small>
+   ${A.changes.length?`<div class="tt" style="margin-top:10px">Mất hiện diện trang 1 nhiều nhất</div>${A.changes.slice(0,5).map(c=>`<div style="font-size:12.5px">${esc(c.term)} <span class="dn">${c.d_p1>0?'+':''}${n2(c.d_p1)}</span> <span style="color:var(--muted)">(${n2(c.p1_a)}% → ${n2(c.p1_b)}%)</span></div>`).join('')}`:''}
+   ${A.gains.length?`<div class="tt" style="margin-top:8px">Tăng hiện diện nhiều nhất</div>${A.gains.slice(0,4).map(c=>`<div style="font-size:12.5px">${esc(c.term)} <span class="up">+${n2(c.d_p1)}</span> <span style="color:var(--muted)">(${n2(c.p1_a)}% → ${n2(c.p1_b)}%)</span></div>`).join('')}`:''}</div>`).join('')}</div>`;
+ return h}
+function aoDrawSel(){const l=(aoRk.listings||[]).find(x=>x.lst===aoSel),el=$('#aosel');if(!l||!el)return;
+ const pts=l.daily.length>1?l.daily.map(p=>[p[0].slice(5),p[1]]):l.series.map((s,i)=>s?[aoRk.weeks[i].label.split(' ')[0],s.last]:null).filter(Boolean);
+ if(pts.length<2){el.innerHTML='';return}
+ const W=640,H=190,pl=46,pr=12,pt=14,pb=26,v=pts.map(p=>p[1]),mn=Math.min(...v),mx=Math.max(...v),rg=(mx-mn)||1;
+ const X=i=>pl+i*(W-pl-pr)/(pts.length-1),Y=x=>pt+(x-mn)/rg*(H-pt-pb),up=v[v.length-1]<=v[0],c=up?'var(--accent)':'var(--bad)';
+ el.innerHTML=`<div class="isu"><div class="tt">${esc(l.listing)} · ${esc(l.cls||'')} <small style="color:var(--muted)">(${l.daily.length>1?'theo ngày':'theo tuần'})</small></div>
+  <svg viewBox="0 0 ${W} ${H}" style="width:100%;max-width:760px"><line x1="${pl}" y1="${Y(mn)}" x2="${W-pr}" y2="${Y(mn)}" stroke="var(--line)"/><line x1="${pl}" y1="${Y(mx)}" x2="${W-pr}" y2="${Y(mx)}" stroke="var(--line)"/>
+   <text x="${pl-6}" y="${Y(mn)+4}" text-anchor="end" font-size="11" fill="var(--muted)">${mn}</text><text x="${pl-6}" y="${Y(mx)+4}" text-anchor="end" font-size="11" fill="var(--muted)">${mx}</text>
+   <polyline fill="none" stroke="${c}" stroke-width="2" points="${pts.map((p,i)=>X(i).toFixed(1)+','+Y(p[1]).toFixed(1)).join(' ')}"/>
+   ${pts.map((p,i)=>`<circle cx="${X(i).toFixed(1)}" cy="${Y(p[1]).toFixed(1)}" r="3" fill="${c}"><title>${p[0]}: hạng ${p[1]}</title></circle>`).join('')}
+   <text x="${X(0)}" y="${H-6}" font-size="11" fill="var(--muted)">${esc(pts[0][0])}</text><text x="${X(pts.length-1)}" y="${H-6}" text-anchor="end" font-size="11" fill="var(--muted)">${esc(pts[pts.length-1][0])}</text></svg>
+  <table class="t" style="max-width:520px"><thead><tr><th>Tuần</th><th class="n">Đầu tuần</th><th class="n">Cuối tuần</th><th class="n">Tốt nhất</th></tr></thead><tbody>${l.series.map((s,i)=>s?`<tr><td>${esc(aoRk.weeks[i].label)}</td><td class="n">${s.first}</td><td class="n">${s.last}</td><td class="n">${s.best}</td></tr>`:'').join('')}</tbody></table></div>`;
+ el.scrollIntoView({block:'nearest'})}
+const PNAME={window_days:['Số ngày cộng dồn tối đa','ngày'],fixed_acos:['ACOS mục tiêu cố định','%'],safety:['Hệ số an toàn trên ngưỡng hoà vốn','×'],target_margin:['Biên giữ lại (chế độ “đạt biên mục tiêu”)','%'],min_target:['Ngưỡng ACOS tối thiểu để tin P&L','%'],max_target:['Ngưỡng ACOS tối đa','%'],pause_spend:['Tạm dừng khi chi ≥','tiền tệ TK'],pause_acos:['…và ACOS ≥','%'],neg_min_spend:['Negative: chi tối thiểu, 0 đơn','tiền tệ TK'],kw_remove_spend:['Xoá từ khoá / listing khi chi ≥ (0 đơn)','tiền tệ TK'],kw_half_spend:['Giảm 50% bid khi chi ≥ (0 đơn)','tiền tệ TK'],kw_cut_min_spend:['Từ khoá: chi tối thiểu để giảm bid','tiền tệ TK'],lst_cut_min_spend:['Listing: chi tối thiểu để giảm bid','tiền tệ TK'],bid_floor_ratio:['Sàn giảm bid (0.2 = giảm tối đa 80%)','×'],up_min_orders:['Tăng bid: số đơn tối thiểu','đơn'],up_min_spend:['Tăng bid: chi tối thiểu','tiền tệ TK'],up_ratio:['Tăng bid khi ACOS ≤ ngưỡng ×','×'],up_cap:['Mỗi lần tăng bid tối đa','0.25 = +25%'],newterm_min_orders:['Gợi ý thêm từ khoá: đơn tối thiểu','đơn'],rank_min_drop:['Cảnh báo tụt hạng từ (bậc)','bậc'],rank_min_pct:['…và từ (%)','%'],rank_high_drop:['Mức nghiêm trọng từ (bậc)','bậc'],sov_min_drop:['Cảnh báo mất hiện diện trang 1 từ (điểm %)','điểm'],sov_min_impr:['…chỉ xét từ khoá có hiển thị ≥','lượt']};
+const PGROUPS=[['Ngưỡng ACOS',['fixed_acos','safety','target_margin','min_target','max_target']],['Từ khoá & bid',['neg_min_spend','kw_remove_spend','kw_half_spend','kw_cut_min_spend','lst_cut_min_spend','bid_floor_ratio','up_min_orders','up_min_spend','up_ratio','up_cap','newterm_min_orders']],['Campaign',['pause_spend','pause_acos']],['Ranking & SOV',['rank_min_drop','rank_min_pct','rank_high_drop','sov_min_drop','sov_min_impr']],['Dữ liệu',['window_days']]];
+function aoCfg(){const d=aoD,c=d.cfg;
+ const age=t=>{const dd=(Date.now()-new Date(t).getTime())/864e5;return dd};
+ let h=`<div class="isu" style="margin-top:0"><b>Template bulk Wayfair</b> <span class="fx" style="color:var(--muted)">Tải template MỚI NHẤT của từng tài khoản từ Wayfair (<code>wf_bulk_campaigns_template_-_&lt;Tài khoản&gt;.xlsx</code>) rồi upload tại đây ngay trước khi xuất, vì trạng thái ACTIVE / INACTIVE và bid hiện tại thay đổi liên tục. App chỉ ghi vào bản sao, file gốc của bạn không bị đổi.</span></div>
+  <table class="t"><thead><tr><th>Tài khoản</th><th>Trạng thái template</th><th></th></tr></thead><tbody>${Object.entries(d.templates).map(([n,t])=>{const ok=!t.missing&&t.check&&t.check.ok;
+   const miss=!t.missing&&t.check&&!t.check.ok?Object.values(t.check.sheets).filter(s=>!s.found||s.missing.length).map(s=>esc(s.sheet)+': thiếu '+(s.found?s.missing.map(esc).join(', '):'cả sheet')).join('<br>'):'';
+   return `<tr><td><b>${n}</b></td><td>${t.missing?'<span style="color:var(--muted)">Chưa upload</span>':`${ok?chipc('Đọc được đủ sheet / cột','var(--accent)'):chipc('Thiếu cột','var(--bad)')} <small>${esc(t.name)} · ${esc((t.uploaded||'').slice(0,16).replace('T',' '))}</small>${age(t.uploaded)>3?' '+chipc('đã hơn 3 ngày — nên tải bản mới','var(--warn)'):''}${miss?'<div class="fx" style="color:var(--bad)">'+miss+'</div>':''}`}</td><td><input type="file" accept=".xlsx" onchange="aoTpl('${t.key}',this)">${t.missing?'':` <button onclick="aoTplDel('${t.key}')">Xoá</button>`}</td></tr>`}).join('')}</tbody></table>
+  <h3>Ngưỡng ACOS theo nhóm × thị trường</h3>
+  <div class="row" style="align-items:center"><span>Cách tính ngưỡng:</span><select id="ao_mode"><option value="breakeven" ${c.mode==='breakeven'?'selected':''}>Hoà vốn: biên trước QC × hệ số an toàn</option><option value="margin" ${c.mode==='margin'?'selected':''}>Đạt biên mục tiêu: biên trước QC − biên giữ lại</option><option value="fixed" ${c.mode==='fixed'?'selected':''}>Luôn dùng ngưỡng cố định</option></select></div>
+  <p style="color:var(--muted);font-size:12.5px">Biên trước quảng cáo = (lợi nhuận PL5 + chi quảng cáo) ÷ doanh thu của nhóm trên Wayfair, cùng cách tính với dư địa ở tab Quản trị. Khi giá trị này nhỏ hơn ngưỡng tối thiểu, app dùng ngưỡng cố định. Ô “Chốt tay” ghi đè mọi cách tính.</p>
+  <div style="overflow-x:auto"><table class="t"><thead><tr><th>Nhóm</th><th>TT</th><th class="n">Biên trước QC</th><th class="n">Ngưỡng đang dùng</th><th>Nguồn</th><th class="n">Chốt tay (ACOS %)</th></tr></thead><tbody>${d.targets.map((t,i)=>`<tr><td><small>${esc(t.grp)}</small></td><td>${t.cty}</td><td class="n">${t.pre_ads==null?'—':PCT(t.pre_ads)}</td><td class="n"><b>${PCT(t.target)}</b></td><td>${chipc(SRCN[t.src][0],SRCN[t.src][1])}</td><td class="n"><input id="ov_${i}" type="number" step="0.1" min="0" style="width:84px" value="${t.override==null?'':t.override}" placeholder="—"></td></tr>`).join('')}</tbody></table></div>
+  ${PGROUPS.map(([g,ks])=>`<h3>${g}</h3><div class="cols">${ks.map(k=>`<label style="display:block;font-size:13px">${PNAME[k][0]} <small style="color:var(--muted)">(${PNAME[k][1]})</small><br><input id="ao_${k}" type="number" step="any" min="0" value="${c[k]}" style="width:120px"></label>`).join('')}</div>`).join('')}
+  <p><button class="pri" onclick="aoSave()">Lưu cài đặt</button> <span id="aocm"></span></p>`;
+ return h}
+async function aoSave(){const body={mode:$('#ao_mode').value,overrides:{}};Object.keys(PNAME).forEach(k=>{const e=$('#ao_'+k);if(e)body[k]=e.value});
+ aoD.targets.forEach((t,i)=>{const v=$('#ov_'+i).value;if(v!=='')body.overrides[t.key]=v});
+ try{await api('adsopt/config',{method:'PUT',body:JSON.stringify(body)});$('#aocm').textContent='Đã lưu';aoD=await api('adsopt/overview');aoRk=null;paintAo();$('#aocm').textContent='Đã lưu'}catch(e){$('#aocm').textContent='Lỗi: '+e.message}}
+async function aoTpl(key,inp){const f=inp.files[0];if(!f)return;try{await api('adsopt/template/'+key+'?name='+encodeURIComponent(f.name),{method:'POST',body:f});aoD=await api('adsopt/overview');paintAo()}catch(e){alert(e.message)}}
+async function aoTplDel(key){if(!confirm('Xoá template đã upload?'))return;await api('adsopt/template/'+key,{method:'DELETE'});aoD=await api('adsopt/overview');paintAo()}
+async function aoExport(key,parts){const m=$('#aomsg');m.innerHTML='';try{const r=await fetch('/api/adsopt/export/'+key+'?parts='+parts);
+ if(r.status===401){location.href='/login';return}
+ if(!r.ok){const j=await r.json().catch(()=>({}));alert(j.error||r.statusText);return}
+ let rep={};try{rep=JSON.parse(decodeURIComponent(r.headers.get('X-Adsopt-Report')||'{}'))}catch(e){}
+ const b=await r.blob(),cd=r.headers.get('Content-Disposition')||'',fn=(cd.match(/filename="([^"]+)"/)||[])[1]||'wf_bulk_edits.xlsx';
+ const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=fn;document.body.appendChild(a);a.click();a.remove();
+ const CN={camp:'campaign',kw:'từ khoá',lst:'listing',neg:'negative keyword'};
+ m.innerHTML=`<div class="isu al"><b>Đã tạo ${esc(fn)}</b> — ${Object.entries(rep.counts||{}).map(([k,v])=>v+' '+CN[k]).join(', ')||'không có dòng nào thay đổi'}.${rep.skipped&&Object.keys(rep.skipped).length?`<div class="fx" style="color:var(--muted)">Bỏ qua: ${Object.entries(rep.skipped).map(([k,v])=>v+' × '+(SKIPT[k]||k)).join('; ')}.</div>`:''}<div class="fx" style="color:var(--muted)">Mở file rà lại các dòng giảm bid sâu trước khi upload lên Wayfair.</div></div>`}catch(e){alert(e.message)}}
+
+/* ---------- Phân quyền theo module ---------- */
+
+let RT=null;
+async function loadRt(){try{RT=await api('rtemplates')}catch(e){RT=null}
+ const sel=$('#ntpl');if(sel&&RT){const keep=sel.value;sel.innerHTML=RT.items.filter(i=>!i.archived).map(i=>`<option value="${i.id}">Mẫu: ${esc(i.name)}${i.id===RT.default?' (mặc định)':''}</option>`).join('');sel.value=keep&&[...sel.options].some(o=>o.value===keep)?keep:RT.default}}
+async function fillPtpl(){const sel=$('#ptpl');if(!sel)return;if(!RT)await loadRt();if(!RT||!meta)return;const cu=meta.template||'base';
+ sel.innerHTML=RT.items.filter(i=>!i.archived||i.id===cu).map(i=>`<option value="${i.id}">${esc(i.name)}${i.archived?' (đã lưu trữ)':''}</option>`).join('');sel.value=cu}
+async function setPtpl(t){try{const r=await api(`periods/${cur}/template`,{method:'PUT',body:JSON.stringify({template:t})});meta.template=t;$('#ptplm').textContent='Đã đổi sang “'+r.name+'”.'+(r.warn.length?' ⚠ '+r.warn.join(' '):'')}catch(e){$('#ptplm').textContent=e.message;fillPtpl()}}
+async function renderRt(){const el=$('#t-rt');el.innerHTML='<p style="color:var(--muted)">Đang tải…</p>';await loadRt();if(!RT){el.innerHTML='<p>Không tải được danh sách mẫu.</p>';return}paintRt()}
+function paintRt(m){const adm=MYP?MYP.role==='admin':true,d=RT,el=$('#t-rt'),fmt=x=>(x||'').slice(0,16).replace('T',' ');
+ el.innerHTML=`<div class="isu" style="margin-top:0"><b>Mẫu report</b><div class="fx" style="color:var(--muted)">Mỗi kỳ gắn với một mẫu; chọn mẫu khi tạo kỳ hoặc đổi ở bước Build. Mẫu mới tải lên được <b>lưu thành file riêng</b>, không ghi đè mẫu nào, và không có nút xoá — chỉ <b>Lưu trữ</b> (ẩn khỏi danh sách chọn, file vẫn còn). Kỳ cũ giữ nguyên mẫu đã dùng. Mẫu gốc luôn có sẵn và không sửa được.</div></div>
+ ${d.base_ok===false?`<div class="isu s3" style="margin:10px 0"><b>⚠ ${esc(d.base_msg)}</b><div class="fx">Báo cáo của mẫu gốc có thể đã khác. Khôi phục bằng cách chép bản sao lưu đè lại <code>templates/report-template-base.html</code>.</div></div>`:`<p style="color:var(--muted);margin:8px 0">✓ ${esc(d.base_msg||'Mẫu gốc còn nguyên')} · mẫu mới được cách ly: không dùng chung mã có thể sửa với mẫu gốc.</p>`}
+ <div style="overflow-x:auto"><table class="t"><thead><tr><th>Mẫu</th><th>Ghi chú</th><th class="n">Kỳ đang dùng</th><th>Tạo lúc</th><th>Tương thích dữ liệu</th><th></th></tr></thead><tbody>${d.items.map(i=>`<tr style="${i.archived?'opacity:.55':''}"><td><b>${esc(i.name)}</b>${i.id===d.default?' <span class="chip" style="color:var(--accent);border-color:var(--accent)">mặc định</span>':''}${i.builtin?' <span class="chip">gốc</span>':''}${i.archived?' <span class="chip">lưu trữ</span>':''}<br><small style="color:var(--muted)">${i.id} · ${i.kb} KB${i.parent?' · từ '+esc(i.parent):''}${i.patches?' · bộ patch riêng: '+esc(i.patches):''}</small></td>
+  <td style="max-width:260px">${esc(i.note||'')}</td><td class="n">${i.used}</td><td>${fmt(i.created)}<br><small style="color:var(--muted)">${esc(i.by||'')}</small></td>
+  <td>${i.builtin?'—':(i.missing&&i.missing.length?`<span style="color:#e0a040" title="${esc(i.missing.join(', '))}">Thiếu ${i.missing.length} key so với mẫu gốc</span>`:'<span style="color:var(--accent)">Đủ key</span>')}${i.extra&&i.extra.length?`<br><small style="color:var(--muted)" title="${esc(i.extra.join(', '))}">+${i.extra.length} key mới</small>`:''}</td>
+  <td style="white-space:nowrap"><button onclick="window.open('/api/rtemplates/${i.id}/preview')">Xem thử</button>${adm?` <button onclick="rtDl('${i.id}')">Tải</button> <button onclick="rtClone('${i.id}')">Nhân bản</button>${i.builtin?'':` <button onclick="rtEdit('${i.id}')">Sửa tên/ghi chú</button>`}${!i.archived&&i.id!==d.default?` <button onclick="rtDef('${i.id}')">Đặt mặc định</button>`:''}${i.builtin||i.id===d.default?'':` <button onclick="rtArch('${i.id}',${!i.archived})">${i.archived?'Khôi phục':'Lưu trữ'}</button>`}`:''}</td></tr>`).join('')}</tbody></table></div>
+ <p id="rtm" style="color:var(--muted)">${esc(m||'')}</p>
+ ${adm?`<div class="isu"><b>Thêm mẫu mới</b><div class="fx" style="color:var(--muted)">Chọn file .html có dòng dữ liệu mẫu <code>const D = {…};</code> như mẫu gốc (nên bắt đầu từ “Nhân bản” hoặc “Tải” mẫu gốc rồi chỉnh). App kiểm tra định dạng và so key dữ liệu với mẫu gốc; mẫu không bao giờ ghi đè mẫu cũ.</div>
+ <div class="row" style="margin-top:8px"><input id="rtname" placeholder="Tên mẫu, vd Gọn v1"><input id="rtnote" placeholder="Ghi chú (không bắt buộc)"><input id="rtfile" type="file" accept=".html,text/html"><button class="pri" onclick="rtUp()">Tải lên</button></div></div>`:''}`}
+async function rtMsg(f,ok){try{await f();await loadRt();paintRt(ok)}catch(e){await loadRt();paintRt('⚠ '+e.message)}}
+function rtDl(id){location.href='/api/rtemplates/'+id+'/download'}
+function rtUp(){const f=$('#rtfile').files[0],n=$('#rtname').value.trim();if(!f||!n){$('#rtm').textContent='Cần chọn file và đặt tên';return}
+ rtMsg(async()=>{await api('rtemplates?name='+encodeURIComponent(n)+'&note='+encodeURIComponent($('#rtnote').value),{method:'POST',body:await f.arrayBuffer()})},'Đã thêm mẫu “'+n+'”')}
+function rtClone(id){const n=prompt('Tên mẫu mới (nhân bản từ “'+id+'”):');if(n)rtMsg(()=>api(`rtemplates/${id}/clone`,{method:'POST',body:JSON.stringify({name:n})}),'Đã nhân bản “'+n+'”')}
+function rtEdit(id){const i=RT.items.find(x=>x.id===id),n=prompt('Tên mẫu:',i.name);if(n===null)return;const t=prompt('Ghi chú:',i.note||'');if(t===null)return;rtMsg(()=>api('rtemplates/'+id,{method:'PUT',body:JSON.stringify({name:n,note:t})}),'Đã lưu')}
+function rtDef(id){rtMsg(()=>api('rtemplates/'+id,{method:'PUT',body:JSON.stringify({default:true})}),'Đã đặt mặc định cho các kỳ tạo mới (kỳ cũ giữ nguyên mẫu)')}
+function rtArch(id,a){rtMsg(()=>api('rtemplates/'+id,{method:'PUT',body:JSON.stringify({archived:a})}),a?'Đã lưu trữ (file vẫn giữ)':'Đã khôi phục')}
+loadRt();
+let MYP=null,pmD=null;
+const LVN={none:'Không',view:'Xem',edit:'Sửa'};
+const TABMOD={hm:['home','view'],vw:['periods','view'],up:['periods','edit'],bd:['periods','edit'],an:['analysis','view'],cm:['compare','view'],in:['inputs','view'],ao:['adsopt','view'],cf:['config','view'],pm:['admin','edit'],rt:['periods','edit'],ac:null};
+const RK={none:0,view:1,edit:2};
+function canTab(t){const r=TABMOD[t];if(!r||!MYP)return true;if(r[0]==='admin')return MYP.role==='admin';return RK[MYP.mods[r[0]]||'none']>=RK[r[1]]}
+function firstTab(){return ['hm','vw','an','cm','in','ao','cf','rt','pm','ac'].find(canTab)||'ac'}
+function applyPerms(){if(!MYP)return;Object.keys(TABMOD).forEach(t=>{const b=document.querySelector(`nav [data-t=${t}]`);if(b)b.style.display=canTab(t)?'':'none'});
+ ['#bar1','#bar2'].forEach(s=>{const e=$(s);if(e)e.style.display=canTab('up')?'':'none'});
+ const np=$('#newp');if(np)np.style.display=canTab('up')?'':'none';if(!canTab(curTab))tab(firstTab())}
+fetch('/api/auth/status').then(r=>r.json()).then(j=>{if(j.perms){MYP=j.perms;applyPerms()}});
+async function renderPerm(){const el=$('#t-pm');el.innerHTML='<p style="color:var(--muted)">Đang tải…</p>';try{pmD=await api('perms')}catch(e){el.innerHTML='<p>Lỗi: '+esc(e.message)+'</p>';return}paintPerm()}
+function paintPerm(){const d=pmD,el=$('#t-pm');
+ el.innerHTML=`<div class="isu" style="margin-top:0"><b>Phân quyền theo module</b><div class="fx" style="color:var(--muted)">Mỗi người dùng một vai trò: <b>Quản trị</b> (toàn quyền, gồm quản lý tài khoản và phân quyền) <b>Chỉ xem report</b> (chỉ mở được report của các kỳ, không thấy module nào khác và không tạo được kỳ) hoặc <b>Tuỳ chỉnh</b> với từng module ở mức <b>Không</b> (ẩn), <b>Xem</b> hoặc <b>Sửa</b>. Quyền được kiểm tra ở máy chủ; thay đổi có hiệu lực ở lần tải trang tiếp theo của người đó. Tài khoản mới tạo mặc định là “Chỉ xem”.</div></div>
+ <div style="overflow-x:auto"><table class="t"><thead><tr><th>Người dùng</th><th>Vai trò</th><th>Áp mẫu</th>${d.modules.map(m=>`<th title="${esc(m.desc)}">${esc(m.label)}</th>`).join('')}</tr></thead><tbody>${Object.entries(d.users).map(([u,p],i)=>{const self=u===d.me;
+  return `<tr><td><b>${esc(u)}</b>${self?' <small style="color:var(--accent)">(bạn)</small>':''}</td>
+  <td><select ${self?'disabled title="Không tự bỏ quyền quản trị"':''} onchange="pmRole(${i},this.value)"><option value="admin" ${p.role==='admin'?'selected':''}>Quản trị</option><option value="report" ${p.role==='report'?'selected':''}>Chỉ xem report</option><option value="custom" ${p.role==='custom'?'selected':''}>Tuỳ chỉnh</option></select></td>
+  <td>${p.role!=='custom'?'':`<select onchange="pmPreset(${i},this.value)"><option value="">—</option>${Object.entries(d.presets).map(([k,v])=>`<option value="${k}">${esc(v.label)}</option>`).join('')}</select>`}</td>
+  ${d.modules.map(m=>`<td>${p.role!=='custom'?(()=>{const l=p.mods[m.key];return `<span class="chip" style="color:${l==='none'?'var(--muted)':'var(--accent)'};border-color:${l==='none'?'var(--line)':'var(--accent)'}">${LVN[l]}</span>`})():`<select onchange="pmSet(${i},'${m.key}',this.value)">${d.levels.map(l=>`<option value="${l}" ${p.mods[m.key]===l?'selected':''}>${LVN[l]}</option>`).join('')}</select>`}</td>`).join('')}</tr>`}).join('')}</tbody></table></div>
+ <p id="pmm" style="color:var(--muted)"></p>
+ <div class="isu"><b>Ý nghĩa mức quyền</b><ul class="fx" style="color:var(--muted)">${d.modules.map(m=>`<li><b>${esc(m.label)}</b>: ${esc(m.desc)}</li>`).join('')}</ul></div>`}
+async function pmSave(u){const p=pmD.users[u];try{await api('perms/'+encodeURIComponent(u),{method:'PUT',body:JSON.stringify({role:p.role,mods:p.mods})});$('#pmm').textContent='Đã lưu quyền của '+u;$('#pmm').style.color='var(--accent)'}catch(e){$('#pmm').textContent=e.message;$('#pmm').style.color='#ff7b7b';await renderPerm()}}
+const pmU=i=>Object.keys(pmD.users)[i];
+async function pmRole(i,v){const u=pmU(i);pmD.users[u].role=v;if(v==='custom'&&!Object.values(pmD.users[u].mods).some(x=>x!=='edit'))pmD.users[u].mods=JSON.parse(JSON.stringify(pmD.presets.viewer.mods));await pmSave(u);paintPerm()}
+async function pmPreset(i,k){if(!k)return;const u=pmU(i);pmD.users[u].mods=JSON.parse(JSON.stringify(pmD.presets[k].mods));await pmSave(u);paintPerm()}
+async function pmSet(i,m,v){const u=pmU(i);pmD.users[u].mods[m]=v;await pmSave(u)}
+
+let VP=[],WHO='';
+function vShow(id){cur=id;meta={status:'built'};document.querySelectorAll('main > section').forEach(x=>x.classList.toggle('hide',x.id!=='t-vw'));renderView();$('#vmenu').classList.remove('on')}
+function vMenu(){const m=$('#vmenu');if(m.classList.toggle('on')){m.innerHTML=`<b>${esc(WHO)}</b> <small style="color:var(--muted)">· chỉ xem</small>
+ ${VP.length>1?`<h4>Kỳ báo cáo</h4><select onchange="vShow(this.value)">${VP.map(p=>`<option value="${esc(p.id)}" ${p.id===cur?'selected':''}>${esc(p.label)}</option>`).join('')}</select>`:''}
+ <h4>Đổi mật khẩu</h4><input id="vpo" type="password" placeholder="Mật khẩu hiện tại" autocomplete="current-password"><input id="vpn" type="password" placeholder="Mật khẩu mới (≥10 ký tự)" autocomplete="new-password"><input id="vpn2" type="password" placeholder="Nhập lại mật khẩu mới" autocomplete="new-password">
+ <button class="pri" onclick="vPw()" style="width:100%">Đổi mật khẩu</button><p id="vpm" style="margin:6px 0;color:var(--muted);font-size:12px"></p><a href="#" onclick="logout();return false">Đăng xuất</a>`}}
+async function vPw(){const m=$('#vpm');if($('#vpn').value!==$('#vpn2').value){m.textContent='Hai lần nhập mật khẩu mới không khớp';return}try{await api('auth/password',{method:'POST',body:JSON.stringify({old:$('#vpo').value,new:$('#vpn').value})});m.textContent='Đã đổi mật khẩu';$('#vpo').value=$('#vpn').value=$('#vpn2').value=''}catch(e){m.textContent=e.message}}
+async function startViewer(){document.body.classList.add('viewer');const l=(await api('periods')).filter(p=>p.status==='built');VP=l;
+ if(!l.length){document.querySelectorAll('main > section').forEach(x=>x.classList.toggle('hide',x.id!=='t-vw'));$('#t-vw').innerHTML='<p style="padding:24px;color:var(--muted)">Chưa có report nào để xem.</p>';return}
+ vShow(l[0].id)}
+(async()=>{const st0=await fetch('/api/auth/status').then(r=>r.json()).catch(()=>({}));if(st0.perms&&st0.perms.role==='report'){MYP=st0.perms;WHO=st0.user||'';return startViewer()}
+slots=await api('slots');await loadList();const l=await api('periods');if(l.length){await pick(l[0].id);tab(firstTab())}else tab(firstTab())})();
+</script></body></html>

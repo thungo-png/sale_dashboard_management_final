@@ -1,0 +1,69 @@
+{
+  "id": "2026-W43",
+  "label": "Report W43",
+  "type": "week",
+  "status": "built",
+  "created": "2026-10-26T06:17:23",
+  "built": "2026-10-27T07:58:31",
+  "files": {
+    "cg_ARZ": "cg_ARZ__ARZ_CastleGate-Inventory-Age-20261025__1_.csv",
+    "wf_arozu_CR": "wf_arozu_CR__ARZ_CR__3_.xlsx",
+    "wf_arozu_KOR": "wf_arozu_KOR__ARZ_KOR__4_.xlsx",
+    "wf_arozu_KTR": "wf_arozu_KTR__ARZ_KTR__3_.xlsx",
+    "wf_arozu_PR": "wf_arozu_PR__ARZ_PR__3_.xlsx",
+    "wf_arozu_PSR": "wf_arozu_PSR__ARZ_PSR__3_.xlsx",
+    "wf_arozu_ST": "wf_arozu_ST__ARZ_STRR__4_.xlsx",
+    "fba_CAN": "fba_CAN__DHI_Canada.csv",
+    "fba_US": "fba_US__Megsu_US.csv",
+    "data_current": "data_current__data__3_.xlsx",
+    "master": "master__Data_Inv___Report_Sales_-_Thư_Ngô__1_.xlsx",
+    "cg_DHI": "cg_DHI__DHI_CastleGate-Inventory-Age-20261025__2_.csv",
+    "wf_dhi_CR": "wf_dhi_CR__DHI_CR_W43.xlsx",
+    "wf_dhi_KOR": "wf_dhi_KOR__DHI_KOR__4_.xlsx",
+    "wf_dhi_KTR": "wf_dhi_KTR__DHI_KTR__4_.xlsx",
+    "wf_dhi_PR": "wf_dhi_PR__DHI_PR__3_.xlsx",
+    "wf_dhi_PSR": "wf_dhi_PSR__DHI_PSR__3_.xlsx",
+    "wf_dhi_ST": "wf_dhi_ST__DHI_STRR__6_.xlsx",
+    "cg_MS": "cg_MS__MS_CastleGate-Inventory-Age-20261025.csv",
+    "wf_megsu_CR": "wf_megsu_CR__MS_CR__4_.xlsx",
+    "wf_megsu_KOR": "wf_megsu_KOR__MS_KOR__4_.xlsx",
+    "wf_megsu_KTR": "wf_megsu_KTR__MS_KTR__4_.xlsx",
+    "wf_megsu_PR": "wf_megsu_PR__MS_PR__4_.xlsx",
+    "wf_megsu_PSR": "wf_megsu_PSR__MS_PSR__4_.xlsx",
+    "wf_megsu_ST": "wf_megsu_ST__MS_STRR__4_.xlsx",
+    "amazon_ads": "amazon_ads__Report_Amazon_W43.csv",
+    "wf_arozu_SUM": "wf_arozu_SUM__ARZ_Summary-data-2025-04-25-to-2026-10-25__1_.csv",
+    "wf_dhi_SUM": "wf_dhi_SUM__DHI_Summary-data-2025-04-25-to-2026-10-25__2_.csv",
+    "wf_megsu_SUM": "wf_megsu_SUM__MS_Summary-data-2025-04-25-to-2026-10-25.csv"
+  },
+  "checks": {
+    "missing_keys": [],
+    "extra_keys": [
+      "pl5ts"
+    ],
+    "html_kb": 3054
+  },
+  "template": "gn-v4-2-c3733d",
+  "analysis": {
+    "n": 27,
+    "by_sev": {
+      "3": 3,
+      "2": 21,
+      "1": 3
+    },
+    "by_area": {
+      "Doanh số": 7,
+      "Lợi nhuận": 7,
+      "Quảng cáo": 9,
+      "Tồn kho": 4
+    },
+    "range": "2026-10-18 → 2026-10-24",
+    "margin": -0.57,
+    "r": 65468.51,
+    "new": 5,
+    "updated": 22,
+    "recurred": 0,
+    "stale": 39,
+    "at": "2026-10-28T00:48:16"
+  }
+}

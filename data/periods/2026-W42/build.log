@@ -1,0 +1,18 @@
+[mẫu report] Gọn v4 (gon-v4-f20a98)
+[etl] Chạy etl/custom_build.py ...
+[fx] dùng tỷ giá constant-currency của kỳ trước (D.fx.rates)
+[sales] file 2026-01-01→2026-10-18, 291 ngày, 62249 dòng
+[sales] tuần W42: 2026-10-11 → 2026-10-17
+[sales] W42: q=247 r=55570.30 USD rfc=120812.08 ach=46.0%
+[inv] phạm vi: 71 SKU, gộp kit: ['B4F1', 'GDWQ']
+[inv] invdet: nsku=42 qty_total=4639 dòng≠0=186 âm=8
+[inv] invacct: 13 tổ hợp, 82 dòng chi tiết, qty_total=1584
+[lt] FBA: 21 SKU, tot=670, ≥271 ngày=12 | CastleGate: 21 SKU, tot=965, ≥271 ngày=1
+[ads] campthu=192 dòng, rank={'Arozu': 5, 'Megsu': 6, 'DHI': 6}, st={'Arozu': 763, 'Megsu': 737, 'DHI': 200}
+[ads_daily] Amazon|AUS: 2026-09-18→2026-10-17; Amazon|CAN: 2026-09-18→2026-10-17; Amazon|US: 2026-09-18→2026-10-17; Wayfair|CAN: 2026-10-11→2026-10-18; Wayfair|US: 2026-10-11→2026-10-18
+[market] 17 listing có hạng, 1700 cụm từ; so với kỳ trước: có
+[quality] 121/743 listing thuộc danh mục (ARZ 42/268, MS 27/172, DHI 52/303)
+[etl] ĐÃ CẬP NHẬT: bán hàng + chuỗi thời gian; tồn kho (invdet, invacct); Long-term Storage (lt); quảng cáo (campthu, scope, adsum, tacos, dgmk_room, adlist_cover, ads); quảng cáo theo ngày (ads_daily); thị trường (market); chất lượng sản phẩm (quality); sku_meta, top_sku2, grpcmp, askuw_mp, sizecolor; Profit PL5 (độ phủ 100.0% doanh thu)
+[etl] GIỮ NGUYÊN số của kỳ trước (chưa có ETL): 
+[ok] Build xong trong 103.7s — report 2907 KB
+[phân tích] 37 vấn đề → task mới 12, cập nhật 25

@@ -1,0 +1,9 @@
+{
+ "render_sha256": "8a030bd0e6d84a7d383ad1e6e61908953436abc5c89b5e7b76935d841be62b2a",
+ "template_sha256": "ef65361d19d7f8dba6f0ecf9b150bfc6d2bc05f1e4104aafa6cc838810a6f7cf",
+ "patches": {
+  "pro.js": "40dbe31d815e4136ae4274ace5a1613823b90dc8d9412883244ddf00dbc18c2a",
+  "pro.css.html": "fdc8f934535e0c51c1b10e66e5f54d30ff25c535bd3658afa243eb831baa8a90"
+ },
+ "note": "Chu\u1ea9n render c\u1ee7a M\u1eaaU G\u1ed0C. L\u1ec7ch = c\u00f3 thay \u0111\u1ed5i chung (template g\u1ed1c, patches/pro.*, insights.py ho\u1eb7c builder.py) l\u00e0m \u0111\u1ed5i m\u1eabu g\u1ed1c."
+}
